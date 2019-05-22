@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace DirtyChefYoga
 {
-
     public class Burger : MonoBehaviour
     {
         public float currentThickness = 0;
@@ -38,7 +37,6 @@ namespace DirtyChefYoga
                 return false;
             }
         }
-
     }
 
 }

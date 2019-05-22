@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentThickness: 0
-  maxNumberOfIngredients: 25
+  maxNumberOfIngredients: 100
 --- !u!4 &200877972
 Transform:
   m_ObjectHideFlags: 0
@@ -357,7 +357,10 @@ MonoBehaviour:
     type: 3}
   lettuce: {fileID: 4329100495026718554, guid: 0609c383bc28590428414bba05b8f02b, type: 3}
   cheese: {fileID: 8954242529965558560, guid: 62024e44425e09b44847cd00eafe12a4, type: 3}
-  patty: {fileID: 4843260810218131157, guid: 94e57bce0a6fa154ab58c593463002ec, type: 3}
+  pattyCooked: {fileID: 5152091445084485642, guid: 0ab4468045c903f4389e8942ae3f68a4,
+    type: 3}
+  pattyUncooked: {fileID: 5508753535221852364, guid: e6cb0e73a8424214da6fc3124e3deada,
+    type: 3}
   bottomBun: {fileID: 2835626668173071432, guid: ebf23d36c750e21498744fa48c539584,
     type: 3}
 --- !u!1 &358722154

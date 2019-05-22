@@ -6,19 +6,13 @@ using DirtyChefYoga;
 public class TESTBurger : MonoBehaviour
 {
     public Burger burger;
-
     public GameObject topBun;
     public GameObject tomatoes;
     public GameObject lettuce;
     public GameObject cheese;
-    public GameObject patty;
+    public GameObject pattyCooked;
+	public GameObject pattyUncooked;
     public GameObject bottomBun;
-    // public Ingredient topBun;
-    // public Ingredient tomatoes;
-    // public Ingredient lettuce;
-    // public Ingredient cheese;
-    // public Ingredient patty;
-    // public Ingredient bottomBun;
 
     void Update()
     {
@@ -45,7 +39,12 @@ public class TESTBurger : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            var newIngredient = Instantiate(patty, transform.position, Quaternion.identity);
+            var newIngredient = Instantiate(pattyCooked, transform.position, Quaternion.identity);
+            burger.AddIngredient(newIngredient.GetComponent<Ingredient>());
+        }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            var newIngredient = Instantiate(pattyUncooked, transform.position, Quaternion.identity);
             burger.AddIngredient(newIngredient.GetComponent<Ingredient>());
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
