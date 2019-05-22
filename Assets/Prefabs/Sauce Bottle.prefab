@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6426547013567575052
+--- !u!1 &4843260810218131157
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,93 +8,103 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8751092586041526870}
+  - component: {fileID: 4621803834793653543}
+  - component: {fileID: 3678616389531813318}
   m_Layer: 0
-  m_Name: Sauce Bottle
+  m_Name: Patty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8751092586041526870
+--- !u!4 &4621803834793653543
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6426547013567575052}
+  m_GameObject: {fileID: 4843260810218131157}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0382545, y: 5.1953726, z: -7.0145884}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6599323279745638722}
+  - {fileID: 460134305231197597}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &6599323279745514434
+--- !u!114 &3678616389531813318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4843260810218131157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c72171edb9d6e14f80c6cd4b3b97009, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thickness: 0.1
+--- !u!1001 &460134305230802717
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 8751092586041526870}
+    m_TransformParent: {fileID: 4621803834793653543}
     m_Modifications:
-    - target: {fileID: 100000, guid: 981b6144a44f7e54fbac3dc96b58afcd, type: 3}
+    - target: {fileID: 100000, guid: a16853072620757448807cb63ff4bc37, type: 3}
       propertyPath: m_Name
-      value: M_Food_Bottle_Sauce_002
+      value: M_Food_Patty_001
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 981b6144a44f7e54fbac3dc96b58afcd, type: 3}
+    - target: {fileID: 400000, guid: a16853072620757448807cb63ff4bc37, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 981b6144a44f7e54fbac3dc96b58afcd, type: 3}
+    - target: {fileID: 400000, guid: a16853072620757448807cb63ff4bc37, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 981b6144a44f7e54fbac3dc96b58afcd, type: 3}
+    - target: {fileID: 400000, guid: a16853072620757448807cb63ff4bc37, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 981b6144a44f7e54fbac3dc96b58afcd, type: 3}
+    - target: {fileID: 400000, guid: a16853072620757448807cb63ff4bc37, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 981b6144a44f7e54fbac3dc96b58afcd, type: 3}
+    - target: {fileID: 400000, guid: a16853072620757448807cb63ff4bc37, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 981b6144a44f7e54fbac3dc96b58afcd, type: 3}
+    - target: {fileID: 400000, guid: a16853072620757448807cb63ff4bc37, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 981b6144a44f7e54fbac3dc96b58afcd, type: 3}
+    - target: {fileID: 400000, guid: a16853072620757448807cb63ff4bc37, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 981b6144a44f7e54fbac3dc96b58afcd, type: 3}
+    - target: {fileID: 400000, guid: a16853072620757448807cb63ff4bc37, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 981b6144a44f7e54fbac3dc96b58afcd, type: 3}
+    - target: {fileID: 400000, guid: a16853072620757448807cb63ff4bc37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 981b6144a44f7e54fbac3dc96b58afcd, type: 3}
+    - target: {fileID: 400000, guid: a16853072620757448807cb63ff4bc37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 981b6144a44f7e54fbac3dc96b58afcd, type: 3}
+    - target: {fileID: 400000, guid: a16853072620757448807cb63ff4bc37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 981b6144a44f7e54fbac3dc96b58afcd, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a580068efb139ab43a9c3d597c46d4ba, type: 2}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 981b6144a44f7e54fbac3dc96b58afcd, type: 3}
---- !u!4 &6599323279745638722 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: a16853072620757448807cb63ff4bc37, type: 3}
+--- !u!4 &460134305231197597 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: 981b6144a44f7e54fbac3dc96b58afcd,
+  m_CorrespondingSourceObject: {fileID: 400000, guid: a16853072620757448807cb63ff4bc37,
     type: 3}
-  m_PrefabInstance: {fileID: 6599323279745514434}
+  m_PrefabInstance: {fileID: 460134305230802717}
   m_PrefabAsset: {fileID: 0}
