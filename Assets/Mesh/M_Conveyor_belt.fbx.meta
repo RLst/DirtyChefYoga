@@ -1,26 +1,15 @@
 fileFormatVersion: 2
-guid: 7e62c9109308e9a41813fd342de8cfd0
+guid: e3e3f53728f54424c960ac3fff85836c
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: barsket_holder_Left
-    100002: barsket_holder_Right
-    100004: frier
-    100006: //RootNode
-    400000: barsket_holder_Left
-    400002: barsket_holder_Right
-    400004: frier
-    400006: //RootNode
+    100000: //RootNode
+    400000: //RootNode
     2100000: lambert1
-    2300000: barsket_holder_Left
-    2300002: barsket_holder_Right
-    2300004: frier
-    3300000: barsket_holder_Left
-    3300002: barsket_holder_Right
-    3300004: frier
-    4300000: frier
-    4300002: barsket_holder_Left
-    4300004: barsket_holder_Right
+    2100002: lambert2
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: conveyor_belt
   externalObjects: {}
   materials:
     importMaterials: 1
