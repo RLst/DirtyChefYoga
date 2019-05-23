@@ -24,16 +24,20 @@ namespace DirtyChefYoga
 
             if (m_timer <= 0.0f)
             {
-                SceneManager.LoadScene("Game Over");
+                EndGame();
             }
             else
             {
-                string temp = Mathf.FloorToInt(m_timer / 60).ToString();
-                temp += ":" + ((int)m_timer % 60).ToString("00");
+                string timeVisual = Mathf.FloorToInt(m_timer / 60).ToString();
+                timeVisual += ":" + ((int)m_timer % 60).ToString("00");
 
-                m_canvasTimer.GetComponent<Text>().text = temp;//m_timer.ToString();
+                m_canvasTimer.GetComponent<Text>().text = timeVisual;//m_timer.ToString();
             }
         }
 
+        public void EndGame()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }
