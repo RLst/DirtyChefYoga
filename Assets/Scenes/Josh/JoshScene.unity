@@ -152,7 +152,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 53
+    m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -188,8 +188,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 365.1, y: 212.6}
-  m_SizeDelta: {x: 153.8, y: 71.9}
+  m_AnchoredPosition: {x: 405.8, y: 231.1}
+  m_SizeDelta: {x: 72.4, y: 34.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &887636555
 GameObject:
@@ -743,5 +743,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40d07a407a0d8074f9bb31191d369c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_startTime: 60
+  m_startTime: 15
   m_canvasTimer: {fileID: 150807434}

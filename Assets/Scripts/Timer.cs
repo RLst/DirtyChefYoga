@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace DirtyChefYoga
 {
@@ -21,7 +22,14 @@ namespace DirtyChefYoga
         {
             m_timer -= Time.deltaTime;
 
-            m_canvasTimer.GetComponent<Text>().text = m_timer.ToString();
+            if (m_timer <= 0.0f)
+            {
+                SceneManager.LoadScene("Game Over");
+            }
+            else
+            {
+                m_canvasTimer.GetComponent<Text>().text = m_timer.ToString();
+            }
         }
 
     }
