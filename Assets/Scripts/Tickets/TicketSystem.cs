@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 namespace DirtyChefYoga
 {
     public class TicketSystem : MonoBehaviour
     {
+        [Range(0,100)]
+        public float m_burgerChance;
+
         public float m_spawnTime = 10.0f;
         private float m_timer;
+
+        public float m_ticketExpireTimer;
 
         public int m_maxNumberOfTickets = 5;
 
@@ -42,7 +48,19 @@ namespace DirtyChefYoga
                 SpawnTicket();
             }
 
-
+            FoodTicket temp = null;
+            foreach(FoodTicket f in m_foodItems)
+            {
+                f.m_timer += Time.deltaTime;
+                if(f.m_timer >= f.m_expireTime)
+                {
+                    temp = f;//RemoveTicket(f);
+                }
+            }
+            if (temp != null)
+            {
+                RemoveTicket(temp);
+            }
         }
 
         public void SpawnTicket()
@@ -52,15 +70,17 @@ namespace DirtyChefYoga
                 return;
             }
 
-            if (Random.Range(1, 3) == 1)
+            GameObject newTicket = null;
+
+            if (Random.Range(1, 100) < m_burgerChance)
             {
-                GameObject newTicket = Instantiate(m_burgerTicketPrefab, m_ticketPanel.transform);      //adds a new ticket
+                newTicket = Instantiate(m_burgerTicketPrefab, m_ticketPanel.transform);      //adds a new ticket
 
                 m_foodItems.Add(newTicket.AddComponent<BurgerTicket>());        //adds the burger component to the ticket 
-
+                m_foodItems[m_foodItems.Count-1].m_expireTime = m_ticketExpireTimer;
+                
                 //calculate ticket place in canvas
                 newTicket.transform.position = new Vector3((newTicket.transform.localScale.x * newTicket.GetComponent<RectTransform>().rect.width + 3) * m_foodItems.Count, newTicket.transform.position.y, newTicket.transform.position.z);
-
 
                 m_foodItems[m_foodItems.Count - 1].MakeFood();      //sets up the burger
 
@@ -94,9 +114,10 @@ namespace DirtyChefYoga
             }
             else
             {
-                GameObject newTicket = Instantiate(m_friesTicketPrefab, m_ticketPanel.transform);       //adds new ticket
+                newTicket = Instantiate(m_friesTicketPrefab, m_ticketPanel.transform);       //adds new ticket
 
                 m_foodItems.Add(newTicket.AddComponent<FryTicket>());       //adds fry component to ticket
+                m_foodItems[m_foodItems.Count - 1].m_expireTime = m_ticketExpireTimer;
 
                 //calculate ticket place
                 newTicket.transform.position = new Vector3((newTicket.transform.localScale.x * newTicket.GetComponent<RectTransform>().rect.width + 3) * m_foodItems.Count, newTicket.transform.position.y, newTicket.transform.position.z);
@@ -106,6 +127,7 @@ namespace DirtyChefYoga
                 FoodTicket food = m_foodItems[m_foodItems.Count - 1];
 
                 Instantiate(m_friesPrefab, food.transform.GetChild(0));
+
             }
         }
 
@@ -116,6 +138,16 @@ namespace DirtyChefYoga
             Destroy(temp);
 
             //update positions
+            UpdatePositions();
+        }
+
+        public void RemoveTicket(FoodTicket foodTicket)
+        {
+            m_foodItems.Remove(foodTicket);
+            Destroy(foodTicket.gameObject);
+
+            //update positions
+            UpdatePositions();
         }
 
         public void UpdatePositions()

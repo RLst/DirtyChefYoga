@@ -28,7 +28,10 @@ namespace DirtyChefYoga
             }
             else
             {
-                m_canvasTimer.GetComponent<Text>().text = m_timer.ToString();
+                string temp = Mathf.FloorToInt(m_timer / 60).ToString();
+                temp += ":" + ((int)m_timer % 60).ToString("00");
+
+                m_canvasTimer.GetComponent<Text>().text = temp;//m_timer.ToString();
             }
         }
 

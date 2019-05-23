@@ -188,8 +188,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 405.8, y: 231.1}
-  m_SizeDelta: {x: 72.4, y: 34.9}
+  m_AnchoredPosition: {x: 350.1, y: 231.1}
+  m_SizeDelta: {x: 183.81, y: 34.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &216748907
 GameObject:
@@ -1130,13 +1130,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 031302f1aa0d87a4cbb4d98d3d2199a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_burgerChance: 0
   m_spawnTime: 5
+  m_ticketExpireTimer: 12
   m_maxNumberOfTickets: 3
   m_ticketPanel: {fileID: 1580945029}
   m_foodItems: []
   m_burgerTicketPrefab: {fileID: 2632225773236254866, guid: 0b5aea3528236b749a4c51eddc10daea,
     type: 3}
-  m_friesTicketPrefab: {fileID: 0}
+  m_friesTicketPrefab: {fileID: 2632225773236254866, guid: 4309d98c0f5fdaf448289d56ec40e804,
+    type: 3}
   m_topBunPrefab: {fileID: 2011377401509667174, guid: e850afe7f646b494ab05d2f2132da70e,
     type: 3}
   m_tomatoPrefab: {fileID: 2322478237207002373, guid: 48fdbb4bb5031fe42b29e7f49cd2f48e,
@@ -1149,7 +1152,8 @@ MonoBehaviour:
     type: 3}
   m_bottomBunPrefab: {fileID: 3469956710637793675, guid: e3acd398a25538c41b5984df4e873bd3,
     type: 3}
-  m_friesPrefab: {fileID: 0}
+  m_friesPrefab: {fileID: 2322478237207002373, guid: 4c760572d84bac94b867b44c755e7395,
+    type: 3}
 --- !u!114 &2017596002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1246,7 +1250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40d07a407a0d8074f9bb31191d369c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_startTime: 60
+  m_startTime: 142
   m_canvasTimer: {fileID: 150807434}
 --- !u!1 &2082019821
 GameObject:

@@ -13,7 +13,7 @@ namespace DirtyChefYoga
             m_burgerPieces = new BurgerComponent[fillingAmount + 2];
 
             m_burgerPieces[0] = BurgerComponent.BOTTOMBUN;
-            for (int i = fillingAmount - 1; i > 0; i--)
+            for (int i = fillingAmount; i > 0; i--)
             {
                 m_burgerPieces[i] = (BurgerComponent)Random.Range(1, 5);
             }
