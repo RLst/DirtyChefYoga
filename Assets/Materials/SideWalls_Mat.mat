@@ -240,7 +240,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_25C51EDF: {r: 0.1, g: 0.1, b: 0.1, a: 0}
-    - Color_5FD2A1E3: {r: 2.714883, g: 0, b: 11.44721, a: 0}
+    - Color_5FD2A1E3: {r: 0.000019148285, g: 0, b: 0.00008425245, a: 0}
     - Color_B1BB50BD: {r: 0.9, g: 0.9, b: 0.9, a: 0}
     - Vector2_85B471D6: {r: -0.49, g: -3.43, b: 0, a: 0}
     - Vector2_C39FB23C: {r: 0.5, g: 0.5, b: 0, a: 0}
