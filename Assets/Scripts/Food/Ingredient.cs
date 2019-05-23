@@ -33,24 +33,49 @@ namespace DirtyChefYoga
             }
         }
 
+        
+        Rigidbody rb;
+        Collider col;
 
-        void Update()
+        void Start()
         {
-            UpdateAppearance();
+            rb = GetComponent<Rigidbody>();
+            col = GetComponent<Collider>();
         }
 
-        private void UpdateAppearance()
-        {
-            // //Update meshes 
-            // switch (cookStatus)
-            // {
-            //     case CookStatus.Cooked:
+        // void Update()
+        // {
+        //     UpdateAppearance();
+        // }
 
-            //         break;
-            //     case CookStatus.NA: break;
-            //         // case CookStatus.UnCooked: 
-            //         // case CookStatus.NA: break;
-            // }
-        }
+        // private void UpdateAppearance()
+        // {
+        //     // //Update meshes 
+        //     // switch (cookStatus)
+        //     // {
+        //     //     case CookStatus.Cooked:
+
+        //     //         break;
+        //     //     case CookStatus.NA: break;
+        //     //         // case CookStatus.UnCooked: 
+        //     //         // case CookStatus.NA: break;
+        //     // }
+        // }
+
+        public void SetPhysics(bool active)
+        {
+            if (active)
+            {
+                //Disable rb and colliders
+                rb.isKinematic = true;
+                col.isTrigger = true;
+            }
+            else
+            {
+                //Reenable rb and colliders
+                rb.isKinematic = false;
+                col.isTrigger = false;
+            }
+        }        
     }
 }
