@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class FoodTicket : MonoBehaviour
+namespace DirtyChefYoga
 {
-    public abstract void MakeFood(int fillingAmount = 3);
+    public abstract class FoodTicket : MonoBehaviour
+    {
+        public abstract void MakeFood(int fillingAmount = 3);
+    }
 }

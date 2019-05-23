@@ -44,7 +44,7 @@ namespace DirtyChefYoga
 
             m_burgers.Add(newTicket.AddComponent<BurgerTicket>());
             //JM:STARTHERE, need to get the tickets to spawn next to eachother
-            newTicket.transform.position = new Vector3((newTicket.transform.localScale.x + 3) * m_burgers.Count, newTicket.transform.position.y, newTicket.transform.position.z);
+            newTicket.transform.position = new Vector3((newTicket.transform.localScale.x * newTicket.GetComponent<RectTransform>().rect.width + 3) * m_burgers.Count, newTicket.transform.position.y, newTicket.transform.position.z);
 
             //m_burgers.Add(m_ticketPanel.transform.GetChild(0).gameObject.AddComponent<BurgerTicket>());
             m_burgers[m_burgers.Count - 1].MakeFood();
