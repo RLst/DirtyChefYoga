@@ -19,6 +19,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_1485E837:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_81F8C721:
         m_Texture: {fileID: 2800000, guid: 863c74acdaeca844db971a4512a7cb80, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -116,10 +120,14 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Boolean_29001EF4: 0
+    - Boolean_AC10FA0F: 0
+    - Boolean_D6BAD0E8: 1
     - Vector1_2059BFB0: 1
     - Vector1_3020FF04: 0.1
     - Vector1_42999FA4: 0.1
-    - Vector1_B8143E62: 196
+    - Vector1_84A2E5C7: 1
+    - Vector1_B8143E62: 236
     - Vector1_EB160278: 0.1
     - _AORemapMax: 1
     - _AORemapMin: 0
@@ -231,7 +239,7 @@ Material:
     - _ZTestModeDistortion: 8
     - _ZWrite: 1
     m_Colors:
-    - Color_25C51EDF: {r: 0, g: 0, b: 0, a: 0}
+    - Color_25C51EDF: {r: 0.1, g: 0.1, b: 0.1, a: 0}
     - Color_B1BB50BD: {r: 0.9, g: 0.9, b: 0.9, a: 0}
     - Vector2_85B471D6: {r: -11.41, g: -2.62, b: 0, a: 0}
     - Vector2_C39FB23C: {r: 5, g: 5, b: 0, a: 0}

@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Fire_Mat
-  m_Shader: {fileID: 4800000, guid: 39826ab5693766b4aa3d1309e667729c, type: 3}
+  m_Shader: {fileID: 4800000, guid: a7aa8a63e254d6c43966c2dd629f647a, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
