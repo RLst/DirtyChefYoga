@@ -12,12 +12,12 @@ namespace DirtyChefYoga
         {
             m_burgerPieces = new BurgerComponent[fillingAmount + 2];
 
-            m_burgerPieces[0] = BurgerComponent.TOPBUN;
-            for (int i = 1; i <= fillingAmount; i++)
+            m_burgerPieces[0] = BurgerComponent.BOTTOMBUN;
+            for (int i = fillingAmount - 1; i > 0; i--)
             {
                 m_burgerPieces[i] = (BurgerComponent)Random.Range(1, 5);
             }
-            m_burgerPieces[m_burgerPieces.Length - 1] = BurgerComponent.BOTTOMBUN;
+            m_burgerPieces[fillingAmount + 1] = BurgerComponent.TOPBUN;
         }
     }
 
