@@ -11459,10 +11459,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_spawnTime: 10
+  m_maxNumberOfTickets: 5
   m_ticketPanel: {fileID: 24570594}
-  m_burgers: []
+  m_foodItems: []
   m_burgerTicketPrefab: {fileID: 2632225773236254866, guid: 0b5aea3528236b749a4c51eddc10daea,
     type: 3}
+  m_friesTicketPrefab: {fileID: 0}
   m_topBunPrefab: {fileID: 2011377401509667174, guid: e850afe7f646b494ab05d2f2132da70e,
     type: 3}
   m_tomatoPrefab: {fileID: 2322478237207002373, guid: 48fdbb4bb5031fe42b29e7f49cd2f48e,
@@ -11475,6 +11477,7 @@ MonoBehaviour:
     type: 3}
   m_bottomBunPrefab: {fileID: 3469956710637793675, guid: e3acd398a25538c41b5984df4e873bd3,
     type: 3}
+  m_friesPrefab: {fileID: 0}
 --- !u!114 &1937593472
 MonoBehaviour:
   m_ObjectHideFlags: 0
