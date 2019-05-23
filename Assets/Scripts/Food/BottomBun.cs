@@ -1,10 +1,7 @@
-﻿using UnityEngine;
-
-namespace DirtyChefYoga
+﻿namespace DirtyChefYoga
 {
-    public class BottomBun : Ingredient
+    public class BottomBun : BurgerIngredient
     {
-        
+        //Might be able to toast this in the future?
     }
-
 }

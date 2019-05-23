@@ -1,10 +1,6 @@
-﻿using UnityEngine;
-
-namespace DirtyChefYoga
+﻿namespace DirtyChefYoga
 {
-    public class Tomatoes : Ingredient
-    {
-        
+    public class Tomatoes : BurgerIngredient
+    { 
     }
-
 }

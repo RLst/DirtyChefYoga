@@ -50,8 +50,9 @@ namespace DirtyChefYoga
 		//------------------ DEBUG ---------------------
 		void OnDrawGizmos()
 		{
+			var halfLength = 2f;
 			Gizmos.color = Color.green;
-			Gizmos.DrawWireSphere(transform.position, 0.9f);
+			Gizmos.DrawWireCube(new Vector3(transform.position.x, transform.position.y, transform.position.z), new Vector3(0.5f, 3, 0.5f));
 		}
 		void OnGUI()
 		{
