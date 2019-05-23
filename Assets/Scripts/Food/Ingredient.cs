@@ -1,10 +1,81 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace DirtyChefYoga
 {
+    public enum CookStatus
+    {
+        NA = -1,
+        UnCooked = 0,
+        Cooked = 1,
+        OverCooked = 2
+    }
+
     public abstract class Ingredient : MonoBehaviour
     {
-        int stackingOrder;      //Maybe...
-        public float thickness = 0.1f;       //Manually set for each ingredient
+        // [SerializeField] GameObject uncookedPrefab; //If this ingredient can't be cooked then this is the default
+        [SerializeField] bool m_isCookable = true;
+        public bool isCookable { 
+            get { return m_isCookable; }
+            private set { m_isCookable = value; } 
+        }
+        public float cookProgress { get; set; } = 0f;
+        public CookStatus cookStatus    
+        {
+            get
+            {
+                if (isCookable)
+                    return (CookStatus)Convert.ToInt32(cookProgress);
+                else
+                    return CookStatus.NA;
+                    // //Item cannot be cooked; Invalid call
+                    // throw new InvalidOperationException();
+            }
+        }
+
+        
+        Rigidbody rb;
+        Collider col;
+
+        void Start()
+        {
+            rb = GetComponent<Rigidbody>();
+            col = GetComponent<Collider>();
+        }
+
+        // void Update()
+        // {
+        //     UpdateAppearance();
+        // }
+
+        // private void UpdateAppearance()
+        // {
+        //     // //Update meshes 
+        //     // switch (cookStatus)
+        //     // {
+        //     //     case CookStatus.Cooked:
+
+        //     //         break;
+        //     //     case CookStatus.NA: break;
+        //     //         // case CookStatus.UnCooked: 
+        //     //         // case CookStatus.NA: break;
+        //     // }
+        // }
+
+        public void SetPhysics(bool active)
+        {
+            if (active)
+            {
+                //Disable rb and colliders
+                rb.isKinematic = true;
+                col.isTrigger = true;
+            }
+            else
+            {
+                //Reenable rb and colliders
+                rb.isKinematic = false;
+                col.isTrigger = false;
+            }
+        }        
     }
 }

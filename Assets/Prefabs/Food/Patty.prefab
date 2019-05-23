@@ -89,8 +89,9 @@ GameObject:
   - component: {fileID: 5208484762364438017}
   - component: {fileID: 224904807991302989}
   - component: {fileID: 4956252262339804989}
+  - component: {fileID: 7228899140729602182}
   m_Layer: 0
-  m_Name: Patty Cooked
+  m_Name: Patty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,7 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c72171edb9d6e14f80c6cd4b3b97009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thickness: 0.1
+  m_isCookable: 1
+  m_thickness: 0.1
 --- !u!65 &224904807991302989
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -153,3 +155,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7228899140729602182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5152091445084485642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c72171edb9d6e14f80c6cd4b3b97009, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isCookable: 1
+  m_thickness: 0.1

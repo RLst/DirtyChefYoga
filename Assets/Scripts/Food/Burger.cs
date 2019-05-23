@@ -3,37 +3,44 @@ using UnityEngine;
 
 namespace DirtyChefYoga
 {
-    public class Burger : MonoBehaviour
+    public class Burger : Food
     {
-        public float currentThickness = 0;
-        [SerializeField] int maxNumberOfIngredients = 5;
-        List<Ingredient> ingredients = new List<Ingredient>();   //Bottom ingredients are first, top ingredients are last\
+        public float currentThickness = 0;      //Needed to stack the burger ingredients properly
+        [SerializeField] int maxNumberOfLayers = 10;
 
 
         //Adds an ingredient onto the burger
         //Returns whether or not the ingredient was successfully added
-        public bool AddIngredient(Ingredient item)
+        public override bool AddIngredient(Ingredient ing)
         {
-            if (ingredients.Count < maxNumberOfIngredients)
+            //Make sure it's a burger ingredient
+            var bi = ing as BurgerIngredient;
+            if (!bi)
+            {
+                Debug.LogWarning("Not a burger ingredient");
+                return false;
+            }
+
+            if (ingredients.Count < maxNumberOfLayers)
             {
                 ////Child new ingredient to the burger at the correct position according to the burger's current thickness
                 //Move ingredient to the right location in the world
-                item.transform.position = this.transform.position + Vector3.up * currentThickness;
+                bi.transform.position = this.transform.position + Vector3.up * currentThickness;
 
                 //Child the ingredient
-                item.transform.SetParent(this.transform);
+                bi.transform.SetParent(this.transform);
 
                 //Update the current thickness
-                currentThickness += item.thickness;
+                currentThickness += bi.thickness;
 
                 //Finally add it to the array
-                ingredients.Add(item);
+                ingredients.Add(bi);
 
                 return true;
             }
             else
             {
-                Debug.Log("Max ingredients reached!");
+                Debug.LogWarning("Max ingredients reached!");
                 return false;
             }
         }
