@@ -8,16 +8,6 @@ namespace DirtyChefYoga
     {
         public BurgerComponent[] m_burgerPieces;
 
-
-
-        //private void Awake()
-        //{
-        //    if(m_burgerPieces.Length == 0)
-        //    {
-        //        MakeFood();
-        //    }
-        //}
-
         public override void MakeFood(int fillingAmount = 3)
         {
             m_burgerPieces = new BurgerComponent[fillingAmount + 2];
