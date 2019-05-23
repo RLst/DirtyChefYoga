@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 8846346693073816392}
   - component: {fileID: 8846346693074586472}
   - component: {fileID: 8846346693075585448}
+  - component: {fileID: 551456286650970454}
+  - component: {fileID: 6609893263503980871}
+  - component: {fileID: 4047522906254790897}
   m_Layer: 0
   m_Name: M_Robot_001
   m_TagString: Untagged
@@ -77,3 +80,58 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &551456286650970454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8846346693073590120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d474e1a15cb146340a364c95f6c1303e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+--- !u!114 &6609893263503980871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8846346693073590120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773fe786ef7428b44a32266a21afee44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug: 1
+  useRaw: 0
+  invertXaxis: 0
+  invertYaxis: 0
+  leftAxisX: 0
+  leftAxisY: 1
+  rightAxisX: 2
+  rightAxisY: 1
+  moveLeftAxis: 4
+  moveRightAxis: 5
+  interactButton: 0
+  pickedUpButton: 2
+--- !u!143 &4047522906254790897
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8846346693073590120}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 233.219
+  m_Radius: 270.6769
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}

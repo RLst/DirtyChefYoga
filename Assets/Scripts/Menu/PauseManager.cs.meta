@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 499f099d91d20db4d8041a9233ad30f5
+=======
+guid: d05b0fb90b384c143a999e03deeb39e2
+>>>>>>> IngredientSpawner
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

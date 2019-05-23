@@ -231,7 +231,7 @@ Material:
     - _ZTestModeDistortion: 8
     - _ZWrite: 1
     m_Colors:
-    - Color_25C51EDF: {r: 0.1, g: 0.1, b: 0.1, a: 0}
+    - Color_25C51EDF: {r: 0, g: 0, b: 0, a: 0}
     - Color_B1BB50BD: {r: 0.9, g: 0.9, b: 0.9, a: 0}
     - Vector2_85B471D6: {r: -11.41, g: -2.62, b: 0, a: 0}
     - Vector2_C39FB23C: {r: 5, g: 5, b: 0, a: 0}
