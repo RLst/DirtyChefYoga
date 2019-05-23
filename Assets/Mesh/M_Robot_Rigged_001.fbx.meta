@@ -1,0 +1,489 @@
+fileFormatVersion: 2
+guid: 1d8de5a3722fe93409a782c6fe47f0ff
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Robot_Mesh
+    100004: RobotArmEnd_L_JNT
+    100006: RobotArmEnd_R_JNT
+    100008: RobotChest_CTRL
+    100010: RobotChest_GRP
+    100012: RobotChest_JNT
+    100014: RobotElbow_L_CTRL
+    100016: RobotElbow_L_GRP
+    100018: RobotElbow_L_JNT
+    100020: RobotElbow_R_CTRL
+    100022: RobotElbow_R_GRP
+    100024: RobotElbow_R_JNT
+    100026: RobotHand_L_CTRL
+    100028: RobotHand_L_GRP
+    100030: RobotHand_L_JNT
+    100032: RobotHand_R_CTRL
+    100034: RobotHand_R_GRP
+    100036: RobotHand_R_JNT
+    100038: RobotHead_JNT
+    100040: RobotHeadEnd_JNT
+    100042: RobotJaw_CTRL
+    100044: RobotJaw_GRP
+    100046: RobotJaw_JNT
+    100048: RobotJawEnd_JNT
+    100050: RobotJawMid_JNT
+    100052: RobotLowerTorso_JNT
+    100054: RobotMaster_CTRL
+    100056: RobotMaster_GRP
+    100058: RobotNeckEnd_CTRL
+    100060: RobotNeckEnd_GRP
+    100062: RobotNeckEnd_JNT
+    100064: RobotNeckMid_CTRL
+    100066: RobotNeckMid_GRP
+    100068: RobotNeckMid_JNT
+    100070: RobotNeckStart_CTRL
+    100072: RobotNeckStart_GRP
+    100074: RobotNeckStart_JNT
+    100076: RobotShoulder_L_CTRL
+    100078: RobotShoulder_L_GRP
+    100080: RobotShoulder_L_JNT
+    100082: RobotShoulder_R_CTRL
+    100084: RobotShoulder_R_GRP
+    100086: RobotShoulder_R_JNT
+    100088: RobotWrist01_L_CTRL
+    100090: RobotWrist01_L_GRP
+    100092: RobotWrist01_L_JNT
+    100094: RobotWrist01_R_CTRL
+    100096: RobotWrist01_R_GRP
+    100098: RobotWrist01_R_JNT
+    100100: RobotWrist02_L_CTRL
+    100102: RobotWrist02_L_GRP
+    100104: RobotWrist02_L_JNT
+    100106: RobotWrist02_R_CTRL
+    100108: RobotWrist02_R_GRP
+    100110: RobotWrist02_R_JNT
+    400000: //RootNode
+    400002: Robot_Mesh
+    400004: RobotArmEnd_L_JNT
+    400006: RobotArmEnd_R_JNT
+    400008: RobotChest_CTRL
+    400010: RobotChest_GRP
+    400012: RobotChest_JNT
+    400014: RobotElbow_L_CTRL
+    400016: RobotElbow_L_GRP
+    400018: RobotElbow_L_JNT
+    400020: RobotElbow_R_CTRL
+    400022: RobotElbow_R_GRP
+    400024: RobotElbow_R_JNT
+    400026: RobotHand_L_CTRL
+    400028: RobotHand_L_GRP
+    400030: RobotHand_L_JNT
+    400032: RobotHand_R_CTRL
+    400034: RobotHand_R_GRP
+    400036: RobotHand_R_JNT
+    400038: RobotHead_JNT
+    400040: RobotHeadEnd_JNT
+    400042: RobotJaw_CTRL
+    400044: RobotJaw_GRP
+    400046: RobotJaw_JNT
+    400048: RobotJawEnd_JNT
+    400050: RobotJawMid_JNT
+    400052: RobotLowerTorso_JNT
+    400054: RobotMaster_CTRL
+    400056: RobotMaster_GRP
+    400058: RobotNeckEnd_CTRL
+    400060: RobotNeckEnd_GRP
+    400062: RobotNeckEnd_JNT
+    400064: RobotNeckMid_CTRL
+    400066: RobotNeckMid_GRP
+    400068: RobotNeckMid_JNT
+    400070: RobotNeckStart_CTRL
+    400072: RobotNeckStart_GRP
+    400074: RobotNeckStart_JNT
+    400076: RobotShoulder_L_CTRL
+    400078: RobotShoulder_L_GRP
+    400080: RobotShoulder_L_JNT
+    400082: RobotShoulder_R_CTRL
+    400084: RobotShoulder_R_GRP
+    400086: RobotShoulder_R_JNT
+    400088: RobotWrist01_L_CTRL
+    400090: RobotWrist01_L_GRP
+    400092: RobotWrist01_L_JNT
+    400094: RobotWrist01_R_CTRL
+    400096: RobotWrist01_R_GRP
+    400098: RobotWrist01_R_JNT
+    400100: RobotWrist02_L_CTRL
+    400102: RobotWrist02_L_GRP
+    400104: RobotWrist02_L_JNT
+    400106: RobotWrist02_R_CTRL
+    400108: RobotWrist02_R_GRP
+    400110: RobotWrist02_R_JNT
+    2100000: lambert1
+    4300000: Robot_Mesh
+    9500000: //RootNode
+    13700000: Robot_Mesh
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'LeftLowerLeg' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton:
+    - name: M_Robot_Rigged_001(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Robot_Mesh
+      parentName: M_Robot_Rigged_001(Clone)
+      position: {x: -0.21299109, y: -114.95795, z: -36.050343}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: RobotMaster_GRP
+      parentName: M_Robot_Rigged_001(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: RobotMaster_CTRL
+      parentName: RobotMaster_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotChest_GRP
+      parentName: RobotMaster_CTRL
+      position: {x: -4.222146e-13, y: 93.83807, z: 14.890615}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotChest_CTRL
+      parentName: RobotChest_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotShoulder_L_GRP
+      parentName: RobotChest_CTRL
+      position: {x: -37.5717, y: 6.6679263, z: -14.890615}
+      rotation: {x: 0, y: -0, z: -0.7071068, w: 0.7071068}
+      scale: {x: 0.63545316, y: 0.63545316, z: -0.63545316}
+    - name: RobotShoulder_L_CTRL
+      parentName: RobotShoulder_L_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotElbow_L_GRP
+      parentName: RobotShoulder_L_CTRL
+      position: {x: -5.684342e-14, y: -123.42106, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.5256794, y: 0.5256794, z: 0.5256794}
+    - name: RobotElbow_L_CTRL
+      parentName: RobotElbow_L_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotWrist01_L_GRP
+      parentName: RobotElbow_L_CTRL
+      position: {x: -0, y: -240.91092, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.8222749, y: 0.8222749, z: 0.8222749}
+    - name: RobotWrist01_L_CTRL
+      parentName: RobotWrist01_L_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotWrist02_L_GRP
+      parentName: RobotWrist01_L_CTRL
+      position: {x: 5.684342e-14, y: -32.61655, z: 0}
+      rotation: {x: 0, y: 0, z: 1, w: 5.0532154e-16}
+      scale: {x: 1.0289648, y: 1.0289648, z: 1.0289648}
+    - name: RobotWrist02_L_CTRL
+      parentName: RobotWrist02_L_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotHand_L_GRP
+      parentName: RobotWrist02_L_CTRL
+      position: {x: -0, y: 52.202072, z: 0}
+      rotation: {x: 0, y: 0, z: 1, w: -5.0532154e-16}
+      scale: {x: 0.9492795, y: 0.9492795, z: 0.9492795}
+    - name: RobotHand_L_CTRL
+      parentName: RobotHand_L_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotShoulder_R_GRP
+      parentName: RobotChest_CTRL
+      position: {x: 37.5717, y: 6.6679263, z: -14.890615}
+      rotation: {x: -0.7071068, y: 0.7071068, z: 4.3297806e-17, w: -4.3297806e-17}
+      scale: {x: 0.63545316, y: 0.63545316, z: 0.63545316}
+    - name: RobotShoulder_R_CTRL
+      parentName: RobotShoulder_R_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotElbow_R_GRP
+      parentName: RobotShoulder_R_CTRL
+      position: {x: -5.684342e-14, y: -123.42106, z: -1.511472e-14}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.5256794, y: 0.5256794, z: 0.5256794}
+    - name: RobotElbow_R_CTRL
+      parentName: RobotElbow_R_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotWrist01_R_GRP
+      parentName: RobotElbow_R_CTRL
+      position: {x: -1.7053026e-13, y: -240.91092, z: -2.950308e-14}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.8222749, y: 0.8222749, z: 0.8222749}
+    - name: RobotWrist01_R_CTRL
+      parentName: RobotWrist01_R_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotWrist02_R_GRP
+      parentName: RobotWrist01_R_CTRL
+      position: {x: -0, y: -32.61655, z: -3.9943753e-15}
+      rotation: {x: 0, y: 0, z: 1, w: 5.0532154e-16}
+      scale: {x: 1.0289648, y: 1.0289648, z: 1.0289648}
+    - name: RobotWrist02_R_CTRL
+      parentName: RobotWrist02_R_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotHand_R_GRP
+      parentName: RobotWrist02_R_CTRL
+      position: {x: -5.684342e-14, y: 52.202072, z: 6.39291e-15}
+      rotation: {x: 0, y: 0, z: 1, w: -5.0532154e-16}
+      scale: {x: 0.9492795, y: 0.9492795, z: 0.9492795}
+    - name: RobotHand_R_CTRL
+      parentName: RobotHand_R_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotNeckEnd_GRP
+      parentName: RobotChest_CTRL
+      position: {x: -0, y: 24.738075, z: 19.49404}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.15, y: 0.15, z: 0.15}
+    - name: RobotNeckEnd_CTRL
+      parentName: RobotNeckEnd_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotNeckMid_GRP
+      parentName: RobotNeckEnd_CTRL
+      position: {x: -4.038968e-28, y: -6.767336, z: 80.20565}
+      rotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotNeckMid_CTRL
+      parentName: RobotNeckMid_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotNeckStart_GRP
+      parentName: RobotNeckMid_CTRL
+      position: {x: 4.038968e-28, y: 101.05689, z: -20.318958}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotNeckStart_CTRL
+      parentName: RobotNeckStart_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotJaw_GRP
+      parentName: RobotNeckStart_CTRL
+      position: {x: -4.4428646e-27, y: 24.00472, z: 94.61897}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 2.377148, y: 2.377148, z: 2.377148}
+    - name: RobotJaw_CTRL
+      parentName: RobotJaw_GRP
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotChest_JNT
+      parentName: M_Robot_Rigged_001(Clone)
+      position: {x: -4.222146e-15, y: 0.9383807, z: 0.14890616}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: RobotLowerTorso_JNT
+      parentName: RobotChest_JNT
+      position: {x: -0, y: -90.71966, z: -14.615348}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotShoulder_L_JNT
+      parentName: RobotChest_JNT
+      position: {x: -37.5717, y: 6.667877, z: -14.890615}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotElbow_L_JNT
+      parentName: RobotShoulder_L_JNT
+      position: {x: -78.4283, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotWrist01_L_JNT
+      parentName: RobotElbow_L_JNT
+      position: {x: -80.475296, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotWrist02_L_JNT
+      parentName: RobotWrist01_L_JNT
+      position: {x: -8.958817, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotHand_L_JNT
+      parentName: RobotWrist02_L_JNT
+      position: {x: -14.753479, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotArmEnd_L_JNT
+      parentName: RobotHand_L_JNT
+      position: {x: -50.272003, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotNeckEnd_JNT
+      parentName: RobotChest_JNT
+      position: {x: -0, y: 24.738075, z: 19.49404}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotNeckMid_JNT
+      parentName: RobotNeckEnd_JNT
+      position: {x: -0, y: -1.0151004, z: 12.030848}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotNeckStart_JNT
+      parentName: RobotNeckMid_JNT
+      position: {x: -0, y: 3.047844, z: 15.158533}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotHead_JNT
+      parentName: RobotNeckStart_JNT
+      position: {x: -5.553581e-28, y: -0.009795458, z: 3.600708}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotJaw_JNT
+      parentName: RobotHead_JNT
+      position: {x: -0, y: -14.183051, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotJawMid_JNT
+      parentName: RobotJaw_JNT
+      position: {x: -4.440892e-15, y: -16.457335, z: 8.874626}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotJawEnd_JNT
+      parentName: RobotJawMid_JNT
+      position: {x: -0, y: -9.1090555, z: 21.05072}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotHeadEnd_JNT
+      parentName: RobotHead_JNT
+      position: {x: 4.222146e-13, y: 113.30239, z: 8.874626}
+      rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotShoulder_R_JNT
+      parentName: RobotChest_JNT
+      position: {x: 37.5717, y: 6.6679263, z: -14.890615}
+      rotation: {x: 1, y: 0, z: 0, w: -6.123234e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotElbow_R_JNT
+      parentName: RobotShoulder_R_JNT
+      position: {x: 78.4283, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotWrist01_R_JNT
+      parentName: RobotElbow_R_JNT
+      position: {x: 80.475, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotWrist02_R_JNT
+      parentName: RobotWrist01_R_JNT
+      position: {x: 8.959, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotHand_R_JNT
+      parentName: RobotWrist02_R_JNT
+      position: {x: 14.754, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RobotArmEnd_R_JNT
+      parentName: RobotHand_R_JNT
+      position: {x: 50.272, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: RobotMaster_GRP
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
