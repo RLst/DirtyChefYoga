@@ -21,6 +21,9 @@ namespace DirtyChefYoga
         public float m_foodScoreAmount;
         public float m_CurrentScore;
 
+        public GameObject m_scoreCanvas;
+        private Text m_scoreText;
+
         public GameObject m_ticketPanel;
         public List<FoodTicket> m_foodItems;
 
@@ -38,6 +41,7 @@ namespace DirtyChefYoga
 
         private void Awake()
         {
+            m_scoreText = m_scoreCanvas.GetComponent<Text>();
             m_timer = m_spawnTime;
             SpawnTicket();
         }
@@ -45,6 +49,8 @@ namespace DirtyChefYoga
         private void Update()
         {
             m_timer -= Time.deltaTime;
+
+            m_scoreText.text = m_CurrentScore.ToString();
 
             if (m_timer <= 0)
             {
