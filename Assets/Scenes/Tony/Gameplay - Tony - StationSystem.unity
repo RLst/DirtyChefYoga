@@ -188,6 +188,16 @@ PrefabInstance:
       propertyPath: workSurface
       value: 
       objectReference: {fileID: 1185493}
+    - target: {fileID: 5093268377503005004, guid: 2eb3332a131275844a8334f2ccb5f3b7,
+        type: 3}
+      propertyPath: cookTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093268377503005004, guid: 2eb3332a131275844a8334f2ccb5f3b7,
+        type: 3}
+      propertyPath: cookAmount
+      value: 0.0001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2eb3332a131275844a8334f2ccb5f3b7, type: 3}
 --- !u!4 &1185493 stripped
@@ -6606,7 +6616,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611837069}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.033, z: 0}
+  m_LocalPosition: {x: 0, y: 1.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 119460872}

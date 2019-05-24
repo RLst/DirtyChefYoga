@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dfa15c9ca78bab41a3b6becbad1e213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thickness: 0.1
+  m_isCookable: 0
+  m_thickness: 0.1
 --- !u!54 &2392444659213957107
 Rigidbody:
   m_ObjectHideFlags: 0
