@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using pokoro;
 
 namespace DirtyChefYoga
 {
@@ -11,8 +12,16 @@ namespace DirtyChefYoga
         [SerializeField] bool debug = true;
         [Space]
 
-        [SerializeField] float moveSpeed = 5f;
-        [Space]
+        [Header("Move")]
+        [SerializeField] float maxSpeed = 5f;
+
+        [Header("Dash")]
+        [SerializeField] float dashSpeed = 13f;
+        [SerializeField] float dashDrag = 1.5f;
+        private bool isDashing;
+        float currentDashSpeed;
+
+        [Header("Interaction")]
         [SerializeField] Transform handPoint;
         [SerializeField] Vector3 castExtents = new Vector3(0.3f, 1, 0.5f);
         [SerializeField] float castLength = 1.5f;
@@ -20,20 +29,72 @@ namespace DirtyChefYoga
 
         private CharacterController controller;
         private PlayerInput input;
+        new Camera cam;
+        private Quaternion facing;
+
         // private PlayerInteract interact;
         void Start()
         {
             controller = GetComponent<CharacterController>();
             input = GetComponent<PlayerInput>();
             // interact = GetComponent<PlayerInteract>();
+            cam = FindObjectOfType<Camera>();
         }
 
         void Update()
         {
-            HandleMovement();
+            MoveCharacter();
             if (input.interacted) HandleInteractions();
         }
 
+        #region MOVE
+        void MoveCharacter()
+        {
+            #region Move & Dash
+            //Set basic speed
+            var speedTotal = maxSpeed;
+
+            //Calculate dash boost
+            if (isDashing)   //Start reducing the dash boost (linearly) if currently dashing
+            {
+                currentDashSpeed -= dashDrag;
+                if (currentDashSpeed < 0)
+                {
+                    //Stop dash status and zero out
+                    isDashing = false;
+                    currentDashSpeed = 0;
+                }
+            }
+            if (input.dashed && isDashing == false)  //Can't hold the dash button
+            {
+                // speedMultiplier = dashSpeed;
+                isDashing = true;
+                currentDashSpeed = dashSpeed;
+            }
+            //Add dash
+            speedTotal += currentDashSpeed;
+
+            //Calculate move motion vector
+            Vector3 moveMotion = input.leftAxis.x * cam.transform.RightSansYNormalized() * speedTotal +
+                                input.leftAxis.y * cam.transform.ForwardSansYNormalized() * speedTotal;
+            #endregion
+
+            #region Orient in the right direction
+            if (moveMotion.magnitude > 0)
+            {
+                facing = Quaternion.LookRotation(moveMotion);
+            }
+
+            #endregion
+
+            //Combine all motion vectors and apply to player
+            Vector3 resultantMotion = moveMotion;   // + jumpMotion;
+            controller.Move(resultantMotion * Time.deltaTime);
+            transform.rotation = facing;
+        }
+        #endregion
+
+        #region INTERACTIONS
         private void HandleInteractions()
         {
             //If not holding ingredient
@@ -49,7 +110,7 @@ namespace DirtyChefYoga
                 //Do nothing if you're not holding anything
             }
             //If holding ingredient
-            else    
+            else
             {
                 //If there's a station in front of you then interact with it using the ingredient
                 // if (Physics.BoxCast(transform.position, castExtents, transform.forward, out hit, transform.rotation, castLength))
@@ -78,7 +139,7 @@ namespace DirtyChefYoga
         private void DropIngredient()
         {
             Debug.Log("Drop the item!");
-            
+
             //Unchild
             itemInHand.transform.SetParent(null);
 
@@ -128,11 +189,8 @@ namespace DirtyChefYoga
             interactableFound = null;
             return false;
         }
+        #endregion
 
-        void HandleMovement()
-        {
-            controller.Move(new Vector3(input.move * moveSpeed * Time.deltaTime, 0, 0));
-        }
 
         void OnGUI()
         {
@@ -148,3 +206,10 @@ namespace DirtyChefYoga
 
     }
 }
+
+
+
+// void HandleMovement()
+// {
+//     controller.Move(new Vector3(input.move * moveSpeed * Time.deltaTime, 0, 0));
+// }

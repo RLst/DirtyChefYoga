@@ -8,16 +8,16 @@ namespace DirtyChefYoga
     {        
         [SerializeField] bool debug = true;
         [Space]
-        
+
         [Header("Controller Settings")]
         [SerializeField] bool useRaw = false;
         [SerializeField] bool invertXaxis = false;
         [SerializeField] bool invertYaxis = false;
 
-        [Header("Left Arm")]
+        [Header("Left Axis")]
         [SerializeField] XboxAxis leftAxisX = XboxAxis.LeftStickX;
         [SerializeField] XboxAxis leftAxisY = XboxAxis.LeftStickY;
-        public Vector2 leftArm { 
+        public Vector2 leftAxis { 
             get {
                 Vector2 result;
                 //Raw if needed
@@ -43,10 +43,10 @@ namespace DirtyChefYoga
             } 
         }
 
-        [Header("Right Arm")]
+        [Header("Right Axis")]
         [SerializeField] XboxAxis rightAxisX = XboxAxis.RightStickX;
         [SerializeField] XboxAxis rightAxisY = XboxAxis.LeftStickY;
-        public Vector2 rightArm { 
+        public Vector2 rightAxis { 
             get {
                 Vector2 result;
                 //Raw if needed
@@ -72,18 +72,18 @@ namespace DirtyChefYoga
             } 
         }
 
-        [Header("Move")]
-        [SerializeField] XboxAxis moveLeftAxis = XboxAxis.LeftTrigger;
-        [SerializeField] XboxAxis moveRightAxis = XboxAxis.RightTrigger;
+        [Header("Triggers")]
+        [SerializeField] XboxAxis leftTriggerAxis = XboxAxis.LeftTrigger;
+        [SerializeField] XboxAxis rightTriggerAxis = XboxAxis.RightTrigger;
         public float move {
             get {
                 if (useRaw)
                 {
-                    return XCI.GetAxisRaw(moveRightAxis) - XCI.GetAxisRaw(moveLeftAxis);
+                    return XCI.GetAxisRaw(rightTriggerAxis) - XCI.GetAxisRaw(leftTriggerAxis);
                 }
                 else
                 {
-                    return XCI.GetAxis(moveRightAxis) - XCI.GetAxis(moveLeftAxis);
+                    return XCI.GetAxis(rightTriggerAxis) - XCI.GetAxis(leftTriggerAxis);
                 }
             }
         }
@@ -92,9 +92,12 @@ namespace DirtyChefYoga
         [SerializeField] XboxButton interactButton = XboxButton.A;
         public bool interacting { get { return  XCI.GetButton(interactButton); } }
         public bool interacted { get { return  XCI.GetButtonDown(interactButton); } }
-        [SerializeField] XboxButton pickedUpButton = XboxButton.X;
-        public bool pickingUp { get { return  XCI.GetButton(pickedUpButton); } }
-        public bool pickedUp { get { return  XCI.GetButtonDown(pickedUpButton); } }
+        [SerializeField] XboxButton pickupButton = XboxButton.X;
+        public bool pickingUp { get { return  XCI.GetButton(pickupButton); } }
+        public bool pickedUp { get { return  XCI.GetButtonDown(pickupButton); } }
+        [SerializeField] XboxButton dashButton = XboxButton.B;
+        public bool dashing { get { return XCI.GetButton(dashButton); } }
+        public bool dashed { get { return XCI.GetButtonDown(dashButton); } }
 
         void OnGUI()
         {

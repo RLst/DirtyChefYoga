@@ -12030,14 +12030,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followObject: {fileID: 1909001473}
-  swayXSpeed: 0
-  swayXAmount: 0
-  swayYSpeed: 0
-  swayYAmount: 0
+  swayXSpeed: 0.25
+  swayXAmount: 0.15
+  swayYSpeed: 0.25
+  swayYAmount: 0.15
   moveSpeed: 0.6
   xMoveSpeed: 0.6
-  movePosition: {x: 0, y: 0.4, z: 2}
-  rotationSpeed: 1
+  movePosition: {x: 0, y: 1, z: 2}
+  rotationSpeed: 2.54
   rotateOffset: {x: 0, y: 0, z: 0}
 --- !u!1001 &1302079355
 PrefabInstance:
@@ -12449,7 +12449,6 @@ GameObject:
   - component: {fileID: 1347822162}
   - component: {fileID: 1347822161}
   - component: {fileID: 1347822160}
-  - component: {fileID: 1347822164}
   - component: {fileID: 1347822159}
   m_Layer: 0
   m_Name: Player
@@ -12473,7 +12472,7 @@ MonoBehaviour:
   type: 1
   color: {r: 1, g: 0.5, b: 0, a: 0.75}
   radius: 1
-  size: {x: 0.3, y: 3, z: 2}
+  size: {x: 0.6, y: 4, z: 1}
   offset: {x: 0, y: 0, z: -1.5}
 --- !u!114 &1347822160
 MonoBehaviour:
@@ -12487,10 +12486,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d474e1a15cb146340a364c95f6c1303e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 1
-  moveSpeed: 5
+  debug: 0
+  maxSpeed: 5
+  dashSpeed: 13
+  dashDrag: 1.5
   handPoint: {fileID: 413964641}
-  castExtents: {x: 0.3, y: 3, z: 2}
+  castExtents: {x: 0.3, y: 2, z: 0.5}
   castLength: 1.5
 --- !u!114 &1347822161
 MonoBehaviour:
@@ -12504,18 +12505,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 773fe786ef7428b44a32266a21afee44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
+  debug: 1
   useRaw: 0
-  invertXaxis: 1
+  invertXaxis: 0
   invertYaxis: 0
   leftAxisX: 0
   leftAxisY: 1
   rightAxisX: 2
-  rightAxisY: 1
-  moveLeftAxis: 4
-  moveRightAxis: 5
+  rightAxisY: 3
+  leftTriggerAxis: 4
+  rightTriggerAxis: 5
   interactButton: 0
-  pickedUpButton: 2
+  pickupButton: 2
+  dashButton: 1
 --- !u!143 &1347822162
 CharacterController:
   m_ObjectHideFlags: 0
@@ -12527,7 +12529,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.4276
+  m_Height: 2.6
   m_Radius: 0.38
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -12549,21 +12551,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1347822164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1347822158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de7f44098312bc644b06e76ef150e2fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hand: {fileID: 413964641}
-  castExtents: {x: 0.3, y: 1, z: 0.5}
-  castLength: 0
 --- !u!1001 &1354933726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18740,13 +18727,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909001473}
-  m_LocalRotation: {x: 0.13052616, y: -0, z: -0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 3.59, z: -7.66}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1914598695
 GameObject:
   m_ObjectHideFlags: 0
