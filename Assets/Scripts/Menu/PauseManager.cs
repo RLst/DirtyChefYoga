@@ -25,7 +25,6 @@ public class PauseManager : MonoBehaviour {
 
     void Update() {
 
-        Debug.Log("HERE");
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)) {
             Debug.Log("ggg");
             isPaused = !isPaused;

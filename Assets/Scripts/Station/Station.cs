@@ -6,7 +6,6 @@ namespace DirtyChefYoga
     public abstract class Station : MonoBehaviour
     {
         [SerializeField] protected Transform workSurface;
-
         public UnityEvent OnInteract;
 
         //It is assumed the ingredient passed in will be NOT be null

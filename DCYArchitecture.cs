@@ -38,7 +38,7 @@ namespace Brainstorm
         }
 
         //Returns false if there's already food in the cooker
-        public override bool Interact(Ingredient ingredient)
+        public override bool Interact(Ingredient ingredient)    //DONE
         {
             //Make sure the food can be cooked
             if (!ingredient.isCookable)
