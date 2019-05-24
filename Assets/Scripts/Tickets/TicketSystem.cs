@@ -24,6 +24,8 @@ namespace DirtyChefYoga
         public GameObject m_scoreCanvas;
         private Text m_scoreText;
 
+        public GameObject m_yogaPeopleManager;
+
         public GameObject m_ticketPanel;
         public List<FoodTicket> m_foodItems;
 
@@ -66,7 +68,7 @@ namespace DirtyChefYoga
                 Debug.Log(f.m_timer / f.m_expireTime);
                 if(f.m_timer >= f.m_expireTime)
                 {
-                    temp = f;//RemoveTicket(f);
+                    temp = f;
                 }
             }
             if (temp != null)
@@ -188,6 +190,7 @@ namespace DirtyChefYoga
                 if(foodForCheck.ingredients.Count == 1 && foodForCheck.ingredients[0].GetType() == typeof(Fries))
                 {
                     m_CurrentScore += m_foodScoreAmount;
+                    m_yogaPeopleManager.GetComponent<CustomerController>().CorrectOrder();
                 }
             }
             else
@@ -205,6 +208,7 @@ namespace DirtyChefYoga
                         if (((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.BOTTOMBUN)
                         {
                             m_CurrentScore += m_foodScoreAmount;
+                            m_yogaPeopleManager.GetComponent<CustomerController>().CorrectOrder();
                         }
                     }
                     else if (foodForCheck.ingredients[i].GetType() == typeof(Patty) && foodForCheck.ingredients[i].cookStatus == CookStatus.Cooked)
@@ -212,6 +216,7 @@ namespace DirtyChefYoga
                         if (((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.PATTY)
                         {
                             m_CurrentScore += m_foodScoreAmount;
+                            m_yogaPeopleManager.GetComponent<CustomerController>().CorrectOrder();
                         }
                     }
                     else if (foodForCheck.ingredients[i].GetType() == typeof(Cheese))
@@ -219,6 +224,7 @@ namespace DirtyChefYoga
                         if (((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.CHEESE)
                         {
                             m_CurrentScore += m_foodScoreAmount;
+                            m_yogaPeopleManager.GetComponent<CustomerController>().CorrectOrder();
                         }
                     }
                     else if (foodForCheck.ingredients[i].GetType() == typeof(Tomatoes))
@@ -226,6 +232,7 @@ namespace DirtyChefYoga
                         if (((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.TOMATO)
                         {
                             m_CurrentScore += m_foodScoreAmount;
+                            m_yogaPeopleManager.GetComponent<CustomerController>().CorrectOrder();
                         }
                     }
                     else if (foodForCheck.ingredients[i].GetType() == typeof(Lettuce))
@@ -233,6 +240,7 @@ namespace DirtyChefYoga
                         if (((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.LETTUCE)
                         {
                             m_CurrentScore += m_foodScoreAmount;
+                            m_yogaPeopleManager.GetComponent<CustomerController>().CorrectOrder();
                         }
                     }
                     else if (foodForCheck.ingredients[i].GetType() == typeof(TopBun))
@@ -240,6 +248,7 @@ namespace DirtyChefYoga
                         if (((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.TOPBUN)
                         {
                             m_CurrentScore += m_foodScoreAmount;
+                            m_yogaPeopleManager.GetComponent<CustomerController>().CorrectOrder();
                         }
                     }
                 }
