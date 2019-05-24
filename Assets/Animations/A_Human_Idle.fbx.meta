@@ -1,0 +1,169 @@
+fileFormatVersion: 2
+guid: 776f54a3d9848294fb90c65789f03be3
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: CustomerChest_CTRL
+    100004: CustomerChest_GRP
+    100006: CustomerElbow_L_CTRL
+    100008: CustomerElbow_L_GRP
+    100010: CustomerElbow_R_CTRL
+    100012: CustomerElbow_R_GRP
+    100014: CustomerFinger01_L_CTRL
+    100016: CustomerFinger01_L_GRP
+    100018: CustomerFinger01_R_CTRL
+    100020: CustomerFinger01_R_GRP
+    100022: CustomerFinger02_L_CTRL
+    100024: CustomerFinger02_L_GRP
+    100026: CustomerFinger02_R_CTRL
+    100028: CustomerFinger02_R_GRP
+    100030: CustomerHead_CTRL
+    100032: CustomerHead_GRP
+    100034: CustomerMaster_CTRL
+    100036: CustomerMaster_GRP
+    100038: CustomerMiddleTorso_CTRL
+    100040: CustomerMiddleTorso_GRP
+    100042: CustomerNeck_CTRL
+    100044: CustomerNeck_GRP
+    100046: CustomerShoulder_L_CTRL
+    100048: CustomerShoulder_L_GRP
+    100050: CustomerShoulder_R_CTRL
+    100052: CustomerShoulder_R_GRP
+    100054: CustomerThumb_L_CTRL
+    100056: CustomerThumb_L_GRP
+    100058: CustomerThumb_R_CTRL
+    100060: CustomerThumb_R_GRP
+    100062: CustomerWrist_L_CTRL
+    100064: CustomerWrist_L_GRP
+    100066: CustomerWrist_R_CTRL
+    100068: CustomerWrist_R_GRP
+    100070: HumanMesh
+    400000: //RootNode
+    400002: CustomerChest_CTRL
+    400004: CustomerChest_GRP
+    400006: CustomerElbow_L_CTRL
+    400008: CustomerElbow_L_GRP
+    400010: CustomerElbow_R_CTRL
+    400012: CustomerElbow_R_GRP
+    400014: CustomerFinger01_L_CTRL
+    400016: CustomerFinger01_L_GRP
+    400018: CustomerFinger01_R_CTRL
+    400020: CustomerFinger01_R_GRP
+    400022: CustomerFinger02_L_CTRL
+    400024: CustomerFinger02_L_GRP
+    400026: CustomerFinger02_R_CTRL
+    400028: CustomerFinger02_R_GRP
+    400030: CustomerHead_CTRL
+    400032: CustomerHead_GRP
+    400034: CustomerMaster_CTRL
+    400036: CustomerMaster_GRP
+    400038: CustomerMiddleTorso_CTRL
+    400040: CustomerMiddleTorso_GRP
+    400042: CustomerNeck_CTRL
+    400044: CustomerNeck_GRP
+    400046: CustomerShoulder_L_CTRL
+    400048: CustomerShoulder_L_GRP
+    400050: CustomerShoulder_R_CTRL
+    400052: CustomerShoulder_R_GRP
+    400054: CustomerThumb_L_CTRL
+    400056: CustomerThumb_L_GRP
+    400058: CustomerThumb_R_CTRL
+    400060: CustomerThumb_R_GRP
+    400062: CustomerWrist_L_CTRL
+    400064: CustomerWrist_L_GRP
+    400066: CustomerWrist_R_CTRL
+    400068: CustomerWrist_R_GRP
+    400070: HumanMesh
+    2100000: lambert2
+    2300000: HumanMesh
+    3300000: HumanMesh
+    4300000: HumanMesh
+    7400000: A_Human_Idle
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

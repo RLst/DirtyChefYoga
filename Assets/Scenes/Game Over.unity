@@ -138,16 +138,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 138343886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22d8181465580244396dd8f5793ab5e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d88c91905b5af34b82c701984244fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerScore: 0
   highScore: 0
+  menuButton: {fileID: 347869733}
+  restartButton: {fileID: 1258514474}
+  exitButton: {fileID: 1511335060}
   scoreText: {fileID: 1447054323}
   highscoreText: {fileID: 1356644228}
-  restartButton: {fileID: 1258514474}
-  menuButton: {fileID: 347869733}
-  exitButton: {fileID: 1511335060}
 --- !u!4 &138343888
 Transform:
   m_ObjectHideFlags: 0
@@ -487,7 +487,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1258514472}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &548360065
