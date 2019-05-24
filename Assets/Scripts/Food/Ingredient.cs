@@ -11,6 +11,8 @@ namespace DirtyChefYoga
         OverCooked = 2
     }
 
+	[RequireComponent(typeof(BoxCollider))]
+	[RequireComponent(typeof(Rigidbody))]
     public abstract class Ingredient : MonoBehaviour
     {
         // [SerializeField] GameObject uncookedPrefab; //If this ingredient can't be cooked then this is the default
@@ -19,7 +21,11 @@ namespace DirtyChefYoga
             get { return m_isCookable; }
             private set { m_isCookable = value; } 
         }
-        public float cookProgress { get; set; } = 0f;
+		protected float m_cookProgress = 0f;
+        public virtual float cookProgress { 
+			get { return m_cookProgress; }
+			set { m_cookProgress = value;
+					if (m_cookProgress > 2f) m_cookProgress = 2f; } }	//Limit to 2 max otherwise the shader doesn't like it
         public CookStatus cookStatus    
         {
             get
@@ -32,12 +38,11 @@ namespace DirtyChefYoga
                     // throw new InvalidOperationException();
             }
         }
-
         
-        Rigidbody rb;
-        Collider col;
+        protected Rigidbody rb;
+        protected Collider col;
 
-        void Start()
+        void Awake()
         {
             rb = GetComponent<Rigidbody>();
             col = GetComponent<Collider>();
