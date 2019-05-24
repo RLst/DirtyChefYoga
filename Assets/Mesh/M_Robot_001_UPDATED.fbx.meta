@@ -1,0 +1,207 @@
+fileFormatVersion: 2
+guid: f069934ec4b3e7a488124f4f5a1cfd5f
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Robot_Mesh
+    100004: RobotArmEnd_L_JNT
+    100006: RobotArmEnd_R_JNT
+    100008: RobotChest_CTRL
+    100010: RobotChest_GRP
+    100012: RobotChest_JNT
+    100014: RobotElbow_L_CTRL
+    100016: RobotElbow_L_GRP
+    100018: RobotElbow_L_JNT
+    100020: RobotElbow_R_CTRL
+    100022: RobotElbow_R_GRP
+    100024: RobotElbow_R_JNT
+    100026: RobotHand_L_CTRL
+    100028: RobotHand_L_GRP
+    100030: RobotHand_L_JNT
+    100032: RobotHand_R_CTRL
+    100034: RobotHand_R_GRP
+    100036: RobotHand_R_JNT
+    100038: RobotHead_JNT
+    100040: RobotHeadEnd_JNT
+    100042: RobotJaw_CTRL
+    100044: RobotJaw_GRP
+    100046: RobotJaw_JNT
+    100048: RobotJawEnd_JNT
+    100050: RobotJawMid_JNT
+    100052: RobotLowerTorso_JNT
+    100054: RobotMaster_CTRL
+    100056: RobotMaster_GRP
+    100058: RobotNeckEnd_CTRL
+    100060: RobotNeckEnd_GRP
+    100062: RobotNeckEnd_JNT
+    100064: RobotNeckMid_CTRL
+    100066: RobotNeckMid_GRP
+    100068: RobotNeckMid_JNT
+    100070: RobotNeckStart_CTRL
+    100072: RobotNeckStart_GRP
+    100074: RobotNeckStart_JNT
+    100076: RobotShoulder_L_CTRL
+    100078: RobotShoulder_L_GRP
+    100080: RobotShoulder_L_JNT
+    100082: RobotShoulder_R_CTRL
+    100084: RobotShoulder_R_GRP
+    100086: RobotShoulder_R_JNT
+    100088: RobotWrist01_L_CTRL
+    100090: RobotWrist01_L_GRP
+    100092: RobotWrist01_L_JNT
+    100094: RobotWrist01_R_CTRL
+    100096: RobotWrist01_R_GRP
+    100098: RobotWrist01_R_JNT
+    100100: RobotWrist02_L_CTRL
+    100102: RobotWrist02_L_GRP
+    100104: RobotWrist02_L_JNT
+    100106: RobotWrist02_R_CTRL
+    100108: RobotWrist02_R_GRP
+    100110: RobotWrist02_R_JNT
+    400000: //RootNode
+    400002: Robot_Mesh
+    400004: RobotArmEnd_L_JNT
+    400006: RobotArmEnd_R_JNT
+    400008: RobotChest_CTRL
+    400010: RobotChest_GRP
+    400012: RobotChest_JNT
+    400014: RobotElbow_L_CTRL
+    400016: RobotElbow_L_GRP
+    400018: RobotElbow_L_JNT
+    400020: RobotElbow_R_CTRL
+    400022: RobotElbow_R_GRP
+    400024: RobotElbow_R_JNT
+    400026: RobotHand_L_CTRL
+    400028: RobotHand_L_GRP
+    400030: RobotHand_L_JNT
+    400032: RobotHand_R_CTRL
+    400034: RobotHand_R_GRP
+    400036: RobotHand_R_JNT
+    400038: RobotHead_JNT
+    400040: RobotHeadEnd_JNT
+    400042: RobotJaw_CTRL
+    400044: RobotJaw_GRP
+    400046: RobotJaw_JNT
+    400048: RobotJawEnd_JNT
+    400050: RobotJawMid_JNT
+    400052: RobotLowerTorso_JNT
+    400054: RobotMaster_CTRL
+    400056: RobotMaster_GRP
+    400058: RobotNeckEnd_CTRL
+    400060: RobotNeckEnd_GRP
+    400062: RobotNeckEnd_JNT
+    400064: RobotNeckMid_CTRL
+    400066: RobotNeckMid_GRP
+    400068: RobotNeckMid_JNT
+    400070: RobotNeckStart_CTRL
+    400072: RobotNeckStart_GRP
+    400074: RobotNeckStart_JNT
+    400076: RobotShoulder_L_CTRL
+    400078: RobotShoulder_L_GRP
+    400080: RobotShoulder_L_JNT
+    400082: RobotShoulder_R_CTRL
+    400084: RobotShoulder_R_GRP
+    400086: RobotShoulder_R_JNT
+    400088: RobotWrist01_L_CTRL
+    400090: RobotWrist01_L_GRP
+    400092: RobotWrist01_L_JNT
+    400094: RobotWrist01_R_CTRL
+    400096: RobotWrist01_R_GRP
+    400098: RobotWrist01_R_JNT
+    400100: RobotWrist02_L_CTRL
+    400102: RobotWrist02_L_GRP
+    400104: RobotWrist02_L_JNT
+    400106: RobotWrist02_R_CTRL
+    400108: RobotWrist02_R_GRP
+    400110: RobotWrist02_R_JNT
+    2100000: lambert2
+    4300000: Robot_Mesh
+    9500000: //RootNode
+    13700000: Robot_Mesh
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

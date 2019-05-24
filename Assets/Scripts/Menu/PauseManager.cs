@@ -15,6 +15,8 @@ public class PauseManager : MonoBehaviour {
 
     bool isPaused = false;
 
+    public GameObject eventSystem;
+
     void Start() {
         resumeButton.GetComponent<Button>().onClick.AddListener(PressResume);
         restartButton.GetComponent<Button>().onClick.AddListener(PressRestart);
@@ -24,14 +26,23 @@ public class PauseManager : MonoBehaviour {
     }
 
     void Update() {
-
-        Debug.Log("HERE");
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)) {
-            Debug.Log("ggg");
             isPaused = !isPaused;
             if (isPaused) {
                 Time.timeScale = 0.0f;
                 pausePanel.SetActive(true);
+
+                // Deselect previous selection and play its deselect transition:
+                if (eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().currentSelectedGameObject != null) {
+                    var previous = eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().currentSelectedGameObject.GetComponent<Selectable>();
+                    if (previous != null) {
+                        previous.OnDeselect(null);
+                        eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+                    }
+                }
+                // Select button and play its selection transition:
+                eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(resumeButton.gameObject);
+                resumeButton.OnSelect(null);
             } else {
                 Time.timeScale = 1.0f;
                 pausePanel.SetActive(false);
