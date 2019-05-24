@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class Customer : MonoBehaviour
 {
-    // Update is called once per frame
+	Animator anim;
+	void Start() {
+		anim = GetComponent<Animator>();
+	}
     public void WinAnimation() {
         if (Random.Range(0,2) == 1) {
             StartCoroutine(OPose());
@@ -13,15 +17,17 @@ public class Customer : MonoBehaviour
         }
     }
 
-    private IEnumerator OPose() {
-        GetComponent<Animator>().SetBool("O-Pose", true);
+    private IEnumerator OPose() 
+	{
+        anim.SetBool("O-Pose", true);
         yield return new WaitForSeconds(2.0f);
-        GetComponent<Animator>().SetBool("O-Pose", false);
+        anim.SetBool("O-Pose", false);
     }
 
-    private IEnumerator Clap() {
-        GetComponent<Animator>().SetBool("Clap-Pose", true);
+    private IEnumerator Clap() 
+	{
+        anim.SetBool("Clap-Pose", true);
         yield return new WaitForSeconds(2.0f);
-        GetComponent<Animator>().SetBool("Clap-Pose", false);
+        anim.SetBool("Clap-Pose", false);
     }
 }
