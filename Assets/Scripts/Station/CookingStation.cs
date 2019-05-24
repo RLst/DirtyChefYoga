@@ -8,9 +8,9 @@ namespace DirtyChefYoga
 {
     public abstract class CookingStation : Station
     {
-        [SerializeField] float cookAmount = 0.001f;
+        [SerializeField] protected float cookAmount = 0.001f;
         // [SerializeField] float cookTime = 5f;
-        [SerializeField] UnityEvent OnStartCooking;
+        [SerializeField] protected UnityEvent OnStartCooking, OnFinishedCooking, OnOvercooked;
         public bool isCooking
         {
             get
@@ -19,9 +19,9 @@ namespace DirtyChefYoga
                 // return workingSuface.childCount > 0;
             }
         }
-        Ingredient currentIngredientCooking;
+        protected Ingredient currentIngredientCooking;
 
-        protected void Update()
+        protected virtual void Update()
         {
             HandleCooking();
         }
@@ -60,12 +60,19 @@ namespace DirtyChefYoga
             //Continue cooking any ingredients
             if (!currentIngredientCooking) return;
 
-            // Debug.Log("Cooking " + currentIngredientCooking);
-            // Debug.Log("Progress " + currentIngredientCooking.cookProgress);
-            // var cookAmount = cookTime * 0.1f * Time.deltaTime;
-            // Debug.Log("Cook amount: " + cookAmount);
-
+            //Do cooking
             currentIngredientCooking.cookProgress += cookAmount;
+
+            //Invoke events
+            if (currentIngredientCooking.cookProgress > 1.0f)
+            {
+                OnFinishedCooking.Invoke();
+            }
+            else if (currentIngredientCooking.cookProgress > 2.0f)
+            {
+                OnOvercooked.Invoke();
+            }
+
         }
     }
 }

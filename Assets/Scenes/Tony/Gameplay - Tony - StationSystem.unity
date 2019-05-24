@@ -20003,7 +20003,6 @@ MonoBehaviour:
   - {fileID: 4329100495026718554, guid: 0609c383bc28590428414bba05b8f02b, type: 3}
   - {fileID: 8536791036366958340, guid: 1349c8fd810052c48bed7d921a242181, type: 3}
   - {fileID: 6509523006503952490, guid: 6245e2df0cf71c3478685b8a06407c59, type: 3}
-  - {fileID: 4514823524846437490, guid: 58973ac8c1763074fac4817c47e77e9d, type: 3}
 --- !u!4 &1914598697
 Transform:
   m_ObjectHideFlags: 0
@@ -21025,9 +21024,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6370054351801226402, guid: a806bfafb0353d04b9b831d391d10eb6,
         type: 3}
+      propertyPath: OnFinishedCooking.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370054351801226402, guid: a806bfafb0353d04b9b831d391d10eb6,
+        type: 3}
       propertyPath: workSurface
       value: 
       objectReference: {fileID: 1996574394}
+    - target: {fileID: 6370054351801226402, guid: a806bfafb0353d04b9b831d391d10eb6,
+        type: 3}
+      propertyPath: OnFinishedCooking.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370054351801226402, guid: a806bfafb0353d04b9b831d391d10eb6,
+        type: 3}
+      propertyPath: OnFinishedCooking.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370054351801226402, guid: a806bfafb0353d04b9b831d391d10eb6,
+        type: 3}
+      propertyPath: OnFinishedCooking.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2011833077}
+    - target: {fileID: 6370054351801226402, guid: a806bfafb0353d04b9b831d391d10eb6,
+        type: 3}
+      propertyPath: OnFinishedCooking.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370054351801226402, guid: a806bfafb0353d04b9b831d391d10eb6,
+        type: 3}
+      propertyPath: OnFinishedCooking.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a806bfafb0353d04b9b831d391d10eb6, type: 3}
 --- !u!4 &1996574394 stripped
