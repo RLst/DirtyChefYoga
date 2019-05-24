@@ -30,8 +30,8 @@ public class ResultsManager : MonoBehaviour {
             highScore = playerScore;
         }
 
-        scoreText.GetComponent<TextMeshProUGUI>().text = "Score: " + PlayerPrefs.GetFloat("FinalScore");
-        highscoreText.GetComponent<TextMeshProUGUI>().text = "Highscore: " + PlayerPrefs.GetFloat("highscore");
+        scoreText.GetComponent<TextMeshProUGUI>().text = "Score: " + PlayerPrefs.GetFloat("FinalScore").ToString("C");
+        highscoreText.GetComponent<TextMeshProUGUI>().text = "Highscore: " + PlayerPrefs.GetFloat("highscore").ToString("C");
     }
 
     void PressRestart() {
