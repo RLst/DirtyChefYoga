@@ -23,9 +23,12 @@ namespace DirtyChefYoga
         float currentDashSpeed;
 
         [Header("Interaction")]
+		// [SerializeField] new Collider collider;
         [SerializeField] Transform handPoint;
-        [SerializeField] Vector3 castExtents = new Vector3(0.3f, 1, 0.5f);
-        [SerializeField] float castLength = 1.5f;
+        [SerializeField] Vector3 castHalfExtents = new Vector3(0.3f, 1, 0.5f);
+		[SerializeField] float castLength = 1.5f;
+
+
         public bool isHoldingItem
         {
             get {
@@ -58,10 +61,25 @@ namespace DirtyChefYoga
         {
             MoveCharacter();
             if (input.interacted) HandleInteractions();
+
+			db();
         }
 
-        #region MOVE
-        void MoveCharacter()
+		private void db()
+		{
+			if (DetectInteractable<Ingredient>(out Ingredient ingredient))
+			{
+				Debug.Log("Detecting ingredient!: " + ingredient);
+			}
+			else if (DetectInteractable<Station>(out Station station))
+			{
+				Debug.Log("Detecting station!: " + station);
+			}
+
+		}
+
+		#region MOVE
+		void MoveCharacter()
         {
             #region Move & Dash
             //Set basic speed
@@ -114,7 +132,6 @@ namespace DirtyChefYoga
             if (currentItem)
             {
                 //If there's a station in front of you then interact with it using the ingredient
-                // if (Physics.BoxCast(transform.position, castExtents, transform.forward, out hit, transform.rotation, castLength))
                 if (DetectInteractable<Station>(out Station stationHit))
                 {
                     // Debug.Log("Station found");
@@ -122,7 +139,7 @@ namespace DirtyChefYoga
                     //Pass ingredient to station
                     if (stationHit.Interact(currentItem))
                     {
-                        // Debug.Log("Successfully passed ingredient to station");
+                        Debug.Log("Successfully passed ingredient to station");
                         ReleaseIngredient();
                     }
                     OnInvalidAction.Invoke();
@@ -147,9 +164,11 @@ namespace DirtyChefYoga
             }
         }
 
+
+
         private void ReleaseIngredient()
         {
-            // Debug.Log("Drop the item!");
+            Debug.Log("Drop the item!");
 
             //Unchild
             currentItem.transform.SetParent(null);
@@ -163,7 +182,7 @@ namespace DirtyChefYoga
 
         private void PickUpIngredient(Ingredient ingredientHit)
         {
-            // Debug.Log("Picking up ingredient!");
+            Debug.Log("Picking up ingredient!");
 
             ////Pick it up
             //Set as picked up
@@ -176,28 +195,29 @@ namespace DirtyChefYoga
             currentItem.SetPhysicsActive(false);
         }
 
-        //Detect object of type T according to set cast paramters
-        bool DetectInteractable<T>(out T interactableFound) where T : MonoBehaviour
-        {
-            // Debug.Log("Detecting interactable");
 
-            T hitComponent;
-            bool isHit = Physics.BoxCast(transform.position, castExtents, transform.forward, out RaycastHit hit, Quaternion.identity, castLength);
+        //Detect object of type T according to set cast paramters
+        bool DetectInteractable<T>(out T hit) where T : MonoBehaviour
+        {
+
+			bool isHit = Physics.BoxCast(transform.position, castHalfExtents, transform.forward, out RaycastHit hitInfo, Quaternion.LookRotation(transform.forward), castLength);
+            // bool isHit = Physics.BoxCast(transform.position + castOffset, castHalfExtents, transform.forward, out RaycastHit castHit, transform.rotation);
 
             //If something hit
             if (isHit)
             {
-                hitComponent = hit.collider.GetComponent<T>();
+				// Debug.DrawRay(transform.position, transform.forward * 10, Color.blue);
+                hit = hitInfo.collider.GetComponent<T>();
                 //Get found component
-                if (hitComponent is T) //item is the right type!
+                if (hit is T) //item is the right type!
                 {
+					DrawDebugLineArray(0.25f, Color.green);
                     //set found object
-                    interactableFound = hitComponent;
                     return true;
                 }
             }
             //Nothing found
-            interactableFound = null;
+            hit = null;
             return false;
         }
         #endregion
@@ -214,6 +234,35 @@ namespace DirtyChefYoga
                 }
             }
         }
+
+		void OnDrawGizmos() 
+		{
+			Gizmos.color = Color.red;
+			Transform t = transform;
+			for (float i = -castHalfExtents.y; i < castHalfExtents.y; i += 0.25f)
+			{
+				Vector3 leftFrom = t.position + t.up * i - t.right * castHalfExtents.x;
+				Vector3 rightFrom = t.position + t.up * i + t.right * castHalfExtents.x;
+				Vector3 leftTo = t.position + t.up * i - t.right * castHalfExtents.x + t.forward * castLength;
+				Vector3 rightTo = t.position + t.up * i + t.right * castHalfExtents.x + t.forward * castLength;
+				Gizmos.DrawLine(leftFrom, leftTo);
+				Gizmos.DrawLine(rightFrom, rightTo);
+			}
+		}
+
+		void DrawDebugLineArray(float arraySpacing, Color color)
+		{
+			for (float i = -castHalfExtents.y; i < castHalfExtents.y; i += arraySpacing)
+			{
+				for (float j = -castHalfExtents.x; j < castHalfExtents.x; j += arraySpacing)
+				{
+					var t = transform;
+					var from = t.position + t.up*i + t.right*j;
+					var to = t.position + t.up*i + t.right*j + t.forward*castLength;
+					Debug.DrawLine(from, to, color);
+				}
+			}
+		}
 
     }
 }
