@@ -23,6 +23,8 @@ public class MenuManager : MonoBehaviour {
 
     // View State
     CurrentView currentView;
+
+    public GameObject eventSystem;
     public enum CurrentView {
 
         MenuView,
@@ -83,10 +85,34 @@ public class MenuManager : MonoBehaviour {
 
     void PressControls() {
         currentView = CurrentView.ControlsView;
+
+        // Deselect previous selection and play its deselect transition:
+        if (eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().currentSelectedGameObject != null) {
+            var previous = eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().currentSelectedGameObject.GetComponent<Selectable>();
+            if (previous != null) {
+                previous.OnDeselect(null);
+                eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+            }
+        }
+        // Select button and play its selection transition:
+        eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(backButton.gameObject);
+        backButton.OnSelect(null);
     }
 
     void PressCredits() {
         currentView = CurrentView.CreditsView;
+
+        // Deselect previous selection and play its deselect transition:
+        if (eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().currentSelectedGameObject != null) {
+            var previous = eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().currentSelectedGameObject.GetComponent<Selectable>();
+            if (previous != null) {
+                previous.OnDeselect(null);
+                eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+            }
+        }
+        // Select button and play its selection transition:
+        eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(backCreditsButton.gameObject);
+        backCreditsButton.OnSelect(null);
     }
 
     void PressExit() {
@@ -95,5 +121,17 @@ public class MenuManager : MonoBehaviour {
 
     void PressBack() {
         currentView = CurrentView.MenuView;
+
+        // Deselect previous selection and play its deselect transition:
+        if (eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().currentSelectedGameObject != null) {
+            var previous = eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().currentSelectedGameObject.GetComponent<Selectable>();
+            if (previous != null) {
+                previous.OnDeselect(null);
+                eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+            }
+        }
+        // Select button and play its selection transition:
+        eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(playButton.gameObject);
+        playButton.OnSelect(null);
     }
 }
