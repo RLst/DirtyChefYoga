@@ -12,8 +12,7 @@ public class UTBurger : MonoBehaviour
 	public GameObject tomatoes;
 	public GameObject lettuce;
 	public GameObject cheese;
-	public GameObject pattyCooked;
-	public GameObject pattyUncooked;
+	public GameObject patty;
 	public GameObject bottomBun;
 
 	void OnGUI()
@@ -48,13 +47,7 @@ public class UTBurger : MonoBehaviour
 			}
 			if (GUILayout.Button("Cooked Patty"))
 			{
-				var newIngredient = Instantiate(pattyCooked, transform.position, Quaternion.identity);
-				newIngredient.GetComponent<Rigidbody>().isKinematic = true;
-				burger.AddIngredient(newIngredient.GetComponent<Ingredient>());
-			}
-			if (GUILayout.Button("Uncooked Patty"))
-			{
-				var newIngredient = Instantiate(pattyUncooked, transform.position, Quaternion.identity);
+				var newIngredient = Instantiate(patty, transform.position, Quaternion.identity);
 				newIngredient.GetComponent<Rigidbody>().isKinematic = true;
 				burger.AddIngredient(newIngredient.GetComponent<Ingredient>());
 			}

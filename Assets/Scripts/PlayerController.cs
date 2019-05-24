@@ -117,12 +117,12 @@ namespace DirtyChefYoga
                 // if (Physics.BoxCast(transform.position, castExtents, transform.forward, out hit, transform.rotation, castLength))
                 if (DetectInteractable<Station>(out Station stationHit))
                 {
-                    Debug.Log("Station found");
+                    // Debug.Log("Station found");
 
                     //Pass ingredient to station
                     if (stationHit.Interact(currentItem))
                     {
-                        Debug.Log("Successfully passed ingredient to station");
+                        // Debug.Log("Successfully passed ingredient to station");
                         ReleaseIngredient();
                     }
                     OnInvalidAction.Invoke();
@@ -139,7 +139,7 @@ namespace DirtyChefYoga
                 //If ingredient found
                 if (DetectInteractable<Ingredient>(out Ingredient ingredientHit))
                 {
-                    Debug.Log("Ingredient found");
+                    // Debug.Log("Ingredient found");
 
                     PickUpIngredient(ingredientHit);
                 }
@@ -149,7 +149,7 @@ namespace DirtyChefYoga
 
         private void ReleaseIngredient()
         {
-            Debug.Log("Drop the item!");
+            // Debug.Log("Drop the item!");
 
             //Unchild
             currentItem.transform.SetParent(null);
@@ -163,7 +163,7 @@ namespace DirtyChefYoga
 
         private void PickUpIngredient(Ingredient ingredientHit)
         {
-            Debug.Log("Picking up ingredient!");
+            // Debug.Log("Picking up ingredient!");
 
             ////Pick it up
             //Set as picked up
@@ -182,7 +182,7 @@ namespace DirtyChefYoga
             // Debug.Log("Detecting interactable");
 
             T hitComponent;
-            bool isHit = Physics.BoxCast(transform.position, castExtents, transform.forward, out RaycastHit hit, transform.rotation, castLength);
+            bool isHit = Physics.BoxCast(transform.position, castExtents, transform.forward, out RaycastHit hit, Quaternion.identity, castLength);
 
             //If something hit
             if (isHit)

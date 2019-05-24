@@ -5,7 +5,7 @@ namespace DirtyChefYoga
 {
     public class Burger : Food
     {
-        public float currentThickness = 0;      //Needed to stack the burger ingredients properly
+        float currentThickness = 0;      //Needed to stack the burger ingredients properly
         [SerializeField] int maxNumberOfLayers = 10;
 
         //Adds an ingredient onto the burger
