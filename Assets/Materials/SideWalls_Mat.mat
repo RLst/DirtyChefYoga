@@ -123,10 +123,12 @@ Material:
     - Boolean_29001EF4: 1
     - Boolean_AC10FA0F: 0
     - Boolean_D6BAD0E8: 0
+    - Vector1_16F9CD07: 0
     - Vector1_2059BFB0: 1
     - Vector1_3020FF04: 0.17
     - Vector1_42999FA4: 0.07
     - Vector1_84A2E5C7: 0.33
+    - Vector1_A9727C63: 0
     - Vector1_B8143E62: 270
     - Vector1_EB160278: 0.19
     - _AORemapMax: 1
