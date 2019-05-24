@@ -8,7 +8,7 @@ namespace DirtyChefYoga
     public class RandomAudioPlayer : MonoBehaviour
     {
         AudioSource audioSource;
-        [SerializeField] List<AudioClip> sounds;
+        [SerializeField] List<AudioClip> sounds = new List<AudioClip>();
 
         void Start()
         {

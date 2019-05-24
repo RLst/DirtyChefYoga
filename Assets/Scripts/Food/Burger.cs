@@ -8,7 +8,6 @@ namespace DirtyChefYoga
         public float currentThickness = 0;      //Needed to stack the burger ingredients properly
         [SerializeField] int maxNumberOfLayers = 10;
 
-
         //Adds an ingredient onto the burger
         //Returns whether or not the ingredient was successfully added
         public override bool AddIngredient(Ingredient ing)

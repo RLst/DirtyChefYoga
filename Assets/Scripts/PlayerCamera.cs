@@ -7,21 +7,21 @@ public class PlayerCamera : MonoBehaviour {
     public GameObject followObject;
 
     [Header("Sway X")]
-    [SerializeField] float swayXSpeed;
-    [SerializeField] float swayXAmount;
+    [SerializeField] float swayXSpeed = 0.5f;
+    [SerializeField] float swayXAmount = 0.5f;
 
     [Header("Sway Y")]
-    [SerializeField] float swayYSpeed;
-    [SerializeField] float swayYAmount;
+    [SerializeField] float swayYSpeed = 0.5f;
+    [SerializeField] float swayYAmount = 0.5f;
 
     [Header("Movement")]
-    [SerializeField] float moveSpeed;
-    [SerializeField] float xMoveSpeed;
-    [SerializeField] Vector3 movePosition;
+    [SerializeField] float moveSpeed = 1f;
+    [SerializeField] float xMoveSpeed = 1f;
+    [SerializeField] Vector3 movePosition = new Vector3();
 
     [Header("Rotation")]
-    [SerializeField] float rotationSpeed;
-    [SerializeField] Vector3 rotateOffset;
+    [SerializeField] float rotationSpeed = 1f;
+    [SerializeField] Vector3 rotateOffset = new Vector3();
 
     private void Update() {
 
