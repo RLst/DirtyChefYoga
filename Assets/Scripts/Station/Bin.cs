@@ -1,18 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Fryer : MonoBehaviour
+﻿using UnityEngine;
+namespace DirtyChefYoga
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Bin : Station
     {
-        
-    }
+        [SerializeField] float destroyDelay = 3f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public override bool Interact(Ingredient ingredient)
+        {
+            OnInteract.Invoke();
+
+            //1. Ingredient get's placed on the surface
+            ingredient.transform.position = workSurface.position;
+
+            //2. Falls down due to physics
+            ingredient.SetPhysicsActive(true);
+
+            //3. Deletes ingredientes after a certain amount of time
+            Destroy(ingredient.gameObject, destroyDelay);
+
+            return true;
+        }
     }
 }
