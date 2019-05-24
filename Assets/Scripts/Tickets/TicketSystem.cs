@@ -50,7 +50,7 @@ namespace DirtyChefYoga
         {
             m_timer -= Time.deltaTime;
 
-            m_scoreText.text = m_CurrentScore.ToString();
+            m_scoreText.text =  "$" + m_CurrentScore.ToString("0.00");
 
             if (m_timer <= 0)
             {
