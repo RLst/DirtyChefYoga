@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4660373894995956036
+--- !u!1 &1521486222940520678
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,29 +8,29 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3346961578151783543}
+  - component: {fileID: 4507189215371628233}
   m_Layer: 0
-  m_Name: HandPoint
+  m_Name: Surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3346961578151783543
+--- !u!4 &4507189215371628233
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4660373894995956036}
+  m_GameObject: {fileID: 1521486222940520678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 246.5, y: -9.9, z: -34.2}
+  m_LocalPosition: {x: 0, y: 1.1, z: 0.011}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8846346693073816392}
+  m_Father: {fileID: 4744884207687755164}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8846346693073590120
+--- !u!1 &4744884207687399868
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -38,49 +38,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8846346693073816392}
-  - component: {fileID: 8846346693074586472}
-  - component: {fileID: 8846346693075585448}
-  - component: {fileID: 4047522906254790897}
-  - component: {fileID: 6609893263503980871}
-  - component: {fileID: 551456286650970454}
+  - component: {fileID: 4744884207687755164}
+  - component: {fileID: 4744884207688525244}
+  - component: {fileID: 4744884207689656188}
+  - component: {fileID: 8385962136745452599}
+  - component: {fileID: 3118515363649771128}
   m_Layer: 0
-  m_Name: M_Robot_001
+  m_Name: Benchtop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8846346693073816392
+--- !u!4 &4744884207687755164
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8846346693073590120}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.004447937, y: 1.869, z: -1.37}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_GameObject: {fileID: 4744884207687399868}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3346961578151783543}
+  - {fileID: 4507189215371628233}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!33 &8846346693074586472
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &4744884207688525244
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8846346693073590120}
-  m_Mesh: {fileID: 4300000, guid: a9acf78553117b2489e952af9d1246d0, type: 3}
---- !u!23 &8846346693075585448
+  m_GameObject: {fileID: 4744884207687399868}
+  m_Mesh: {fileID: 4300000, guid: 2e0ce7b90b2c0824197b8aeb71dc2ec2, type: 3}
+--- !u!23 &4744884207689656188
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8846346693073590120}
+  m_GameObject: {fileID: 4744884207687399868}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -91,7 +90,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7d399a46c0062c14494685e1c615172a, type: 2}
+  - {fileID: 2100000, guid: 502f7c13fc39a3a49b40999f0829a9fd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,61 +110,34 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!143 &4047522906254790897
-CharacterController:
+--- !u!65 &8385962136745452599
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8846346693073590120}
+  m_GameObject: {fileID: 4744884207687399868}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 142.76
-  m_Radius: 32.6
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6609893263503980871
+  m_Size: {x: 1, y: 1, z: 1.0795959}
+  m_Center: {x: 0, y: 0.5, z: 0.03979796}
+--- !u!114 &3118515363649771128
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8846346693073590120}
+  m_GameObject: {fileID: 4744884207687399868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 773fe786ef7428b44a32266a21afee44, type: 3}
+  m_Script: {fileID: 11500000, guid: c16ff2759e938804bac9a9cf8ccd5eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 1
-  useRaw: 0
-  invertXaxis: 0
-  invertYaxis: 0
-  leftAxisX: 0
-  leftAxisY: 1
-  rightAxisX: 2
-  rightAxisY: 1
-  moveLeftAxis: 4
-  moveRightAxis: 5
-  interactButton: 0
-  pickedUpButton: 2
---- !u!114 &551456286650970454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8846346693073590120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d474e1a15cb146340a364c95f6c1303e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  handPoint: {fileID: 3346961578151783543}
-  castExtents: {x: 0.3, y: 1, z: 0.5}
-  castLength: 1.5
+  workSurface: {fileID: 4507189215371628233}
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
