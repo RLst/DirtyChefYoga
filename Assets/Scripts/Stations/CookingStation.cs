@@ -10,7 +10,7 @@ namespace DirtyChefYoga
     {
         [SerializeField] protected float cookAmount = 0.001f;
         // [SerializeField] float cookTime = 5f;
-        [SerializeField] protected UnityEvent OnStartCooking, OnFinishedCooking, OnOvercooked;
+        [SerializeField] protected UnityEvent OnFinishedCooking, OnOvercooked;
         public bool isCooking
         {
             get
@@ -28,7 +28,6 @@ namespace DirtyChefYoga
 
         public override bool Interact(Ingredient ingredient)
         {
-            OnInteract.Invoke();
             
             if (isCooking)
             {
@@ -50,7 +49,7 @@ namespace DirtyChefYoga
 
             //2. Start cooking
             currentIngredientCooking = ingredient;
-            OnStartCooking.Invoke();
+            OnInteract.Invoke();	//OnStartCooking
 
             return true;
         }
