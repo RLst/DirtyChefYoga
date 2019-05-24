@@ -25,6 +25,8 @@ namespace DirtyChefYoga
         private Text m_scoreText;
 
         public GameObject m_yogaPeopleManager;
+        public GameObject m_correctOrderSound;
+        public GameObject m_incorrectOrderSound;
 
         public GameObject m_ticketPanel;
         public List<FoodTicket> m_foodItems;
@@ -182,21 +184,23 @@ namespace DirtyChefYoga
 
             if(m_foodItems.Count == 0)      //error check for no tickets available currently
             {
+                m_incorrectOrderSound.GetComponent<AudioSource>().Play();
                 return;
             }
 
             if(m_foodItems[0].GetType() == typeof(FryTicket))
             {
-                if(foodForCheck.ingredients.Count == 1 && foodForCheck.ingredients[0].GetType() == typeof(Fries))
+                if(!(foodForCheck.ingredients.Count == 1 && foodForCheck.ingredients[0].GetType() == typeof(Fries)))
                 {
-                    m_CurrentScore += m_foodScoreAmount;
-                    m_yogaPeopleManager.GetComponent<CustomerController>().CorrectOrder();
+                    m_incorrectOrderSound.GetComponent<AudioSource>().Play();
+                    return;
                 }
             }
             else
             {
                 if(foodForCheck.ingredients.Count != ((BurgerTicket)m_foodItems[0]).m_burgerPieces.Length)       //if there are more or less burger ingredients than in the ticket it is wrong
                 {
+                    m_incorrectOrderSound.GetComponent<AudioSource>().Play();
                     return;
                 }
                 for (int i = 0; i < foodForCheck.ingredients.Count; i++)
@@ -205,54 +209,58 @@ namespace DirtyChefYoga
                     //check to see if the burger and ticket ingredient isnt the same
                     if (foodForCheck.ingredients[i].GetType() == typeof(BottomBun))
                     {
-                        if (((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.BOTTOMBUN)
+                        if (!(((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.BOTTOMBUN))
                         {
-                            m_CurrentScore += m_foodScoreAmount;
-                            m_yogaPeopleManager.GetComponent<CustomerController>().CorrectOrder();
+                            m_incorrectOrderSound.GetComponent<AudioSource>().Play();
+                            return;
                         }
                     }
                     else if (foodForCheck.ingredients[i].GetType() == typeof(Patty) && foodForCheck.ingredients[i].cookStatus == CookStatus.Cooked)
                     {
-                        if (((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.PATTY)
+                        if (!(((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.PATTY))
                         {
-                            m_CurrentScore += m_foodScoreAmount;
-                            m_yogaPeopleManager.GetComponent<CustomerController>().CorrectOrder();
+                            m_incorrectOrderSound.GetComponent<AudioSource>().Play();
+                            return;
                         }
                     }
                     else if (foodForCheck.ingredients[i].GetType() == typeof(Cheese))
                     {
-                        if (((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.CHEESE)
+                        if (!(((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.CHEESE))
                         {
-                            m_CurrentScore += m_foodScoreAmount;
-                            m_yogaPeopleManager.GetComponent<CustomerController>().CorrectOrder();
+                            m_incorrectOrderSound.GetComponent<AudioSource>().Play();
+                            return;
                         }
                     }
                     else if (foodForCheck.ingredients[i].GetType() == typeof(Tomatoes))
                     {
-                        if (((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.TOMATO)
+                        if (!(((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.TOMATO))
                         {
-                            m_CurrentScore += m_foodScoreAmount;
-                            m_yogaPeopleManager.GetComponent<CustomerController>().CorrectOrder();
+                            m_incorrectOrderSound.GetComponent<AudioSource>().Play();
+                            return;
                         }
                     }
                     else if (foodForCheck.ingredients[i].GetType() == typeof(Lettuce))
                     {
-                        if (((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.LETTUCE)
+                        if (!(((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.LETTUCE))
                         {
-                            m_CurrentScore += m_foodScoreAmount;
-                            m_yogaPeopleManager.GetComponent<CustomerController>().CorrectOrder();
+                            m_incorrectOrderSound.GetComponent<AudioSource>().Play();
+                            return;
                         }
                     }
                     else if (foodForCheck.ingredients[i].GetType() == typeof(TopBun))
                     {
-                        if (((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.TOPBUN)
+                        if (!(((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.TOPBUN))
                         {
-                            m_CurrentScore += m_foodScoreAmount;
-                            m_yogaPeopleManager.GetComponent<CustomerController>().CorrectOrder();
+                            m_incorrectOrderSound.GetComponent<AudioSource>().Play();
+                            return;
                         }
                     }
                 }
             }
+
+            m_CurrentScore += m_foodScoreAmount;
+            m_yogaPeopleManager.GetComponent<CustomerController>().CorrectOrder();
+            m_correctOrderSound.GetComponent<AudioSource>().Play();
         }
     }
 }
