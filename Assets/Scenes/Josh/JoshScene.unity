@@ -1013,7 +1013,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -225, y: 199.65001}
+  m_AnchoredPosition: {x: -226.5, y: 187.3}
   m_SizeDelta: {x: 434, y: 97.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1921693142
@@ -1130,10 +1130,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 031302f1aa0d87a4cbb4d98d3d2199a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_burgerChance: 0
+  m_burgerChance: 79.5
   m_spawnTime: 5
   m_ticketExpireTimer: 12
   m_maxNumberOfTickets: 3
+  m_foodScoreAmount: 0
+  m_CurrentScore: 0
   m_ticketPanel: {fileID: 1580945029}
   m_foodItems: []
   m_burgerTicketPrefab: {fileID: 2632225773236254866, guid: 0b5aea3528236b749a4c51eddc10daea,
@@ -1252,6 +1254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_startTime: 142
   m_canvasTimer: {fileID: 150807434}
+  m_ticketSystem: {fileID: 0}
 --- !u!1 &2082019821
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ namespace DirtyChefYoga
                 return false;
             }
 
-            if (ingredients.Count < maxNumberOfLayers)
+            if (m_ingredients.Count < maxNumberOfLayers)
             {
                 ////Child new ingredient to the burger at the correct position according to the burger's current thickness
                 //Move ingredient to the right location in the world
@@ -33,7 +33,7 @@ namespace DirtyChefYoga
                 currentThickness += bi.thickness;
 
                 //Finally add it to the array
-                ingredients.Add(bi);
+                m_ingredients.Add(bi);
 
                 return true;
             }
