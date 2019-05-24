@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2717006526145086500}
   - component: {fileID: 8752670620357723250}
   - component: {fileID: 2081679231727126122}
+  - component: {fileID: 2668612911628280018}
   m_Layer: 0
   m_Name: Top Bun
   m_TagString: Untagged
@@ -46,7 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a05bb6cc9fe26224ca21a91359d1678d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thickness: 0.25
+  m_isCookable: 1
+  m_thickness: 0.1
 --- !u!65 &8752670620357723250
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -76,6 +78,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2668612911628280018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6509523006503952490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a05bb6cc9fe26224ca21a91359d1678d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isCookable: 0
+  m_thickness: 0.1
 --- !u!1001 &2761297734196309264
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8060709634698611005}
   - component: {fileID: 1817878322014567254}
   - component: {fileID: 1808644991366398960}
+  - component: {fileID: 5013630912643107171}
   m_Layer: 0
   m_Name: Lettuce
   m_TagString: Untagged
@@ -46,7 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa994192cea32a49a61661e3a3b1891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thickness: 0.04
+  m_isCookable: 1
+  m_thickness: 0.1
 --- !u!65 &1817878322014567254
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -76,6 +78,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5013630912643107171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4329100495026718554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa994192cea32a49a61661e3a3b1891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isCookable: 0
+  m_thickness: 0.1
 --- !u!1001 &8245928662674658094
 PrefabInstance:
   m_ObjectHideFlags: 0

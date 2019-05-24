@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2110952629138648847}
   - component: {fileID: 2392444659213957107}
   - component: {fileID: 1332080170424368146}
+  - component: {fileID: 8842475963858842744}
   m_Layer: 0
   m_Name: Bottom Bun
   m_TagString: Untagged
@@ -46,7 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dfa15c9ca78bab41a3b6becbad1e213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thickness: 0.1
+  m_isCookable: 1
+  m_thickness: 0.1
 --- !u!54 &2392444659213957107
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -76,6 +78,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.60030955, y: 0.11259517, z: 0.59121454}
   m_Center: {x: 0, y: 0.054217815, z: 0}
+--- !u!114 &8842475963858842744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2835626668173071432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dfa15c9ca78bab41a3b6becbad1e213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isCookable: 0
+  m_thickness: 0.1
 --- !u!1001 &2914255451261054686
 PrefabInstance:
   m_ObjectHideFlags: 0
