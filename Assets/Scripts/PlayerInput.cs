@@ -100,10 +100,11 @@ namespace DirtyChefYoga
         {
             if (debug)
             {
-                if (interacting) GUILayout.TextField("Interacting!");
-                if (interacted) GUILayout.TextField("Interacted!");
-                if (pickingUp) GUILayout.TextField("Picking Up!");
-                if (pickedUp) GUILayout.TextField("Picked Up!");
+                GUILayout.Label("Player Input");
+                if (interacting) GUILayout.Label("Interacting!");
+                if (interacted) GUILayout.Label("Interacted!");
+                if (pickingUp) GUILayout.Label("Picking Up!");
+                if (pickedUp) GUILayout.Label("Picked Up!");
                 GUILayout.TextArea("Movement: " + move);
             }
         }
