@@ -5,7 +5,7 @@ namespace DirtyChefYoga
 {
     //Basic player input
     public class PlayerInput : MonoBehaviour
-    {        
+    {
         [SerializeField] bool debug = true;
         [Space]
 
@@ -17,8 +17,10 @@ namespace DirtyChefYoga
         [Header("Left Axis")]
         [SerializeField] XboxAxis leftAxisX = XboxAxis.LeftStickX;
         [SerializeField] XboxAxis leftAxisY = XboxAxis.LeftStickY;
-        public Vector2 leftAxis { 
-            get {
+        public Vector2 leftAxis
+        {
+            get
+            {
                 Vector2 result;
                 //Raw if needed
                 if (useRaw)
@@ -38,16 +40,18 @@ namespace DirtyChefYoga
 
                 if (invertYaxis)
                     result.y = -result.y;
-                
+
                 return result;
-            } 
+            }
         }
 
         [Header("Right Axis")]
         [SerializeField] XboxAxis rightAxisX = XboxAxis.RightStickX;
         [SerializeField] XboxAxis rightAxisY = XboxAxis.LeftStickY;
-        public Vector2 rightAxis { 
-            get {
+        public Vector2 rightAxis
+        {
+            get
+            {
                 Vector2 result;
                 //Raw if needed
                 if (useRaw)
@@ -67,16 +71,18 @@ namespace DirtyChefYoga
 
                 if (invertYaxis)
                     result.y = -result.y;
-                
+
                 return result;
-            } 
+            }
         }
 
         [Header("Triggers")]
         [SerializeField] XboxAxis leftTriggerAxis = XboxAxis.LeftTrigger;
         [SerializeField] XboxAxis rightTriggerAxis = XboxAxis.RightTrigger;
-        public float move {
-            get {
+        public float move
+        {
+            get
+            {
                 if (useRaw)
                 {
                     return XCI.GetAxisRaw(rightTriggerAxis) - XCI.GetAxisRaw(leftTriggerAxis);
@@ -90,11 +96,11 @@ namespace DirtyChefYoga
 
         //Buttons
         [SerializeField] XboxButton interactButton = XboxButton.A;
-        public bool interacting { get { return  XCI.GetButton(interactButton); } }
-        public bool interacted { get { return  XCI.GetButtonDown(interactButton); } }
-        [SerializeField] XboxButton pickupButton = XboxButton.X;
-        public bool pickingUp { get { return  XCI.GetButton(pickupButton); } }
-        public bool pickedUp { get { return  XCI.GetButtonDown(pickupButton); } }
+        public bool interacting { get { return XCI.GetButton(interactButton); } }
+        public bool interacted { get { return XCI.GetButtonDown(interactButton); } }
+        // [SerializeField] XboxButton pickupButton = XboxButton.X;
+        // public bool pickingUp { get { return  XCI.GetButton(pickupButton); } }
+        // public bool pickedUp { get { return  XCI.GetButtonDown(pickupButton); } }
         [SerializeField] XboxButton dashButton = XboxButton.B;
         public bool dashing { get { return XCI.GetButton(dashButton); } }
         public bool dashed { get { return XCI.GetButtonDown(dashButton); } }
@@ -106,9 +112,12 @@ namespace DirtyChefYoga
                 GUILayout.Label("Player Input");
                 if (interacting) GUILayout.Label("Interacting!");
                 if (interacted) GUILayout.Label("Interacted!");
-                if (pickingUp) GUILayout.Label("Picking Up!");
-                if (pickedUp) GUILayout.Label("Picked Up!");
-                GUILayout.TextArea("Movement: " + move);
+                // if (pickingUp) GUILayout.Label("Picking Up!");
+                // if (pickedUp) GUILayout.Label("Picked Up!");
+                if (dashing) GUILayout.Label("Dashing!");
+                if (dashed) GUILayout.Label("Dashed!");
+                GUILayout.Label("LeftAxis: " + leftAxis.x + ", " + leftAxis.y);
+                GUILayout.Label("RightAxis: " + rightAxis.x + ", " + rightAxis.y);
             }
         }
 

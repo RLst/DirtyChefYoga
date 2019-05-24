@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using pokoro;
+using UnityEngine.Events;
 
 namespace DirtyChefYoga
 {
@@ -25,11 +26,23 @@ namespace DirtyChefYoga
         [SerializeField] Transform handPoint;
         [SerializeField] Vector3 castExtents = new Vector3(0.3f, 1, 0.5f);
         [SerializeField] float castLength = 1.5f;
-        Ingredient itemInHand;
+        public bool isHoldingItem
+        {
+            get {
+                //If there is something childed to this transform
+                //means we're holding something
+                return currentItem != null;
+                // return handPoint.childCount > 0;       
+            }
+        }
+
+        public UnityEvent OnInvalidAction;
+
+        Ingredient currentItem;
 
         private CharacterController controller;
         private PlayerInput input;
-        new Camera cam;
+        Camera cam;
         private Quaternion facing;
 
         // private PlayerInteract interact;
@@ -97,8 +110,31 @@ namespace DirtyChefYoga
         #region INTERACTIONS
         private void HandleInteractions()
         {
+            //If holding ingredient
+            if (currentItem)
+            {
+                //If there's a station in front of you then interact with it using the ingredient
+                // if (Physics.BoxCast(transform.position, castExtents, transform.forward, out hit, transform.rotation, castLength))
+                if (DetectInteractable<Station>(out Station stationHit))
+                {
+                    Debug.Log("Station found");
+
+                    //Pass ingredient to station
+                    if (stationHit.Interact(currentItem))
+                    {
+                        Debug.Log("Successfully passed ingredient to station");
+                        ReleaseIngredient();
+                    }
+                    OnInvalidAction.Invoke();
+                }
+                //Otherwise drop the ingredient
+                else
+                {
+                    ReleaseIngredient();
+                }
+            }
             //If not holding ingredient
-            if (itemInHand == null)
+            else
             {
                 //If ingredient found
                 if (DetectInteractable<Ingredient>(out Ingredient ingredientHit))
@@ -109,45 +145,20 @@ namespace DirtyChefYoga
                 }
                 //Do nothing if you're not holding anything
             }
-            //If holding ingredient
-            else
-            {
-                //If there's a station in front of you then interact with it using the ingredient
-                // if (Physics.BoxCast(transform.position, castExtents, transform.forward, out hit, transform.rotation, castLength))
-                if (DetectInteractable<Station>(out Station stationHit))
-                {
-                    Debug.Log("Station found");
-
-                    //Try using interactable on station
-                    if (stationHit.Interact(itemInHand))
-                    {
-                        Debug.Log("Successful station interaction!");
-
-                        //The station now has control of the ingredient, so release it
-                        itemInHand = null;
-                    }
-                }
-                //Otherwise drop the ingredient
-                else
-                {
-
-                    DropIngredient();
-                }
-            }
         }
 
-        private void DropIngredient()
+        private void ReleaseIngredient()
         {
             Debug.Log("Drop the item!");
 
             //Unchild
-            itemInHand.transform.SetParent(null);
+            currentItem.transform.SetParent(null);
 
             //Make it a physics object
-            itemInHand.SetPhysicsActive(true);
+            currentItem.SetPhysicsActive(true);
 
             //RELEASE
-            itemInHand = null;
+            currentItem = null;
         }
 
         private void PickUpIngredient(Ingredient ingredientHit)
@@ -156,19 +167,19 @@ namespace DirtyChefYoga
 
             ////Pick it up
             //Set as picked up
-            itemInHand = ingredientHit;
+            currentItem = ingredientHit;
             //Move to the hand
-            itemInHand.transform.SetPositionAndRotation(handPoint.transform.position, handPoint.transform.rotation);
+            currentItem.transform.SetPositionAndRotation(handPoint.transform.position, handPoint.transform.rotation);
             //Set it as a child
-            itemInHand.transform.SetParent(this.transform);
+            currentItem.transform.SetParent(this.transform);
             //Deactivate physics
-            itemInHand.SetPhysicsActive(false);
+            currentItem.SetPhysicsActive(false);
         }
 
         //Detect object of type T according to set cast paramters
         bool DetectInteractable<T>(out T interactableFound) where T : MonoBehaviour
         {
-            Debug.Log("Detecting interactable");
+            // Debug.Log("Detecting interactable");
 
             T hitComponent;
             bool isHit = Physics.BoxCast(transform.position, castExtents, transform.forward, out RaycastHit hit, transform.rotation, castLength);
@@ -197,9 +208,9 @@ namespace DirtyChefYoga
             if (debug)
             {
                 GUILayout.Label("Player Controller");
-                if (itemInHand != null)
+                if (currentItem != null)
                 {
-                    GUILayout.Label("Holding a " + itemInHand.name);
+                    GUILayout.Label("Holding a " + currentItem.name);
                 }
             }
         }
