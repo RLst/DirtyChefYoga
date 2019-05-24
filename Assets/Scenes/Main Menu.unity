@@ -525,7 +525,7 @@ MonoBehaviour:
   creditsPanel: {fileID: 1808588592}
   backButton: {fileID: 993303999}
   backCreditsButton: {fileID: 1247869926}
-  eventSystem: {fileID: 0}
+  eventSystem: {fileID: 988250277}
 --- !u!1 &77004219
 GameObject:
   m_ObjectHideFlags: 0
