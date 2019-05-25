@@ -16,9 +16,9 @@ namespace DirtyChefYoga
 
 		public bool isHoldingItem
         	{ get { return currentItem != null; } }
-
-		PlayerInput input;
 		Ingredient currentItem;
+
+		private PlayerInput input;
 
 		void Start()
 		{
@@ -36,58 +36,54 @@ namespace DirtyChefYoga
 		{
 			if (input.interacted)
 			{
-				//If holding ingredient
+				//If holding item
 				if (isHoldingItem)
 				{
 					//If there's a station in front of you then interact with it using the ingredient
 					if (DetectInteractable<Station>(out Station stationHit))
 					{
-						Debug.Log("Station found");
-						//Pass ingredient to station
-						if (stationHit.Insert(currentItem))
+						if (stationHit.Insert(currentItem))	//Try passing into the station
 						{
 							Debug.Log("Successfully passed ingredient to station");
-							ReleaseIngredient();
+							ReleaseItem();
 						}
+						//Rejected. Don't do anything
 					}
-					//Otherwise drop the ingredient
-					else
+					else	//If there's no station in front
 					{
-						ReleaseIngredient();
+						//The drop the item
+						ReleaseItem();
 					}
 				}
-				//If not holding ingredient
+				//If not holding any item
 				else
 				{
-					
-
 					//If a station is found
-					// if (DetectInteractable<Station>(out Station station))
-					// {
-					// 	//Remove ingredient instead of interacting with it
-					// 	if (station.Remove(out Ingredient item))
-					// 	{
-					// 	}
-					// }
-
-					//If ingredient found
-					if (DetectInteractable<Ingredient>(out Ingredient hit))
+					if (DetectInteractable<Station>(out Station station))
 					{
-						PickUpIngredient(hit);
+						if (station.Remove(out Ingredient removedItem))	//Try removing ingredient
+						{
+							Debug.Log("Successfully removed ingredient from station");
+							PickUpItem(removedItem);
+							// currentItem = removedItem;
+						}
 					}
-					//Do nothing if you're not holding anything
+					else
+					{
+						//If an ingredient found then pick it up
+						if (DetectInteractable<Ingredient>(out Ingredient foundItem))
+						{
+							PickUpItem(foundItem);
+						}
+					}
 				}
 
 			}
 		}
 
-		private void ReleaseIngredient()
+		private void ReleaseItem()
 		{
-			Debug.Log("Drop the item!");
-
-			
-
-			// currentItem
+			Debug.Log("Release ingredient!");
 
 			//Unchild
 			currentItem.transform.SetParent(null);
@@ -97,17 +93,16 @@ namespace DirtyChefYoga
 			currentItem = null;
 		}
 
-		private void PickUpIngredient(Ingredient ingredientHit)
+		private void PickUpItem(Ingredient item)
 		{
 			Debug.Log("Picking up ingredient!");
 
-			////Pick it up
-			//Set as picked up
-			currentItem = ingredientHit;
+			//Set current item
+			currentItem = item;
 			//Move to the hand
 			currentItem.transform.SetPositionAndRotation(anchor.transform.position, anchor.transform.rotation);
 			//Set it as a child
-			currentItem.transform.SetParent(this.transform);
+			currentItem.transform.SetParent(this.anchor);
 			//Deactivate physics
 			currentItem.SetPhysicsActive(false);
 		}
@@ -130,6 +125,7 @@ namespace DirtyChefYoga
 					return true;
 				}
 			}
+			
 			//Nothing found
 			hit = null;
 			return false;
@@ -151,13 +147,12 @@ namespace DirtyChefYoga
 
 		void OnGUI()
 		{
-			if (debug)
+			if (!debug) return;
+
+			GUILayout.Label("Player Controller");
+			if (currentItem != null)
 			{
-				GUILayout.Label("Player Controller");
-				if (currentItem != null)
-				{
-					GUILayout.Label("Holding a " + currentItem.name);
-				}
+				GUILayout.Label("Holding a " + currentItem.name);
 			}
 		}
 
@@ -165,7 +160,7 @@ namespace DirtyChefYoga
 		{
 			Gizmos.color = Color.red;
 			Transform t = transform;
-			for (float i = -castHalfExtents.y; i < castHalfExtents.y; i += 0.25f)
+			for (float i = -castHalfExtents.y; i < castHalfExtents.y; i += 0.5f)
 			{
 				Vector3 leftFrom = t.position + t.up * i - t.right * castHalfExtents.x;
 				Vector3 rightFrom = t.position + t.up * i + t.right * castHalfExtents.x;
@@ -178,6 +173,8 @@ namespace DirtyChefYoga
 
 		private void db()
 		{
+			if (!debug) return;
+
 			if (DetectInteractable<Ingredient>(out Ingredient ingredient))
 			{
 				Debug.Log("Detecting ingredient!: " + ingredient);
