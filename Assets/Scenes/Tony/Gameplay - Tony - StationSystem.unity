@@ -13502,7 +13502,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 50
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -13668,6 +13668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc16ab4bd5ad6af4a8d2ea29389f5b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
   followObject: {fileID: 1698938719}
   swayXSpeed: 0.5
   swayXAmount: 0.5
@@ -13675,7 +13676,7 @@ MonoBehaviour:
   swayYAmount: 0.5
   moveSpeed: 0.6
   xMoveSpeed: 0.6
-  movePosition: {x: 0, y: 5, z: 5}
+  movePosition: {x: 0, y: 7.5, z: 6}
   rotationSpeed: 1
   rotateOffset: {x: 0, y: 0, z: 0}
 --- !u!4 &1292092006 stripped
@@ -17630,8 +17631,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug: 1
   anchor: {fileID: 1292092006}
-  castHalfExtents: {x: 0.5, y: 2, z: 1}
-  castLength: 2.5
+  castHalfExtents: {x: 0.35, y: 2, z: 1}
+  castLength: 2
+  interactablesMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1001 &1703210203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22727,17 +22731,34 @@ PrefabInstance:
     - target: {fileID: 3962286359792704296, guid: 98cf2ec48530f9a4bb1ddd8779e46edc,
         type: 3}
       propertyPath: dashSpeed
-      value: 17
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3962286359792704296, guid: 98cf2ec48530f9a4bb1ddd8779e46edc,
         type: 3}
       propertyPath: maxSpeed
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3962286359792704296, guid: 98cf2ec48530f9a4bb1ddd8779e46edc,
+        type: 3}
+      propertyPath: dashDrag
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3962286359792704298, guid: 98cf2ec48530f9a4bb1ddd8779e46edc,
         type: 3}
       propertyPath: m_StepOffset
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 763085715, guid: 98cf2ec48530f9a4bb1ddd8779e46edc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 763085715, guid: 98cf2ec48530f9a4bb1ddd8779e46edc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 763085715, guid: 98cf2ec48530f9a4bb1ddd8779e46edc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.36
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98cf2ec48530f9a4bb1ddd8779e46edc, type: 3}

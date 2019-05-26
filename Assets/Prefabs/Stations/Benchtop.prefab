@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4507189215371628233}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 4744884207689656188}
   - component: {fileID: 8385962136745452599}
   - component: {fileID: 3118515363649771128}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Benchtop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   workSurface: {fileID: 4507189215371628233}
-  OnInteract:
+  OnInsert:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,

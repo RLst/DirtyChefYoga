@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1817878322014567254}
   - component: {fileID: 1808644991366398960}
   - component: {fileID: 5013630912643107171}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lettuce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_isCookable: 0
-  m_thickness: 0.1
 --- !u!1001 &8245928662674658094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87,6 +86,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: ff3ff21e45e773c41bf95b0ea1b6fe0e, type: 3}
       propertyPath: m_Name
       value: M_Food_Lettuce_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ff3ff21e45e773c41bf95b0ea1b6fe0e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ff3ff21e45e773c41bf95b0ea1b6fe0e, type: 3}
       propertyPath: m_LocalPosition.x

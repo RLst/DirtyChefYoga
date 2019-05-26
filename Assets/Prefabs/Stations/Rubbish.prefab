@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4626664340192716933}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 6242798088970936559}
   - component: {fileID: 1968249285977470930}
   - component: {fileID: 598140573763243348}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rubbish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,6 +106,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 92a298cc193b2c34e9b9d182100adde5, type: 3}
       propertyPath: m_Name
       value: M_Prop_Rubbish_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 92a298cc193b2c34e9b9d182100adde5, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 92a298cc193b2c34e9b9d182100adde5, type: 3}
       propertyPath: m_LocalPosition.x

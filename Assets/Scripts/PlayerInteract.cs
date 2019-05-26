@@ -9,10 +9,10 @@ namespace DirtyChefYoga
 	{
 		[SerializeField] bool debug = true;
 		[Space]
-
 		[SerializeField] Transform anchor;
 		[SerializeField] Vector3 castHalfExtents = new Vector3(0.45f, 2, 0.2f);
 		[SerializeField] float castLength = 2.4f;
+		[SerializeField] LayerMask interactablesMask;
 
 		public bool isHoldingItem
         	{ get { return currentItem != null; } }
@@ -20,16 +20,17 @@ namespace DirtyChefYoga
 
 		private PlayerInput input;
 
-		void Start()
-		{
+		void Start() {
 			Assert.IsNotNull(anchor, "No hand transform found!");
 			input = GetComponent<PlayerInput>();
 		}
 
-		void Update()
-		{
+		void Update() {
 			HandleInteractions();
-			// db();
+		}
+
+		void LateUpdate() {
+			db();
 		}
 
 		private void HandleInteractions()
@@ -40,17 +41,18 @@ namespace DirtyChefYoga
 				if (isHoldingItem)
 				{
 					//If there's a station in front of you then interact with it using the ingredient
-					if (DetectInteractable<Station>(out Station stationHit))
+					if (DetectInteractable<Station>(out Station stationHit, Color.yellow))
 					{
 						if (stationHit.Insert(currentItem))	//Try passing into the station
 						{
-							Debug.Log("Successfully passed ingredient to station");
+							Debug.Log("Successfully passed item to station");
 							ReleaseItem();
 						}
 						//Rejected. Don't do anything
 					}
 					else	//If there's no station in front
 					{
+						Debug.Log("Station not found. Dropping item");
 						//The drop the item
 						ReleaseItem();
 					}
@@ -59,7 +61,7 @@ namespace DirtyChefYoga
 				else
 				{
 					//If a station is found
-					if (DetectInteractable<Station>(out Station station))
+					if (DetectInteractable<Station>(out Station station, Color.yellow))
 					{
 						if (station.Remove(out Ingredient removedItem))	//Try removing ingredient
 						{
@@ -71,8 +73,9 @@ namespace DirtyChefYoga
 					else
 					{
 						//If an ingredient found then pick it up
-						if (DetectInteractable<Ingredient>(out Ingredient foundItem))
+						if (DetectInteractable<Ingredient>(out Ingredient foundItem, Color.green))
 						{
+							Debug.Log("Picked up item");
 							PickUpItem(foundItem);
 						}
 					}
@@ -108,24 +111,28 @@ namespace DirtyChefYoga
 		}
 
 		//Detect object of type T according to set cast paramters
-		bool DetectInteractable<T>(out T hit) where T : MonoBehaviour
+		bool DetectInteractable<T>(out T hit, Color debugColor = new Color()) where T : MonoBehaviour
 		{
-			bool isHit = Physics.BoxCast(transform.position, castHalfExtents, transform.forward, out RaycastHit hitInfo, Quaternion.LookRotation(transform.forward), castLength);
+			var hits = Physics.OverlapBox(transform.position + transform.forward * castLength * 0.5f, castHalfExtents, transform.rotation, interactablesMask);
+			// bool isHit = Physics.BoxCast(transform.position + castOffset, castHalfExtents, transform.forward, out RaycastHit hitInfo, Quaternion.LookRotation(transform.forward), castLength);
 
 			//If something hit
-			if (isHit)
+			if (hits.Length > 0)
 			{
-				// Debug.DrawRay(transform.position, transform.forward * 10, Color.blue);
-				hit = hitInfo.collider.GetComponent<T>();
-				//Get found component
-				if (hit is T) //item is the right type!
+				//Loop through all hits
+				foreach (var h in hits)
 				{
-					DrawDebugLineArray(0.25f, Color.green);
-					//set found object
-					return true;
-				}
+					hit = h.GetComponent<T>();
+					//If any of them are of type T
+					if (hit is T)
+					{
+						DrawDebugLineArray(0.25f, debugColor);
+						Debug.Log("Hit item: " + hit);
+						//Return true and out T
+						return true;
+					}
+				} 
 			}
-			
 			//Nothing found
 			hit = null;
 			return false;

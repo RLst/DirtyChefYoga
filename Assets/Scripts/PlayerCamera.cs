@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour {
+	[SerializeField] bool debug = false;
+	[Space]
+
     [Header("Camera")]
     public GameObject followObject;
 
@@ -45,7 +48,7 @@ public class PlayerCamera : MonoBehaviour {
         Quaternion desiredRotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(newLookAt - transform.position), rotationSpeed * Time.deltaTime);
         transform.rotation = desiredRotation;
 
-
-        Debug.DrawLine(newRotate, newMove, Color.green);
+		if (debug)
+        	Debug.DrawLine(newRotate, newMove, Color.green);
     }
 }
