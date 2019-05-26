@@ -35,8 +35,10 @@ namespace DirtyChefYoga
 
 		private void HandleInteractions()
 		{
-			if (input.interacted)
-			{
+			if (!input.interacted) return;
+
+				//NOTE: STATIONS ALWAYS HAVE HIGHER PRIORITY THAN AN INGREDIENT
+
 				//If holding item
 				if (isHoldingItem)
 				{
@@ -81,7 +83,6 @@ namespace DirtyChefYoga
 					}
 				}
 
-			}
 		}
 
 		private void ReleaseItem()
