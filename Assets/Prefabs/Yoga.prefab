@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 763085715}
+  - component: {fileID: 1038578459}
   m_Layer: 0
   m_Name: dbHandPoint
   m_TagString: Untagged
@@ -24,12 +25,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763085714}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 1.52, z: 1.29}
+  m_LocalPosition: {x: -0.02, y: 0.739, z: 1.292}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3962286359792704301}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1038578459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763085714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313bfa9ba5df5b844828dae45a3d33df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  color: {r: 1, g: 0.5, b: 0, a: 0.75}
+  radius: 0.1
+  size: {x: 1, y: 1, z: 1}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &3962286359237988225
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,8 +106,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3962286359792704301}
   - component: {fileID: 3962286359792704298}
-  - component: {fileID: 3962286359792704299}
+  - component: {fileID: 3482299234624106702}
   - component: {fileID: 3962286359792704296}
+  - component: {fileID: 1698938720}
   m_Layer: 0
   m_Name: Yoga
   m_TagString: Untagged
@@ -125,13 +144,13 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2.6
-  m_Radius: 0.38
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_Radius: 0.5
+  m_SlopeLimit: 15
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.77, z: 0}
---- !u!114 &3962286359792704299
+--- !u!114 &3482299234624106702
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,21 +159,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 3962286359792704278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 773fe786ef7428b44a32266a21afee44, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d193a412110c2c489dc91dff4ac1261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
   useRaw: 0
   invertXaxis: 0
   invertYaxis: 0
-  leftAxisX: 0
-  leftAxisY: 1
-  rightAxisX: 2
-  rightAxisY: 3
-  leftTriggerAxis: 4
-  rightTriggerAxis: 5
-  interactButton: 0
-  dashButton: 1
+  leftAxisXName: Horizontal
+  leftAxisYName: Vertical
+  rightAxisXName: Horizontal
+  rightAxisYName: Vertical
+  moveAxis: Horizontal
+  useKey: 106
+  pickUpKey: 107
+  dashKey: 108
 --- !u!114 &3962286359792704296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,18 +186,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d474e1a15cb146340a364c95f6c1303e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 1
-  maxSpeed: 5
-  dashSpeed: 13
-  dashDrag: 1.5
-  handPoint: {fileID: 763085715}
-  castHalfExtents: {x: 0.45, y: 2, z: 0.5}
-  castLength: 2.4
-  OnInvalidAction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  debug: 0
+  maxSpeed: 6
+  dashSpeed: 20
+  dashDrag: 1
+--- !u!114 &1698938720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3962286359792704278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de7f44098312bc644b06e76ef150e2fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug: 0
+  anchor: {fileID: 763085715}
+  castHalfExtents: {x: 0.4, y: 2, z: 1}
+  castLength: 2
+  interactablesMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1001 &3962286357891278176
 PrefabInstance:
   m_ObjectHideFlags: 0
