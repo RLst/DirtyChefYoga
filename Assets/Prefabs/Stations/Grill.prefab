@@ -45,8 +45,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.987589, y: 1.4814844, z: 1.524107}
-  m_Center: {x: -0.004774332, y: 0.051297665, z: 0.081419945}
+  m_Size: {x: 1.4217161, y: 1.4814844, z: 1.524107}
+  m_Center: {x: -0.0029874146, y: 0.051297665, z: 0.081419945}
 --- !u!114 &456095124422424561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,13 +60,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   workSurface: {fileID: 2858090499817559557}
-  OnInsert:
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnRemoved:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   cookAmount: 0.001
-  OnFinishedCooking:
+  OnCooked:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -100,7 +105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3163477563179725387}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.066, y: 0.9, z: 0.197}
+  m_LocalPosition: {x: 0.011, y: 0.8, z: 0.197}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 186643365578884728}
@@ -167,7 +172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 531deda8e0bddde4c8da2028701f7911, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 531deda8e0bddde4c8da2028701f7911, type: 3}
       propertyPath: m_LocalScale.y
