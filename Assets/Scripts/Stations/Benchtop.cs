@@ -5,7 +5,7 @@ namespace DirtyChefYoga
     {
         public override bool Insert(Ingredient item)
         {
-            OnInsert.Invoke();
+            OnInteract.Invoke();
 
             //Can't place on top if there's already another item
             if (currentItem) return false;
@@ -30,9 +30,10 @@ namespace DirtyChefYoga
                 @out = null;
                 return false;
             }
-
 			//Otherwise ALWAYS give ingredient
             @out = currentItem;
+			OnRemoved.Invoke();
+
 			//Unset current ingredient
             currentItem = null;
             return true;

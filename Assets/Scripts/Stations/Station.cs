@@ -7,10 +7,17 @@ namespace DirtyChefYoga
 	public abstract class Station : MonoBehaviour
 	{
 		[SerializeField] protected Transform workSurface;
-		public UnityEvent OnInteract;
+		public UnityEvent OnInteract, OnRemoved;
 
-		//It is assumed the ingredient passed in will be NOT be null
-		public abstract bool Interact(Ingredient ingredient);
+        protected Ingredient currentItem;
+
+		//Uses an ingredient on the station
+		//Params: Returns true if item was successfully inserted
+		public abstract bool Insert(Ingredient item);
+
+		//Pop ingredient from station
+		//Params: Returns true if current item was successfully removed
+		public abstract bool Remove(out Ingredient item);
 
 		void OnDrawGizmos()
 		{

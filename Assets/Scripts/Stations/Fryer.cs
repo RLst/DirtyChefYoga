@@ -8,30 +8,35 @@ namespace DirtyChefYoga
     {
         [SerializeField] GameObject cookedFriesPrefab;
 
-        public override bool Interact(Ingredient ingredient)
+        public override bool Insert(Ingredient item)
         {
             //Only pototoes can be cooked
-            if (ingredient is Potato)
+            if (item is Potato)
             {
                 //Start cooking as usual
-                return base.Interact(ingredient);
+                return base.Insert(item);
             }
+
+			//Rejected
             return false;
         }
 
         protected override void HandleCooking()
         {
+			//Cook as usual
             base.HandleCooking();
 
-            if (!currentIngredientCooking) return;
-
-            if (currentIngredientCooking.cookProgress > 1.0f)
+			//Potato once cooked need to be swapped over for fries
+            if (currentItem.cookProgress > 1.0f)
             {
-                OnFinishedCooking.Invoke();
+                OnCooked.Invoke();
                 
                 //Swap out potato for fries
                 var cookedFries = Instantiate(cookedFriesPrefab, workSurface.position, workSurface.rotation);
-                Destroy(currentIngredientCooking.gameObject);
+				Destroy(currentItem.gameObject);
+                
+				//Set as the current item
+				currentItem = cookedFries.GetComponent<Ingredient>();
             }
         }
     }

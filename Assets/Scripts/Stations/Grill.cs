@@ -2,12 +2,15 @@
 {
     public class Grill : CookingStation
     {
-        public override bool Interact(Ingredient ingredient)
+        public override bool Insert(Ingredient item)
         {
-            if (ingredient is Patty)
+			//Only accept patties
+            if (item is Patty)
             {
-                return base.Interact(ingredient);
+                return base.Insert(item);
             }
+
+			//Rejected
             return false;
         }
     }

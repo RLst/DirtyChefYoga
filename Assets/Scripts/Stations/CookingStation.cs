@@ -9,69 +9,83 @@ namespace DirtyChefYoga
     public abstract class CookingStation : Station
     {
         [SerializeField] protected float cookAmount = 0.001f;
-        // [SerializeField] float cookTime = 5f;
-        [SerializeField] protected UnityEvent OnFinishedCooking, OnOvercooked;
+        [SerializeField] protected UnityEvent OnCooked, OnOvercooked;
         public bool isCooking
         {
             get
             {
-                return currentIngredientCooking != null;
-                // return workingSuface.childCount > 0;
+                return currentItem != null;
             }
         }
-        protected Ingredient currentIngredientCooking;
 
         protected virtual void Update()
         {
             HandleCooking();
         }
 
-        public override bool Interact(Ingredient ingredient)
+        public override bool Insert(Ingredient item)
         {
-            
+            //Already cooking
             if (isCooking)
             {
                 Debug.Log("Already cooking!");
                 return false;
             }
-            if (!ingredient.isCookable)
+            //Can item be cooked?
+            if (!item.isCookable)
             {
                 Debug.Log("Can't cook this item!");
                 return false;
             }
 
-            ////COOK!
-            Debug.Log("Started cooking item!");
+            //Start cooking!
+            OnInteract.Invoke();
 
-            //1. Place item on surface and stop physics
-            ingredient.transform.position = workSurface.position;
-            ingredient.SetPhysicsActive(false);
+            //Place item on surface and stop physics
+            item.transform.position = workSurface.position;
+            item.SetPhysicsActive(false);
 
-            //2. Start cooking
-            currentIngredientCooking = ingredient;
-            OnInteract.Invoke();	//OnStartCooking
+        	//Start cooking
+            currentItem = item;
 
             return true;
         }
 
+		public override bool Remove(out Ingredient @out)
+		{
+			//If there is something cooking, then release it and stop cooking
+			if (isCooking)
+			{
+				//Release
+				@out = currentItem;
+				OnRemoved.Invoke();
+
+				//Stop cooking
+				currentItem = null;
+				return true;
+			}
+			//Otherwise nothing to take
+			@out = null;
+			return false;
+		}
+
         protected virtual void HandleCooking()
         {
             //Continue cooking any ingredients
-            if (!currentIngredientCooking) return;
+            if (!currentItem) return;
 
             //Do cooking
-            currentIngredientCooking.cookProgress += cookAmount;
+            currentItem.cookProgress += cookAmount;
 
             //Invoke events
-            if (currentIngredientCooking.cookProgress > 1.0f)
+            if (currentItem.cookProgress > 1.0f)
             {
-                OnFinishedCooking.Invoke();
-            }
-            else if (currentIngredientCooking.cookProgress > 2.0f)
+                OnCooked.Invoke();
+            }	
+            else if (currentItem.cookProgress > 2.0f)
             {
                 OnOvercooked.Invoke();
             }
-
         }
     }
 }

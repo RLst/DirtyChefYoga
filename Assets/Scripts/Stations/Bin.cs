@@ -6,7 +6,7 @@ namespace DirtyChefYoga
         [SerializeField] float destroyDelay = 2f;
 
         public override bool Insert(Ingredient item) {
-            OnInsert.Invoke();
+            OnInteract.Invoke();
 
             ///Bin can always take items
 
