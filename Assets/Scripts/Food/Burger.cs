@@ -7,16 +7,10 @@ namespace DirtyChefYoga
 		public float currentThickness = 0;      //Needed to stack the burger ingredients properly
 		[SerializeField] int maxNumberOfLayers = 10;
 
-
 		//Adds an ingredient onto the burger
 		//Returns whether or not the ingredient was successfully added
 		public override bool AddIngredient(Ingredient ingredient)
 		{
-			//NOTE: This works pretty well for the UT burger script
-
-			//Make sure it's a burger ingredient
-			// var bi = item as BurgerIngredient;
-			// var bi = (BurgerIngredient)item;
 			if (ingredient is BurgerIngredient)
 			{
 				if (ingredients.Count < maxNumberOfLayers)
@@ -29,7 +23,9 @@ namespace DirtyChefYoga
 					ingredient.transform.SetParent(this.transform);
 
 					//Stack ingredient at the right position and random rotation
-					ingredient.transform.position = this.transform.position + Vector3.up * currentThickness;
+					var p = transform.position + transform.up * currentThickness;
+					var r = Quaternion.AngleAxis(UnityEngine.Random.Range(0, 360), transform.up);
+					ingredient.transform.SetPositionAndRotation(p, r);
 
 					//Update burger's current thickness
 					currentThickness += (ingredient as BurgerIngredient).thickness;

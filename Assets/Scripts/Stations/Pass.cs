@@ -29,8 +29,9 @@ namespace DirtyChefYoga
 						currentOrder = CreateNewOrder<Burger>();
 						if (currentOrder.AddIngredient(@in))
 						{
-							Debug.Log("Successfully started a burger");
+							Debug.Log("Successfully started a burger order");
 						}
+
 						return true;
 					}
 				}
@@ -39,6 +40,10 @@ namespace DirtyChefYoga
 				else if (@in is Fries)
 				{
 					currentOrder = CreateNewOrder<FrenchFries>();
+					if (currentOrder.AddIngredient(@in))
+					{
+						Debug.Log("Successfully started a fries order");
+					}
 					SubmitOrder(currentOrder);
 					return true;
 				}
@@ -81,18 +86,33 @@ namespace DirtyChefYoga
 			return false;
 		}
 
+		//One way submit to the ticket system for approval + clean up
 		void SubmitOrder(Order order)
 		{
 			//Submit the order
 			OnSubmitOrder.Invoke(order);
 
-			ReleaseCurrentOrder();
+			ReleaseOrder();
 		}
 
-		private void ReleaseCurrentOrder()
+		//Clean up
+		private void ReleaseOrder()
 		{
+			//Delete the object!
+			Destroy(currentOrder.gameObject, 0.2f);
+
+			//Unset current order
 			currentOrder = null;
 		}
+
+		// //Since the pass is a special station that doesn't use "currentItem"
+		// //It needs a special function so that items don't keep sticking to the player
+		// void TakeCurrentItem(Ingredient item)
+		// {
+		// 	currentItem = null;		//Current item should not point to anything
+		// 	item.transform.SetParent(null);		//Disown item
+
+		// }
 
 		//----- Utilities -----
 		private T CreateNewOrder<T>() where T : Order
@@ -104,6 +124,7 @@ namespace DirtyChefYoga
 			return newOrder;
 		}
 
+		//----- Debug -----
 		void OnGUI()
 		{
 			GUILayout.Label("Pass");
