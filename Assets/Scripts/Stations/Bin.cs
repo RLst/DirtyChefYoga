@@ -3,22 +3,29 @@ namespace DirtyChefYoga
 {
     public class Bin : Station
     {
-        [SerializeField] float destroyDelay = 3f;
+        [SerializeField] float destroyDelay = 2f;
 
-        public override bool Interact(Ingredient ingredient)
-        {
-            OnInteract.Invoke();
+        public override bool Insert(Ingredient item) {
+            OnInsert.Invoke();
 
-            //1. Ingredient get's placed on the surface
-            ingredient.transform.position = workSurface.position;
+            ///Bin can always take items
 
-            //2. Falls down due to physics
-            ingredient.SetPhysicsActive(true);
+            //Position the ingredient and let it drop
+			item.transform.position = workSurface.position;
 
-            //3. Deletes ingredientes after a certain amount of time
-            Destroy(ingredient.gameObject, destroyDelay);
+			//No need to set it as the current item
+			
+			//Destroy the item
+            Destroy(item.gameObject, destroyDelay);
 
             return true;
         }
+
+		public override bool Remove(out Ingredient item)
+		{
+			//Once you chuck something in the bin it CANNOT be removed! (Inaccessible sire!)
+			item = null;
+			return false;
+		}
     }
 }
