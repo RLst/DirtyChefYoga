@@ -5,7 +5,8 @@ using UnityEngine;
 namespace DirtyChefYoga
 {
     [RequireComponent(typeof(AudioSettings))]
-    public class RandomAudioPlayer : MonoBehaviour
+	[RequireComponent(typeof(AudioSource))]
+    public class AudioPlayer : MonoBehaviour
     {
         AudioSource audioSource;
         [SerializeField] List<AudioClip> sounds = new List<AudioClip>();
@@ -14,7 +15,8 @@ namespace DirtyChefYoga
         {
             audioSource = GetComponent<AudioSource>();
         }
-        public void PlayOnce()
+
+        public void PlayRandomOnce()
         {
             var randomSound = sounds[UnityEngine.Random.Range(0, sounds.Count)];
             if (audioSource.enabled == true)
@@ -22,5 +24,18 @@ namespace DirtyChefYoga
                 audioSource.PlayOneShot(randomSound);
             }
         }
+
+		public void PlaySoundOnce(string soundName)
+		{
+			foreach (var s in sounds)
+			{
+				if (s.name == soundName)
+				{
+					audioSource.PlayOneShot(s);
+					return;
+				}
+			}
+			Debug.LogWarning("Sound not found!");
+		}
     }
 }
