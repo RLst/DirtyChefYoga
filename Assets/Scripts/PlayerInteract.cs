@@ -35,7 +35,7 @@ namespace DirtyChefYoga
 
 		private void HandleInteractions()
 		{
-			if (!input.interacted) return;
+			if (!input.pickedUp) return;
 
 				//NOTE: STATIONS ALWAYS HAVE HIGHER PRIORITY THAN AN INGREDIENT
 
@@ -43,18 +43,18 @@ namespace DirtyChefYoga
 				if (isHoldingItem)
 				{
 					//If there's a station in front of you then interact with it using the ingredient
-					if (DetectInteractable<Station>(out Station stationHit, Color.yellow))
+					if (DetectInteractable<Station>(out Station station, Color.yellow))
 					{
-						if (stationHit.Insert(currentItem))	//Try passing into the station
+						if (station.Insert(currentItem))	//Try passing into the station
 						{
-							Debug.Log("Successfully passed item to station");
+							Debug.Log("Successfully passed " + currentItem + " to station");
 							ReleaseItem();
 						}
 						//Rejected. Don't do anything
 					}
 					else	//If there's no station in front
 					{
-						Debug.Log("Station not found. Dropping item");
+						Debug.Log("Station not found. Dropping " + currentItem);
 						//The drop the item
 						ReleaseItem();
 					}
@@ -65,20 +65,20 @@ namespace DirtyChefYoga
 					//If a station is found
 					if (DetectInteractable<Station>(out Station station, Color.yellow))
 					{
-						if (station.Remove(out Ingredient removedItem))	//Try removing ingredient
+						if (station.Remove(out Ingredient item))	//Try removing ingredient
 						{
-							Debug.Log("Successfully removed ingredient from station");
-							PickUpItem(removedItem);
+							Debug.Log("Removed " + item + " from station");
+							PickUpItem(item);
 							// currentItem = removedItem;
 						}
 					}
 					else
 					{
 						//If an ingredient found then pick it up
-						if (DetectInteractable<Ingredient>(out Ingredient foundItem, Color.green))
+						if (DetectInteractable<Ingredient>(out Ingredient item, Color.green))
 						{
-							Debug.Log("Picked up item");
-							PickUpItem(foundItem);
+							Debug.Log("Picked up a " + item);
+							PickUpItem(item);
 						}
 					}
 				}
@@ -115,7 +115,6 @@ namespace DirtyChefYoga
 		bool DetectInteractable<T>(out T hit, Color debugColor = new Color()) where T : MonoBehaviour
 		{
 			var hits = Physics.OverlapBox(transform.position + transform.forward * castLength * 0.5f, castHalfExtents, transform.rotation, interactablesMask);
-			// bool isHit = Physics.BoxCast(transform.position + castOffset, castHalfExtents, transform.forward, out RaycastHit hitInfo, Quaternion.LookRotation(transform.forward), castLength);
 
 			//If something hit
 			if (hits.Length > 0)
@@ -128,7 +127,6 @@ namespace DirtyChefYoga
 					if (hit is T)
 					{
 						DrawDebugLineArray(0.25f, debugColor);
-						Debug.Log("Hit item: " + hit);
 						//Return true and out T
 						return true;
 					}
