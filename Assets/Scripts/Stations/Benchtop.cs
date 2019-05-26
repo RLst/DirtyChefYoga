@@ -3,16 +3,38 @@ namespace DirtyChefYoga
 {
     public class Benchtop : Station
     {
-        public override bool Interact(Ingredient ingredient)
+        public override bool Insert(Ingredient item)
         {
-            OnInteract.Invoke();
-            
+            OnInsert.Invoke();
+
+            //Can't place on top if there's already another item
+            if (currentItem) return false;
+
+			//Set the current item
+			currentItem = item;
+
             //Place on the work surface
-            ingredient.transform.position = workSurface.position;
+            item.transform.position = workSurface.position;
 
             //Turn off physics
-            ingredient.SetPhysicsActive(false);
+            item.SetPhysicsActive(false);
 
+            return true;
+        }
+
+        public override bool Remove(out Ingredient @out)
+        {
+            //If there's no ingredient, reject call
+            if (!currentItem)
+            {
+                @out = null;
+                return false;
+            }
+
+			//Otherwise ALWAYS give ingredient
+            @out = currentItem;
+			//Unset current ingredient
+            currentItem = null;
             return true;
         }
     }
