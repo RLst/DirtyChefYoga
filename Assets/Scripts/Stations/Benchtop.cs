@@ -5,20 +5,14 @@ namespace DirtyChefYoga
     {
         public override bool Insert(Ingredient item)
         {
-            OnInteract.Invoke();
-
             //Can't place on top if there's already another item
             if (currentItem) return false;
 
 			//Set the current item
-			currentItem = item;
+			SetCurrentItem(item);
 
-            //Place on the work surface
-            item.transform.position = workSurface.position;
-
-            //Turn off physics
-            item.SetPhysicsActive(false);
-
+			//Successful push
+            OnInserted.Invoke();
             return true;
         }
 
@@ -30,12 +24,14 @@ namespace DirtyChefYoga
                 @out = null;
                 return false;
             }
+
 			//Otherwise ALWAYS give ingredient
             @out = currentItem;
-			OnRemoved.Invoke();
 
-			//Unset current ingredient
-            currentItem = null;
+            ReleaseCurrentItem();
+			
+			//Successful pop
+			OnRemoved.Invoke();
             return true;
         }
     }

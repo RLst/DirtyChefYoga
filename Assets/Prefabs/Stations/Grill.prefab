@@ -26,11 +26,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2388956421730771359}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.31387937, y: 7.4556475, z: -9.336439}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8427468860945398970}
   - {fileID: 2858090499817559557}
+  - {fileID: 8427468860945398970}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45,8 +45,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.4217161, y: 1.4814844, z: 1.524107}
-  m_Center: {x: -0.0029874146, y: 0.051297665, z: 0.081419945}
+  m_Size: {x: 1.4067793, y: 1.5043726, z: 1.5003803}
+  m_Center: {x: 0.0029577017, y: 0.748454, z: 0.004616618}
 --- !u!114 &456095124422424561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,8 +59,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c778e4bdefbd62a40b82f3623ff8aaa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workSurface: {fileID: 2858090499817559557}
-  OnInteract:
+  anchor: {fileID: 2858090499817559557}
+  OnInserted:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2858090499817559557}
   m_Layer: 9
-  m_Name: Surface
+  m_Name: Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,11 +105,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3163477563179725387}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.011, y: 0.8, z: 0.197}
+  m_LocalPosition: {x: 0, y: 1.55, z: 0.097}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 186643365578884728}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8427468860945786426
 PrefabInstance:
@@ -120,7 +120,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 531deda8e0bddde4c8da2028701f7911, type: 3}
       propertyPath: m_Name
-      value: M_Grill_Large (1)
+      value: M_Grill_Large
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 531deda8e0bddde4c8da2028701f7911, type: 3}
       propertyPath: m_Layer
@@ -132,11 +132,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 531deda8e0bddde4c8da2028701f7911, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 531deda8e0bddde4c8da2028701f7911, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.08
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 531deda8e0bddde4c8da2028701f7911, type: 3}
       propertyPath: m_LocalRotation.x
@@ -156,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 531deda8e0bddde4c8da2028701f7911, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 531deda8e0bddde4c8da2028701f7911, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace DirtyChefYoga
 {
@@ -8,9 +9,15 @@ namespace DirtyChefYoga
     {
         [SerializeField] GameObject cookedFriesPrefab;
 
+		void Start()
+		{
+			//Listen for OnCooked event
+			OnCooked.AddListener(SwapPotatoForFries);
+		}
+
         public override bool Insert(Ingredient item)
         {
-            //Only pototoes can be cooked
+            //FILTER: Only pototoes can be cooked
             if (item is Potato)
             {
                 //Start cooking as usual
@@ -21,23 +28,13 @@ namespace DirtyChefYoga
             return false;
         }
 
-        protected override void HandleCooking()
-        {
-			//Cook as usual
-            base.HandleCooking();
-
-			//Potato once cooked need to be swapped over for fries
-            if (currentItem.cookProgress > 1.0f)
-            {
-                OnCooked.Invoke();
-                
-                //Swap out potato for fries
-                var cookedFries = Instantiate(cookedFriesPrefab, workSurface.position, workSurface.rotation);
-				Destroy(currentItem.gameObject);
-                
-				//Set as the current item
-				currentItem = cookedFries.GetComponent<Ingredient>();
-            }
-        }
+		void SwapPotatoForFries()
+		{
+			//Swap out potato for fries
+			var cookedFries = Instantiate(cookedFriesPrefab, anchor.position, anchor.rotation);
+			Destroy(currentItem.gameObject);
+			//Set as the current item
+			currentItem = cookedFries.GetComponent<Ingredient>();
+		}
     }
 }

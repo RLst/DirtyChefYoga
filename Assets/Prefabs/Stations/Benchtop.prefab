@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4507189215371628233}
   m_Layer: 9
-  m_Name: Surface
+  m_Name: Anchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,8 +135,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16ff2759e938804bac9a9cf8ccd5eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workSurface: {fileID: 4507189215371628233}
-  OnInsert:
+  anchor: {fileID: 4507189215371628233}
+  OnInserted:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnRemoved:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,

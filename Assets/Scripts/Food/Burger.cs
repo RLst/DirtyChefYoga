@@ -1,48 +1,55 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
 namespace DirtyChefYoga
 {
-    public class Burger : Food
-    {
-        float currentThickness = 0;      //Needed to stack the burger ingredients properly
-        [SerializeField] int maxNumberOfLayers = 10;
+	public class Burger : Order
+	{
+		public float currentThickness = 0;      //Needed to stack the burger ingredients properly
+		[SerializeField] int maxNumberOfLayers = 10;
 
-        //Adds an ingredient onto the burger
-        //Returns whether or not the ingredient was successfully added
-        public override bool AddIngredient(Ingredient ing)
-        {
-            //Make sure it's a burger ingredient
-            var bi = ing as BurgerIngredient;
-            if (!bi)
-            {
-                Debug.LogWarning("Not a burger ingredient");
-                return false;
-            }
 
-            if (m_ingredients.Count < maxNumberOfLayers)
-            {
-                ////Child new ingredient to the burger at the correct position according to the burger's current thickness
-                //Move ingredient to the right location in the world
-                bi.transform.position = this.transform.position + Vector3.up * currentThickness;
+		//Adds an ingredient onto the burger
+		//Returns whether or not the ingredient was successfully added
+		public override bool AddIngredient(Ingredient ingredient)
+		{
+			//NOTE: This works pretty well for the UT burger script
 
-                //Child the ingredient
-                bi.transform.SetParent(this.transform);
+			//Make sure it's a burger ingredient
+			// var bi = item as BurgerIngredient;
+			// var bi = (BurgerIngredient)item;
+			if (ingredient is BurgerIngredient)
+			{
+				if (ingredients.Count < maxNumberOfLayers)
+				{
+					////Child new ingredient to the burger at the correct position according to the burger's current thickness
+					//Deactivate ingredient's physics
+					ingredient.SetPhysicsActive(false);
+					
+					//Child ingredient to burger order object
+					ingredient.transform.SetParent(this.transform);
 
-                //Update the current thickness
-                currentThickness += bi.thickness;
+					//Stack ingredient at the right position and random rotation
+					ingredient.transform.position = this.transform.position + Vector3.up * currentThickness;
 
-                //Finally add it to the array
-                m_ingredients.Add(bi);
+					//Update burger's current thickness
+					currentThickness += (ingredient as BurgerIngredient).thickness;
 
-                return true;
-            }
-            else
-            {
-                Debug.LogWarning("Max ingredients reached!");
-                return false;
-            }
-        }
-    }
+					//Finally add it to the array
+					ingredients.Add(ingredient);
 
+					return true;
+				}
+				else
+				{
+					Debug.LogWarning("Max ingredients reached!");
+					return false;
+				}
+			}
+			else
+			{
+				Debug.LogWarning("Not a burger ingredient");
+				return false;
+			}
+		}
+	}
 }

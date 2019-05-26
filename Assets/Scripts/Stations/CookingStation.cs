@@ -17,6 +17,8 @@ namespace DirtyChefYoga
                 return currentItem != null;
             }
         }
+		bool isCooked = false;
+		bool isOvercooked = false;
 
         protected virtual void Update()
         {
@@ -26,44 +28,47 @@ namespace DirtyChefYoga
         public override bool Insert(Ingredient item)
         {
             //Already cooking
-            if (isCooking)
-            {
+            if (isCooking) {
                 Debug.Log("Already cooking!");
                 return false;
             }
             //Can item be cooked?
-            if (!item.isCookable)
-            {
+            if (!item.isCookable) {
                 Debug.Log("Can't cook this item!");
                 return false;
             }
 
-            //Start cooking!
-            OnInteract.Invoke();
+            ///Start cooking!
+			SetCurrentItem(item); 	//Setting as current item will start cooking it
 
-            //Place item on surface and stop physics
-            item.transform.position = workSurface.position;
-            item.SetPhysicsActive(false);
+			ResetCookStatus();
 
-        	//Start cooking
-            currentItem = item;
-
+			//Successful insert
+            OnInserted.Invoke();
             return true;
         }
+
+		private void ResetCookStatus()
+		{
+			isCooked = false;
+			isOvercooked = false;
+		}
 
 		public override bool Remove(out Ingredient @out)
 		{
 			//If there is something cooking, then release it and stop cooking
 			if (isCooking)
 			{
-				//Release
 				@out = currentItem;
-				OnRemoved.Invoke();
 
 				//Stop cooking
-				currentItem = null;
+				ReleaseCurrentItem();
+
+				//Successful remove
+				OnRemoved.Invoke();
 				return true;
 			}
+
 			//Otherwise nothing to take
 			@out = null;
 			return false;
@@ -78,12 +83,14 @@ namespace DirtyChefYoga
             currentItem.cookProgress += cookAmount;
 
             //Invoke events
-            if (currentItem.cookProgress > 1.0f)
+            if (currentItem.cookProgress > 1.0f && !isCooked)
             {
+				isCooked = true;
                 OnCooked.Invoke();
             }	
-            else if (currentItem.cookProgress > 2.0f)
+            else if (currentItem.cookProgress > 2.0f && !isOvercooked)
             {
+				isOvercooked = true;
                 OnOvercooked.Invoke();
             }
         }

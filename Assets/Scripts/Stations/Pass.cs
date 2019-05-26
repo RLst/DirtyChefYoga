@@ -3,42 +3,40 @@ using UnityEngine.Events;
 
 namespace DirtyChefYoga
 {
+	[System.Serializable]
+	public class DCYOrderEvent : UnityEvent<Order> { }
+
 	//A pass should always submit the order upon interact
 	public class Pass : Station
 	{
-		/* Brainstorm:
-		- Upon insert:
-			- if the item passed in is a bottom bun
-				- create/instantiate a empty burger object and start stacking
-			- if the item passed in is a top bun
-				- try submit
-					- if the submit is invalid then dump the food object
-			- if the item passed in are chips
-				- create/instantiate a empty frenchFries object
-			- don't except anything else
-		*/
+		[SerializeField] bool debug = true;
+		[Space]
+		[SerializeField] int newOrderLayer;
+		Order currentOrder = null;
+		[SerializeField] DCYOrderEvent OnSubmitOrder;
 
-		[SerializeField] TicketSystem ticketSystem;
-		Order currentOrder;
 
-		UnityEvent OnOrderSubmit;
-
-		public override bool Insert(Ingredient item)
+		public override bool Insert(Ingredient @in)
 		{
 			//If there's currently no order on the pass
-			if (!currentItem)
+			if (!currentOrder)
 			{
 				//CREATE NEW BURGER ORDER
-				if (item is BurgerIngredient)
+				if (@in is BurgerIngredient)
 				{
-					if (item is BottomBun) {
+					if (@in is BottomBun)
+					{
 						currentOrder = CreateNewOrder<Burger>();
-						currentOrder.AddIngredient(item);
+						if (currentOrder.AddIngredient(@in))
+						{
+							Debug.Log("Successfully started a burger");
+						}
 						return true;
 					}
 				}
+
 				//CREATE AND SUBMIT NEW FRENCH FRIES ORDER
-				else if (item is Fries)
+				else if (@in is Fries)
 				{
 					currentOrder = CreateNewOrder<FrenchFries>();
 					SubmitOrder(currentOrder);
@@ -55,15 +53,20 @@ namespace DirtyChefYoga
 				//ADD TO BURGER STACK
 				if (currentOrder is Burger)
 				{
-					currentOrder.AddIngredient(item);
+					if (@in is BurgerIngredient)
+					{
+						currentOrder.AddIngredient(@in);
 
-					//IF TOP BUN THEN SUBMIT!
-					if (item is TopBun) {
-						SubmitOrder(currentOrder);
+						//IF WAS TOP BUN THEN SUBMIT!
+						if (@in is TopBun)
+						{
+							SubmitOrder(currentOrder);
+						}
+
+						return true;
 					}
-					return true;
 				}
-				
+
 				//Else
 				Debug.LogWarning("Invalid ingredient input!");
 				return false;
@@ -72,8 +75,8 @@ namespace DirtyChefYoga
 
 		public override bool Remove(out Ingredient @out)
 		{
-			//Cannot remove anything from the pass!
-			Debug.LogWarning("Cannot remove item from pass!");
+			Debug.LogWarning("Cannot remove anything from pass!");
+
 			@out = null;
 			return false;
 		}
@@ -81,18 +84,53 @@ namespace DirtyChefYoga
 		void SubmitOrder(Order order)
 		{
 			//Submit the order
-			ticketSystem.CheckTicket(order);
-			OnOrderSubmit.Invoke();
+			OnSubmitOrder.Invoke(order);
 
-			//Reset current order
+			ReleaseCurrentOrder();
+		}
+
+		private void ReleaseCurrentOrder()
+		{
 			currentOrder = null;
 		}
 
 		//----- Utilities -----
 		private T CreateNewOrder<T>() where T : Order
 		{
-			GameObject limbo = Instantiate(new GameObject(), workSurface.position, workSurface.rotation);
-			return limbo.AddComponent<T>();
+			GameObject newOrderObject = new GameObject("Burger");
+			newOrderObject.transform.SetPositionAndRotation(anchor.position, anchor.rotation);
+			newOrderObject.layer = newOrderLayer;
+			T newOrder = newOrderObject.AddComponent<T>();
+			return newOrder;
+		}
+
+		void OnGUI()
+		{
+			GUILayout.Label("Pass");
+			GUILayout.Space(5);
+			GUILayout.Label("Current Order: " + currentOrder);
 		}
 	}
 }
+
+
+// newBurgerObject.transform.SetPositionAndRotation(workSurface.position, workSurface.rotation);
+// 						newBurgerObject.layer = newOrderLayer;
+// 						var newBurger = newBurgerObject.AddComponent<Burger>();
+// ingredient.SetPhysicsActive(false);
+// 						ingredient.transform.position = newBurger.transform.position + Vector3.up* newBurger.currentThickness;
+// ingredient.transform.SetParent(newBurger.transform);
+// 						newBurger.currentThickness += (ingredient as BurgerIngredient).thickness;
+// 						newBurger.ingredients.Add(ingredient);
+
+/* Brainstorm:
+- Upon insert:
+	- if the item passed in is a bottom bun
+		- create/instantiate a empty burger object and start stacking
+	- if the item passed in is a top bun
+		- try submit
+			- if the submit is invalid then dump the food object
+	- if the item passed in are chips
+		- create/instantiate a empty frenchFries object
+	- don't except anything else
+*/

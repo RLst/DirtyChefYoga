@@ -10,91 +10,103 @@ namespace DirtyChefYoga
 		[SerializeField] bool debug = true;
 		[Space]
 		[SerializeField] Transform anchor;
-		[SerializeField] Vector3 castHalfExtents = new Vector3(0.45f, 2, 0.2f);
-		[SerializeField] float castLength = 2.4f;
-		[SerializeField] LayerMask interactablesMask;
+		public Vector3 castHalfExtents = new Vector3(0.45f, 2, 0.2f);
+		public float castLength = 2.4f;
+		public LayerMask interactablesMask;
 
 		public bool isHoldingItem
-        	{ get { return currentItem != null; } }
+		{ get { return currentItem != null; } }
 		Ingredient currentItem;
 
 		private PlayerInput input;
 
-		void Start() {
+		void Start()
+		{
 			Assert.IsNotNull(anchor, "No hand transform found!");
 			input = GetComponent<PlayerInput>();
 		}
 
-		void Update() {
+		void Update()
+		{
 			HandleInteractions();
 		}
 
-		void LateUpdate() {
+		void LateUpdate()
+		{
 			db();
 		}
+
 
 		private void HandleInteractions()
 		{
 			if (!input.pickedUp) return;
 
-				//NOTE: STATIONS ALWAYS HAVE HIGHER PRIORITY THAN AN INGREDIENT
+			//NOTE: STATIONS ALWAYS HAVE HIGHER PRIORITY THAN AN INGREDIENT
 
-				//If holding item
-				if (isHoldingItem)
+			//If holding item
+			if (isHoldingItem)
+			{
+				//If there's a station in front of you then interact with it using the ingredient
+				if (DetectInteractable<Station>(out Station station, Color.yellow))
 				{
-					//If there's a station in front of you then interact with it using the ingredient
-					if (DetectInteractable<Station>(out Station station, Color.yellow))
+					if (station.Insert(currentItem))    //Try passing into the station
 					{
-						if (station.Insert(currentItem))	//Try passing into the station
-						{
-							Debug.Log("Successfully passed " + currentItem + " to station");
-							ReleaseItem();
-						}
-						//Rejected. Don't do anything
-					}
-					else	//If there's no station in front
-					{
-						Debug.Log("Station not found. Dropping " + currentItem);
-						//The drop the item
+						Debug.Log("Successfully passed " + currentItem + " to station");
 						ReleaseItem();
 					}
+					//Rejected. Don't do anything
 				}
-				//If not holding any item
+				else    //If there's no station in front
+				{
+					Debug.Log("Station not found. Dropping " + currentItem);
+					//The drop the item
+					DropItem();
+				}
+			}
+			//If not holding any item
+			else
+			{
+				//If a station is found
+				if (DetectInteractable<Station>(out Station station, Color.yellow))
+				{
+					if (station.Remove(out Ingredient item))    //Try removing ingredient
+					{
+						Debug.Log("Removed " + item + " from station");
+						PickUpItem(item);
+						// currentItem = removedItem;
+					}
+				}
 				else
 				{
-					//If a station is found
-					if (DetectInteractable<Station>(out Station station, Color.yellow))
+					//If an ingredient found then pick it up
+					if (DetectInteractable<Ingredient>(out Ingredient item, Color.green))
 					{
-						if (station.Remove(out Ingredient item))	//Try removing ingredient
-						{
-							Debug.Log("Removed " + item + " from station");
-							PickUpItem(item);
-							// currentItem = removedItem;
-						}
-					}
-					else
-					{
-						//If an ingredient found then pick it up
-						if (DetectInteractable<Ingredient>(out Ingredient item, Color.green))
-						{
-							Debug.Log("Picked up a " + item);
-							PickUpItem(item);
-						}
+						Debug.Log("Picked up a " + item);
+						PickUpItem(item);
 					}
 				}
+			}
 
 		}
 
+		//Clears current item
 		private void ReleaseItem()
 		{
-			Debug.Log("Release ingredient!");
+			Debug.Log("Released ingredient!");
+			currentItem = null;
+		}
+
+		//Drop the item
+		private void DropItem()
+		{
+			Debug.Log("Dropped ingredient!");
 
 			//Unchild
 			currentItem.transform.SetParent(null);
 			//Make it a physics object
 			currentItem.SetPhysicsActive(true);
 			//RELEASE
-			currentItem = null;
+			ReleaseItem();
 		}
 
 		private void PickUpItem(Ingredient item)
@@ -104,7 +116,7 @@ namespace DirtyChefYoga
 			//Set current item
 			currentItem = item;
 			//Move to the hand
-			currentItem.transform.SetPositionAndRotation(anchor.transform.position, anchor.transform.rotation);
+			currentItem.transform.SetPositionAndRotation(anchor.position, anchor.rotation);
 			//Set it as a child
 			currentItem.transform.SetParent(this.anchor);
 			//Deactivate physics
@@ -112,7 +124,7 @@ namespace DirtyChefYoga
 		}
 
 		//Detect object of type T according to set cast paramters
-		bool DetectInteractable<T>(out T hit, Color debugColor = new Color()) where T : MonoBehaviour
+		public bool DetectInteractable<T>(out T hit, Color debugColor = new Color()) where T : MonoBehaviour
 		{
 			var hits = Physics.OverlapBox(transform.position + transform.forward * castLength * 0.5f, castHalfExtents, transform.rotation, interactablesMask);
 
@@ -130,7 +142,7 @@ namespace DirtyChefYoga
 						//Return true and out T
 						return true;
 					}
-				} 
+				}
 			}
 			//Nothing found
 			hit = null;
@@ -144,8 +156,8 @@ namespace DirtyChefYoga
 				for (float j = -castHalfExtents.x; j < castHalfExtents.x; j += arraySpacing)
 				{
 					var t = transform;
-					var from = t.position + t.up*i + t.right*j;
-					var to = t.position + t.up*i + t.right*j + t.forward*castLength;
+					var from = t.position + t.up * i + t.right * j;
+					var to = t.position + t.up * i + t.right * j + t.forward * castLength;
 					Debug.DrawLine(from, to, color);
 				}
 			}
@@ -162,7 +174,7 @@ namespace DirtyChefYoga
 			}
 		}
 
-		void OnDrawGizmos() 
+		void OnDrawGizmos()
 		{
 			Gizmos.color = Color.red;
 			Transform t = transform;
