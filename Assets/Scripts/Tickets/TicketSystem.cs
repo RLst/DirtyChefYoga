@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 namespace DirtyChefYoga
 {
@@ -24,9 +25,6 @@ namespace DirtyChefYoga
         public GameObject m_scoreCanvas;
         private Text m_scoreText;
 
-        public GameObject m_yogaPeopleManager;
-        public GameObject m_correctOrderSound;
-        public GameObject m_incorrectOrderSound;
 
         public GameObject m_ticketPanel;
         public List<FoodTicket> m_foodItems;
@@ -43,9 +41,11 @@ namespace DirtyChefYoga
 
         public GameObject m_friesPrefab;
 
+		[SerializeField] UnityEvent OnIncorrectOrder, OnCorrectOrder;
+
         private void Awake()
         {
-            m_scoreText = m_scoreCanvas.GetComponent<Text>();
+            m_scoreText = m_scoreCanvas?.GetComponent<Text>();
             m_timer = m_spawnTime;
             SpawnTicket();
         }
@@ -175,7 +175,7 @@ namespace DirtyChefYoga
             }
         }
 
-        public void ServeTicket(Food foodForCheck)
+        public void CheckTicket(Order itemToCheck)
         {
             //check if fries or burger 
             //if fries check if cooked
@@ -184,74 +184,76 @@ namespace DirtyChefYoga
 
             if(m_foodItems.Count == 0)      //error check for no tickets available currently
             {
-                m_incorrectOrderSound.GetComponent<AudioSource>().Play();
+				OnIncorrectOrder.Invoke();
+                // m_incorrectOrderSound.GetComponent<AudioSource>().Play();
                 return;
             }
 
             if(m_foodItems[0].GetType() == typeof(FryTicket))
             {
-                if(!(foodForCheck.ingredients.Count == 1 && foodForCheck.ingredients[0].GetType() == typeof(Fries)))
+                if(!(itemToCheck.ingredients.Count == 1 && itemToCheck.ingredients[0].GetType() == typeof(Fries)))
                 {
-                    m_incorrectOrderSound.GetComponent<AudioSource>().Play();
+					OnIncorrectOrder.Invoke();
+                    // m_incorrectOrderSound.GetComponent<AudioSource>().Play();
                     return;
                 }
             }
             else
             {
-                if(foodForCheck.ingredients.Count != ((BurgerTicket)m_foodItems[0]).m_burgerPieces.Length)       //if there are more or less burger ingredients than in the ticket it is wrong
+                if(itemToCheck.ingredients.Count != ((BurgerTicket)m_foodItems[0]).m_burgerPieces.Length)       //if there are more or less burger ingredients than in the ticket it is wrong
                 {
-                    m_incorrectOrderSound.GetComponent<AudioSource>().Play();
+                    OnIncorrectOrder.Invoke();
                     return;
                 }
-                for (int i = 0; i < foodForCheck.ingredients.Count; i++)
+                for (int i = 0; i < itemToCheck.ingredients.Count; i++)
                 {
                     //TODO: check to see if there are more ingredients than the ticket supports then return to stop any errors
                     //check to see if the burger and ticket ingredient isnt the same
-                    if (foodForCheck.ingredients[i].GetType() == typeof(BottomBun))
+                    if (itemToCheck.ingredients[i] is BottomBun)
                     {
                         if (!(((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.BOTTOMBUN))
                         {
-                            m_incorrectOrderSound.GetComponent<AudioSource>().Play();
+                            OnIncorrectOrder.Invoke();
                             return;
                         }
                     }
-                    else if (foodForCheck.ingredients[i].GetType() == typeof(Patty) && foodForCheck.ingredients[i].cookStatus == CookStatus.Cooked)
+                    else if (itemToCheck.ingredients[i] is Patty && itemToCheck.ingredients[i].cookStatus == CookStatus.Cooked)	//Make sure patty is cooked properly
                     {
                         if (!(((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.PATTY))
                         {
-                            m_incorrectOrderSound.GetComponent<AudioSource>().Play();
+                            OnIncorrectOrder.Invoke();
                             return;
                         }
                     }
-                    else if (foodForCheck.ingredients[i].GetType() == typeof(Cheese))
+                    else if (itemToCheck.ingredients[i] is Cheese)
                     {
                         if (!(((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.CHEESE))
                         {
-                            m_incorrectOrderSound.GetComponent<AudioSource>().Play();
+                            OnIncorrectOrder.Invoke();
                             return;
                         }
                     }
-                    else if (foodForCheck.ingredients[i].GetType() == typeof(Tomatoes))
+                    else if (itemToCheck.ingredients[i] is Tomatoes)
                     {
                         if (!(((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.TOMATO))
                         {
-                            m_incorrectOrderSound.GetComponent<AudioSource>().Play();
+                            OnIncorrectOrder.Invoke();
                             return;
                         }
                     }
-                    else if (foodForCheck.ingredients[i].GetType() == typeof(Lettuce))
+                    else if (itemToCheck.ingredients[i] is Lettuce)
                     {
                         if (!(((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.LETTUCE))
                         {
-                            m_incorrectOrderSound.GetComponent<AudioSource>().Play();
+                            OnIncorrectOrder.Invoke();
                             return;
                         }
                     }
-                    else if (foodForCheck.ingredients[i].GetType() == typeof(TopBun))
+                    else if (itemToCheck.ingredients[i] is TopBun)
                     {
                         if (!(((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.TOPBUN))
                         {
-                            m_incorrectOrderSound.GetComponent<AudioSource>().Play();
+                            OnIncorrectOrder.Invoke();
                             return;
                         }
                     }
@@ -259,8 +261,7 @@ namespace DirtyChefYoga
             }
 
             m_CurrentScore += m_foodScoreAmount;
-            m_yogaPeopleManager.GetComponent<CustomerController>().CorrectOrder();
-            m_correctOrderSound.GetComponent<AudioSource>().Play();
+			OnCorrectOrder.Invoke();
         }
     }
 }
