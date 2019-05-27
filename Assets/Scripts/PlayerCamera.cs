@@ -18,13 +18,13 @@ public class PlayerCamera : MonoBehaviour {
     [SerializeField] float swayYAmount = 0.5f;
 
     [Header("Movement")]
-    [SerializeField] float moveSpeed = 1f;
-    [SerializeField] float xMoveSpeed = 1f;
-    [SerializeField] Vector3 movePosition = new Vector3();
+    [SerializeField] float moveSpeed = 2.5f;
+    [SerializeField] float xMoveSpeed = 4f;
+    [SerializeField] Vector3 movePosition = new Vector3(0, 6, 7);
 
     [Header("Rotation")]
     [SerializeField] float rotationSpeed = 1f;
-    [SerializeField] Vector3 rotateOffset = new Vector3();
+    [SerializeField] Vector3 rotateOffset = new Vector3(0, 1, 0);
 
     private void Update() {
 
