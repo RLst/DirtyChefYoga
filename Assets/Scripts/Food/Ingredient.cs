@@ -56,7 +56,7 @@ namespace DirtyChefYoga
 			}
 			else {
 				rb.constraints = RigidbodyConstraints.FreezeAll;
-				col.isTrigger = true;  //Can't be affect by other physics objects
+				col.isTrigger = true;
 			}
 		}
 	}

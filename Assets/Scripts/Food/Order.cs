@@ -21,13 +21,14 @@ namespace DirtyChefYoga
 		Rigidbody rb;
 		Collider col;
 
-		protected virtual void Awake()
+		void Awake()
 		{
 			rb = GetComponent<Rigidbody>();
 			col = GetComponent<Collider>();
-		}
+			
+			// transform.localPosition = Vector3.zero;
+			transform.localRotation = Quaternion.identity;
 
-		protected virtual void Start() {
 			(col as BoxCollider).size = colliderSize;
 			col.isTrigger = true;	//Collider doesn't need to 
 			SetPhysicsActive(false);

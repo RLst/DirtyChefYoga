@@ -67,7 +67,7 @@ namespace DirtyChefYoga
             {
                 f.m_timer += Time.deltaTime;
                 f.gameObject.transform.GetChild(0).GetChild(0).GetComponent<Image>().fillAmount =  1 - (f.m_timer / f.m_expireTime);
-                Debug.Log(f.m_timer / f.m_expireTime);
+                // Debug.Log(f.m_timer / f.m_expireTime);
                 if(f.m_timer >= f.m_expireTime)
                 {
                     temp = f;
