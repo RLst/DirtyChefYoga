@@ -3,10 +3,12 @@ using UnityEngine.Events;
 
 namespace DirtyChefYoga
 {
+
 	[System.Serializable]
 	public class DCYOrderEvent : UnityEvent<Order> { }
 
-	//A pass should always submit the order upon interact
+	//Used to assemble and submit orders
+	[SelectionBase]
 	public class Pass : Station
 	{
 		[SerializeField] bool debug = true;
@@ -104,15 +106,6 @@ namespace DirtyChefYoga
 			//Unset current order
 			currentOrder = null;
 		}
-
-		// //Since the pass is a special station that doesn't use "currentItem"
-		// //It needs a special function so that items don't keep sticking to the player
-		// void TakeCurrentItem(Ingredient item)
-		// {
-		// 	currentItem = null;		//Current item should not point to anything
-		// 	item.transform.SetParent(null);		//Disown item
-
-		// }
 
 		//----- Utilities -----
 		private T CreateNewOrder<T>() where T : Order

@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 namespace DirtyChefYoga
 {
+	[SelectionBase]
     public class Fryer : CookingStation
     {
         [SerializeField] GameObject cookedFriesPrefab;

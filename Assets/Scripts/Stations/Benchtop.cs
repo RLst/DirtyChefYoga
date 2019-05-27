@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 namespace DirtyChefYoga
 {
+	[SelectionBase]
     public class Benchtop : Station
     {
         public override bool Insert(Ingredient item)

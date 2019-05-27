@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 namespace DirtyChefYoga
 {
+	[SelectionBase]
     public class Bin : Station
     {
         [SerializeField] float destroyDelay = 2f;
