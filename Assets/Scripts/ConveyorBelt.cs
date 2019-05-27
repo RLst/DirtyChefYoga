@@ -6,7 +6,7 @@ namespace DirtyChefYoga
 {
 	public class ConveyorBelt : MonoBehaviour
 	{
-		public float speed = 5f;
+		public float speed = 75f;
 		[SerializeField] Vector3 direction = new Vector3(-1, 0, 0);
 
 		//Move physics objects in direction @ speed
