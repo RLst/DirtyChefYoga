@@ -37,13 +37,13 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.03
+    value: 0.94
   threshold:
     overrideState: 1
     value: 0.83
   softKnee:
     overrideState: 1
-    value: 0.5
+    value: 0.239
   clamp:
     overrideState: 0
     value: 65472
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d65e486e4de6e5448a8fbb43dc8756a0, type: 3}
   m_Name: Grain
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -87,7 +87,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.095
+    value: 0.063
   size:
     overrideState: 1
     value: 1
@@ -147,10 +147,10 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 1
-    value: -16
+    value: 6
   tint:
-    overrideState: 1
-    value: -6
+    overrideState: 0
+    value: 1
   colorFilter:
     overrideState: 1
     value: {r: 1, g: 0.9759267, b: 0.9292453, a: 1}
@@ -165,7 +165,7 @@ MonoBehaviour:
     value: 0
   postExposure:
     overrideState: 1
-    value: -0.17
+    value: 0.2
   contrast:
     overrideState: 1
     value: 6
@@ -1432,13 +1432,13 @@ MonoBehaviour:
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
-    value: 0.178
+    value: 0.578
   smoothness:
     overrideState: 1
-    value: 1
+    value: 0.654
   roundness:
-    overrideState: 0
-    value: 1
+    overrideState: 1
+    value: 0.483
   rounded:
     overrideState: 0
     value: 0
