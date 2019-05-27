@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CustomerController : MonoBehaviour
+namespace DirtyChefYoga
 {
+	public class CustomerController : MonoBehaviour
+	{
+		public List<GameObject> customerList = new List<GameObject>();
 
-    public List<GameObject> customerList = new List<GameObject>();
-
-    public void CorrectOrder() {
-        foreach (GameObject customer in customerList) {
-            customer.GetComponent<Customer>().WinAnimation();
-        }
-    }
+		public void PlayWinAnimation()
+		{
+			foreach (GameObject customer in customerList)
+			{
+				customer.GetComponent<Customer>().WinAnimation();
+			}
+		}
+	}
 }
