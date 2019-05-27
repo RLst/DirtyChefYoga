@@ -1,6 +1,7 @@
 ﻿using UnityEngine.Assertions;
 using UnityEngine;
 using System;
+using UnityEngine.Events;
 
 namespace DirtyChefYoga
 {
@@ -10,15 +11,16 @@ namespace DirtyChefYoga
 		[SerializeField] bool debug = true;
 		[Space]
 		[SerializeField] Transform anchor;
-		public Vector3 castHalfExtents = new Vector3(0.45f, 2, 0.2f);
+		public Vector3 castHalfExtents = new Vector3(0.35f, 2.4f, 1f);
 		public float castLength = 2.4f;
-		public LayerMask interactablesMask;
+		public LayerMask interactablesMask = 9;
 
 		public bool isHoldingItem
 		{ get { return currentItem != null; } }
 		Ingredient currentItem;
 
 		private PlayerInput input;
+		[SerializeField] UnityEvent OnPickup, OnRelease;
 
 		void Start()
 		{
@@ -93,6 +95,7 @@ namespace DirtyChefYoga
 		private void ReleaseItem()
 		{
 			Debug.Log("Released ingredient!");
+			OnRelease.Invoke();			
 			currentItem = null;
 		}
 
@@ -112,7 +115,7 @@ namespace DirtyChefYoga
 		private void PickUpItem(Ingredient item)
 		{
 			Debug.Log("Picking up ingredient!");
-
+			OnPickup.Invoke();
 			//Set current item
 			currentItem = item;
 			//Move to the hand
