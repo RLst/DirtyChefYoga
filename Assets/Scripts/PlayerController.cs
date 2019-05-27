@@ -16,6 +16,9 @@ namespace DirtyChefYoga
 
         [Header("Move")]
         [SerializeField] float maxSpeed = 5f;
+		private Vector3 moveMotion;
+        private Quaternion facing;
+
 
         [Header("Dash")]
         [SerializeField] float dashSpeed = 13f;
@@ -23,18 +26,30 @@ namespace DirtyChefYoga
         private bool isDashing;
         float currentDashSpeed;
 
+
+		[Header("Gravity")]
+		private Vector3 gravityForce;
+
+		[SerializeField] float gravity = 9.81f;
+
+
         private CharacterController controller;
         private PlayerInput input;
         Camera cam;
-        private Quaternion facing;
 
-
-        void Start()
+		void Awake()
         {
             controller = GetComponent<CharacterController>();
             input = GetComponent<PlayerInput>();
             cam = FindObjectOfType<Camera>();
         }
+
+		void Start()
+		{
+			//Make him face the screen on awake
+			moveMotion = Vector3.back;
+			facing = Quaternion.LookRotation(moveMotion);
+		}
 
         void Update()
         {
@@ -68,7 +83,7 @@ namespace DirtyChefYoga
             speedTotal += currentDashSpeed;
 
             //Calculate move motion vector
-            Vector3 moveMotion = input.leftAxis.x * cam.transform.RightSansYNormalized() * speedTotal +
+            moveMotion = input.leftAxis.x * cam.transform.RightSansYNormalized() * speedTotal +
                                 input.leftAxis.y * cam.transform.ForwardSansYNormalized() * speedTotal;
             #endregion
 
@@ -80,8 +95,10 @@ namespace DirtyChefYoga
 
             #endregion
 
+			gravityForce = Vector3.down * gravity;
+
             //Combine all motion vectors and apply to player
-            Vector3 resultantMotion = moveMotion;   // + jumpMotion;
+            Vector3 resultantMotion = moveMotion + gravityForce;   // + jumpMotion;
             controller.Move(resultantMotion * Time.deltaTime);
             transform.rotation = facing;
         }
@@ -98,10 +115,3 @@ namespace DirtyChefYoga
 
     }
 }
-
-
-
-// void HandleMovement()
-// {
-//     controller.Move(new Vector3(input.move * moveSpeed * Time.deltaTime, 0, 0));
-// }
