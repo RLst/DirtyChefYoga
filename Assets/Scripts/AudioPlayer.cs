@@ -37,5 +37,19 @@ namespace DirtyChefYoga
 			}
 			Debug.LogWarning("Sound not found!");
 		}
+
+		public void RepeatSound(string soundName)
+		{
+			foreach (var s in sounds)
+			{
+				if (s.name == soundName)
+				{
+					audioSource.loop = true;
+					audioSource.Play();
+					return;
+				}
+			}
+			Debug.LogWarning("Sound not found!");
+		}
     }
 }
