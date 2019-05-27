@@ -88,7 +88,7 @@ namespace DirtyChefYoga
 				isCooked = true;
                 OnCooked.Invoke();
             }	
-            else if (currentItem.cookProgress > 2.0f && !isOvercooked)
+            else if (currentItem.cookProgress > 1.9f && !isOvercooked)
             {
 				isOvercooked = true;
                 OnOvercooked.Invoke();
