@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 6837581451330119951}
   - component: {fileID: 6837581451330890031}
   - component: {fileID: 6837581451332021231}
+  - component: {fileID: 9010478963479372362}
   m_Layer: 0
-  m_Name: M_Fridge
+  m_Name: Fridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,3 +78,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &9010478963479372362
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6837581451330024751}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0063901, y: 2.0124753, z: 1.0026218}
+  m_Center: {x: 0, y: 1.0062376, z: 0}
