@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6571148389222725733}
   - component: {fileID: 6571148389222725728}
+  - component: {fileID: 5971523538230914006}
   - component: {fileID: 6571148389222725730}
-  - component: {fileID: 6571148389222725731}
   - component: {fileID: 6571148389222725729}
+  - component: {fileID: 6571148389222725731}
   - component: {fileID: 3842021976502707566}
   - component: {fileID: 4773037543117694039}
   - component: {fileID: 7127412565448644395}
@@ -56,7 +57,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.6, z: 0}
---- !u!114 &6571148389222725730
+--- !u!114 &5971523538230914006
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,6 +65,31 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6571148389222725742}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 950331c870beb904dbc83957c992f2ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug: 0
+  useRaw: 0
+  invertXaxis: 0
+  invertYaxis: 0
+  leftAxisX: 0
+  leftAxisY: 1
+  rightAxisX: 2
+  rightAxisY: 1
+  leftTriggerAxis: 4
+  rightTriggerAxis: 5
+  useButton: 2
+  pickupButton: 0
+  dashButton: 1
+--- !u!114 &6571148389222725730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6571148389222725742}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d193a412110c2c489dc91dff4ac1261, type: 3}
   m_Name: 
@@ -80,6 +106,22 @@ MonoBehaviour:
   useKey: 106
   pickUpKey: 107
   dashKey: 108
+--- !u!114 &6571148389222725729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6571148389222725742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d474e1a15cb146340a364c95f6c1303e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug: 0
+  maxSpeed: 5
+  dashSpeed: 13
+  dashDrag: 1.5
 --- !u!114 &6571148389222725731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,9 +135,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
-  anchor: {fileID: 6571148390563952047}
-  castHalfExtents: {x: 0.2, y: 2.4, z: 1}
-  castLength: 2.4
+  handAnchor: {fileID: 6571148390563952047}
+  castHalfExtents: {x: 0.35, y: 2, z: 1}
+  castLength: 2
   interactablesMask:
     serializedVersion: 2
     m_Bits: 512
@@ -111,6 +153,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7127412565448644395}
+        m_MethodName: PlaySoundOnce
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: VegetablePickupSound
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -129,24 +182,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7127412565448644395}
+        m_MethodName: PlaySoundOnce
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: VegetablePickupSound
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &6571148389222725729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6571148389222725742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d474e1a15cb146340a364c95f6c1303e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug: 0
-  maxSpeed: 5
-  dashSpeed: 13
-  dashDrag: 1.5
 --- !u!114 &3842021976502707566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,13 +342,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6571148390563952044}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6571148390767868021}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1001 &6571148390768255731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -354,6 +402,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f069934ec4b3e7a488124f4f5a1cfd5f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: f069934ec4b3e7a488124f4f5a1cfd5f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: f069934ec4b3e7a488124f4f5a1cfd5f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: f069934ec4b3e7a488124f4f5a1cfd5f, type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: f069934ec4b3e7a488124f4f5a1cfd5f, type: 3}

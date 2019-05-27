@@ -10,7 +10,9 @@ namespace DirtyChefYoga
 	{
 		[SerializeField] bool debug = true;
 		[Space]
-		[SerializeField] Transform anchor;
+
+		[Header("Interactable Detection")]
+		[SerializeField] Transform handAnchor;
 		public Vector3 castHalfExtents = new Vector3(0.35f, 2.4f, 1f);
 		public float castLength = 2.4f;
 		public LayerMask interactablesMask = 9;
@@ -24,7 +26,7 @@ namespace DirtyChefYoga
 
 		void Start()
 		{
-			Assert.IsNotNull(anchor, "No hand transform found!");
+			Assert.IsNotNull(handAnchor, "No hand transform found!");
 			input = GetComponent<PlayerInput>();
 		}
 
@@ -119,9 +121,9 @@ namespace DirtyChefYoga
 			//Set current item
 			currentItem = item;
 			//Move to the hand
-			currentItem.transform.SetPositionAndRotation(anchor.position, anchor.rotation);
+			currentItem.transform.SetPositionAndRotation(handAnchor.position, handAnchor.rotation);
 			//Set it as a child
-			currentItem.transform.SetParent(this.anchor);
+			currentItem.transform.SetParent(this.handAnchor);
 			//Deactivate physics
 			currentItem.SetPhysicsActive(false);
 		}
@@ -181,7 +183,7 @@ namespace DirtyChefYoga
 		{
 			Gizmos.color = Color.red;
 			Transform t = transform;
-			for (float i = -castHalfExtents.y; i < castHalfExtents.y; i += 0.5f)
+			for (float i = -castHalfExtents.y; i < castHalfExtents.y; i += 0.2f)
 			{
 				Vector3 leftFrom = t.position + t.up * i - t.right * castHalfExtents.x;
 				Vector3 rightFrom = t.position + t.up * i + t.right * castHalfExtents.x;
