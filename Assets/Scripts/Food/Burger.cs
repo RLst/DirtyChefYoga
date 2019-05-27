@@ -4,34 +4,36 @@ namespace DirtyChefYoga
 {
 	public class Burger : Order
 	{
-		public float currentThickness = 0;      //Needed to stack the burger ingredients properly
+		float currentThickness = 0;      //Needed to stack the burger ingredients properly
 		[SerializeField] int maxNumberOfLayers = 10;
 
 		//Adds an ingredient onto the burger
 		//Returns whether or not the ingredient was successfully added
-		public override bool AddIngredient(Ingredient ingredient)
+		public override bool AddIngredient(Ingredient @in)
 		{
-			if (ingredient is BurgerIngredient)
+			if (@in is BurgerIngredient)
 			{
 				if (ingredients.Count < maxNumberOfLayers)
 				{
 					////Child new ingredient to the burger at the correct position according to the burger's current thickness
-					//Deactivate ingredient's physics
-					ingredient.SetPhysicsActive(false);
 					
-					//Child ingredient to burger order object
-					ingredient.transform.SetParent(this.transform);
+					//Deactivate ingredient's physics
+					@in.SetPhysicsActive(false);
 
 					//Stack ingredient at the right position and random rotation
-					var p = transform.position + transform.up * currentThickness;
-					var r = Quaternion.AngleAxis(UnityEngine.Random.Range(0, 360), transform.up);
-					ingredient.transform.SetPositionAndRotation(p, r);
+					Vector3 p = transform.position + Vector3.up * currentThickness;
+					Quaternion r = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0);
+					@in.transform.SetPositionAndRotation(p, r);
+					// Quaternion r = Quaternion.AngleAxis(UnityEngine.Random.Range(0, 360), transform.up);		//THIS WAS THE DAMN CULPRIT!!!
+
+					//Child ingredient to burger order object
+					@in.transform.SetParent(this.transform);
 
 					//Update burger's current thickness
-					currentThickness += (ingredient as BurgerIngredient).thickness;
+					currentThickness += (@in as BurgerIngredient).thickness;
 
 					//Finally add it to the array
-					ingredients.Add(ingredient);
+					ingredients.Add(@in);
 
 					return true;
 				}
