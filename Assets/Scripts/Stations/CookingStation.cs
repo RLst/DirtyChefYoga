@@ -8,7 +8,10 @@ namespace DirtyChefYoga
 {
     public abstract class CookingStation : Station
     {
-        [SerializeField] protected float cookAmount = 0.001f;
+		[SerializeField] bool debug;
+		[Space]
+
+        [SerializeField] protected float cookingPower = 0.001f;		//How fast this station can cook
         [SerializeField] protected UnityEvent OnCooked, OnOvercooked;
         public bool isCooking
         {
@@ -20,7 +23,7 @@ namespace DirtyChefYoga
 		bool isCooked = false;
 		bool isOvercooked = false;
 
-        protected virtual void Update()
+		protected virtual void Update()
         {
             HandleCooking();
         }
@@ -39,7 +42,7 @@ namespace DirtyChefYoga
             }
 
             ///Start cooking!
-			SetCurrentItem(item); 	//Setting as current item will start cooking it
+			SetCurrentItem(item); 	//Setting a current item will start cooking it
 
 			ResetCookStatus();
 
@@ -80,19 +83,35 @@ namespace DirtyChefYoga
             if (!currentItem) return;
 
             //Do cooking
-            currentItem.cookProgress += cookAmount;
+            currentItem.cookAmount += cookingPower;
 
             //Invoke events
-            if (currentItem.cookProgress > 1.0f && !isCooked)
+
+			//COOKED
+            if (currentItem.cookAmount > (int)CookStatus.Cooked && !isCooked)
             {
 				isCooked = true;
                 OnCooked.Invoke();
             }	
-            else if (currentItem.cookProgress > 1.9f && !isOvercooked)
+			//OVERCOOKED
+            else if (currentItem.cookAmount > (int)CookStatus.OverCooked && !isOvercooked)
             {
 				isOvercooked = true;
                 OnOvercooked.Invoke();
             }
         }
+
+		void OnGUI()
+		{
+			if (debug)
+			{
+				GUILayout.Label("Cooking Station of type: " + this.GetType().ToString());
+				GUILayout.Space(5);
+
+				if (!currentItem) return;
+					GUILayout.Label("Item cook amount: " + currentItem.cookAmount);
+					GUILayout.Label("Item cook status:  " + currentItem.cookStatus);
+			}
+		}
     }
 }
