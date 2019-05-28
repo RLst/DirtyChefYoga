@@ -15,6 +15,10 @@ namespace DirtyChefYoga
 	[SelectionBase]
 	public abstract class Ingredient : MonoBehaviour
 	{
+		[Tooltip("How many score points this ingredient is worth")]
+		[SerializeField] int m_scoreValue = 1;
+		public int scoreValue { get { return m_scoreValue; } }
+
 	#region COOKABLE
 		public bool isCookable {
 			get { return m_isCookable; }

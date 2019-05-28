@@ -8,7 +8,11 @@ namespace DirtyChefYoga
 	[SelectionBase]
 	public abstract class Order : MonoBehaviour
 	{
-		[SerializeField] Vector3 colliderSize = new Vector3(0.5f, 0.5f, 0.5f);	//A small flat plate for the ingredients to sit on
+		//May be required in the future if we want to be able to pick up an order
+		//A bunch of rigidbodies childed to a empty gameobject won't stick together
+		//Unless all the children have physics deactivated and the root becomes a rigidbody
+		[SerializeField] Vector3 colliderSize = new Vector3(0.5f, 0, 0.5f);		//A small flat plate for the ingredients to sit on
+		
 		protected List<Ingredient> m_ingredients = new List<Ingredient>();
 		public List<Ingredient> ingredients
 		{
@@ -16,10 +20,25 @@ namespace DirtyChefYoga
 			private set { m_ingredients = value; }
 		}
 
-		public abstract bool AddIngredient(Ingredient ingredient);
+		public int totalScoreValue 	//Returns sum of all the score values of each ingredient in this order
+		{
+			get 
+			{
+				int result = 0;
+				foreach (var i in m_ingredients)
+				{
+					result += i.scoreValue;
+				}	
+				return result;
+			}
+		}
 
 		Rigidbody rb;
 		Collider col;
+
+
+		public abstract bool AddIngredient(Ingredient ingredient);
+
 
 		void Awake()
 		{
