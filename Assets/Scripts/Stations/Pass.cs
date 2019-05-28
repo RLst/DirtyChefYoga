@@ -120,9 +120,12 @@ namespace DirtyChefYoga
 		//----- Debug -----
 		void OnGUI()
 		{
-			GUILayout.Label("Pass");
-			GUILayout.Space(5);
-			GUILayout.Label("Current Order: " + currentOrder);
+			if (debug)
+			{
+				GUILayout.Label("Pass");
+				GUILayout.Space(5);
+				GUILayout.Label("Current Order: " + currentOrder);
+			}
 		}
 	}
 }

@@ -1,7 +1,44 @@
+using System.Collections.Generic;
+
 namespace Brainstorm
 {
 
 
+	//-------------------- Ticket System ------------------------------
+	public class TicketSystem
+	{
+		//- Spawns random tickets
+		//Holds the actual tickets themselves
+		private static readonly TicketSystem _instance;
+	
+		public static TicketSystem Instance { get { return _instance; } }
+		
+		public readonly float m_asdf;
+
+	}
+
+
+	public abstract class Ticket
+	{
+		//Akin and parallel to an Order
+		List<GUIingredient> ingredients = new List<GUIingredient>();
+	}
+
+	public class BurgerTicket : Ticket
+	{
+		public int maxIngredients = 10;
+
+		List<BurgerIngredient> ingredients;
+
+
+	}
+
+	public class GUIingredient {}
+
+
+
+	//----------------------- Station-----------------------------
+#region STATIONS & INGREDIENTS
     public enum CookStatus
     {
         Uncooked = 0,
@@ -117,6 +154,7 @@ namespace Brainstorm
         [serailizefield] float m_thickness = 0.1f;
         public float thickness { get; } = 0.1f;
     }
+#endregion
 
     //-----------------------------------------
 

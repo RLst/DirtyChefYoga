@@ -73,12 +73,21 @@ namespace DirtyChefYoga
 				//If a station is found
 				if (DetectInteractable<Station>(out Station station, Color.yellow))
 				{
-					if (station.Remove(out Ingredient item))    //Try removing ingredient
+					//Try removing ingredient
+					if (station.Remove(out Ingredient ingredient))   
 					{
-						Debug.Log("Removed " + item + " from station");
-						PickUpItem(item);
+						Debug.Log("Removed " + ingredient + " from station");
+						PickUpItem(ingredient);
 						// currentItem = removedItem;
 					}
+					//NOTE: For this to work properly, benches would have to be able to take orders as well
+					//Might have to combine all ingredients into a Food class
+					// //Try removing an order
+					// else if (station.Remove(out Order order))
+					// {
+					// 	Debug.Log("Removed " + order + " from station");
+					// 	PickUpOrder(order);
+					// }
 				}
 				else
 				{

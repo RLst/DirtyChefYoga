@@ -6,9 +6,9 @@ namespace DirtyChefYoga
 	[RequireComponent(typeof(BoxCollider))]
 	[RequireComponent(typeof(Rigidbody))]
 	[SelectionBase]
-	public abstract class Order : MonoBehaviour	//aka. Order??
+	public abstract class Order : MonoBehaviour
 	{
-		[SerializeField] Vector3 colliderSize = new Vector3(0.5f, 0, 0.5f);	//A small flat plate for the ingredients to sit on
+		[SerializeField] Vector3 colliderSize = new Vector3(0.5f, 0.5f, 0.5f);	//A small flat plate for the ingredients to sit on
 		protected List<Ingredient> m_ingredients = new List<Ingredient>();
 		public List<Ingredient> ingredients
 		{
@@ -25,12 +25,14 @@ namespace DirtyChefYoga
 		{
 			rb = GetComponent<Rigidbody>();
 			col = GetComponent<Collider>();
-			
-			// transform.localPosition = Vector3.zero;
+
+			//Reset transform			
 			transform.localRotation = Quaternion.identity;
 
+			//Set collider size
 			(col as BoxCollider).size = colliderSize;
-			col.isTrigger = true;	//Collider doesn't need to 
+
+			//Make sure it is a trigger so that it doesn't react with physics objects
 			SetPhysicsActive(false);
 		}
 
@@ -41,20 +43,10 @@ namespace DirtyChefYoga
 				col.isTrigger = false;
 			}
 			else {
+				//Not affected by physics; floats in midair
 				rb.constraints = RigidbodyConstraints.FreezeAll;
-				col.isTrigger = true;  //Can't be affect by other physics objects
+				col.isTrigger = true;
 			}
 		}
 	}
 }
-
-/*Brainstorm
-Patty cooking scenario:
-1. A food is inserted into the grill
-2. The grill checks if the food consists of only ONE patty
-3. The grill cooks the patty as normal
-
-Taking the food from a station
-1. if there's a food object, then return the food object
-
-*/
