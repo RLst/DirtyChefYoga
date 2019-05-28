@@ -12,8 +12,8 @@ namespace DirtyChefYoga
 
 		void Start()
 		{
-			//Listen for OnCooked event
-			OnCooked.AddListener(SwapPotatoForFries);
+			//Callback for when the potatoes are cooked
+			OnCooked.AddListener(SwapPotatoForCookedFries);
 		}
 
         public override bool Insert(Ingredient item)
@@ -21,21 +21,31 @@ namespace DirtyChefYoga
             //FILTER: Only pototoes can be cooked
             if (item is Potato)
             {
-                //Start cooking as usual
                 return base.Insert(item);
             }
+			//And can also retake cooked fries in the event the player accidentally put it back in
+			else if (item is Fries)
+			{
+				return base.Insert(item);
+			}
 
 			//Rejected
             return false;
         }
 
-		void SwapPotatoForFries()
+		void SwapPotatoForCookedFries()
 		{
-			//Swap out potato for fries
-			var cookedFries = Instantiate(cookedFriesPrefab, anchor.position, anchor.rotation);
-			Destroy(currentItem.gameObject);
-			//Set as the current item
-			currentItem = cookedFries.GetComponent<Ingredient>();
+			//Make sure it's a potato!
+			if (currentItem is Potato)
+			{
+				//Swap out potato for fries
+				var cookedFries = Instantiate(cookedFriesPrefab, anchor.position, anchor.rotation);
+				Destroy(currentItem.gameObject);
+
+				//Set current item and set the correct cook amount
+				currentItem = cookedFries.GetComponent<Ingredient>();
+				currentItem.cookAmount = 1f;
+			}
 		}
     }
 }

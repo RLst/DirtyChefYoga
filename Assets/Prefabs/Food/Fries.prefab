@@ -75,7 +75,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac9908d621ee25489d877522c69acb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_isCookable: 0
+  m_scoreValue: 1
+  m_isCookable: 1
 --- !u!1001 &8933830631115173788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83,14 +84,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8933830631184391987}
     m_Modifications:
-    - target: {fileID: 100000, guid: 0a7bb3d67cfea7e488bc0e046528b758, type: 3}
-      propertyPath: m_Name
-      value: M_Food_Fries_003
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 0a7bb3d67cfea7e488bc0e046528b758, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0a7bb3d67cfea7e488bc0e046528b758, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -134,6 +127,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 0a7bb3d67cfea7e488bc0e046528b758, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 0a7bb3d67cfea7e488bc0e046528b758, type: 3}
+      propertyPath: m_Name
+      value: M_Food_Fries_003
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 0a7bb3d67cfea7e488bc0e046528b758, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 0a7bb3d67cfea7e488bc0e046528b758, type: 3}
       propertyPath: m_Materials.Array.data[0]
