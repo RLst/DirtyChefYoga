@@ -3,17 +3,17 @@ namespace DirtyChefYoga
 {
 	public class Patty : BurgerIngredient
 	{
-		Material mat;
-		public override float cookProgress
+		Material mat;	//Access the shader so we can change it's cooked appearance
+		public override float cookAmount
 		{
 			set
 			{
-				//Set as usual
-				m_cookProgress = value;
-				if (m_cookProgress > 2f) m_cookProgress = 2f;
+				//Set as usual (this hopefully invokes the base property's setter)
+				Debug.Log("Derived setter!");
+				base.cookAmount = value;
 
 				//Also set the shader's burn value
-				mat.SetFloat("_CookAmount", m_cookProgress);
+				mat.SetFloat("_CookAmount", m_cookAmount);
 			}
 		}
 		private void Start()
