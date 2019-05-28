@@ -8,8 +8,7 @@ namespace DirtyChefYoga
 		{
 			set
 			{
-				//Set as usual (this hopefully invokes the base property's setter)
-				Debug.Log("Derived setter!");
+				//Set as usual (this hopefully invokes the base property's setter... IT DOES!)
 				base.cookAmount = value;
 
 				//Also set the shader's burn value

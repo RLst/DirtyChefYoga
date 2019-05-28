@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace DirtyChefYoga
 {
-	public enum CookStatus {
+	public enum CookStatus
+	{
 		NA = -1,
 		UnCooked = 0,
 		Cooked = 1,
@@ -19,29 +20,46 @@ namespace DirtyChefYoga
 		[SerializeField] int m_scoreValue = 1;
 		public int scoreValue { get { return m_scoreValue; } }
 
-	#region COOKABLE
-		public bool isCookable {
+		#region COOKABILITY
+		public bool isCookable
+		{
 			get { return m_isCookable; }
-			private set { m_isCookable = value; } }
+			private set { m_isCookable = value; }
+		}
 		[SerializeField] bool m_isCookable = true;
-	#endregion
-
-	#region COOKPROGRESS
-		public virtual float cookProgress {
-			get { return m_cookProgress; }
-			set	{
-				m_cookProgress = value;
-				if (m_cookProgress > 2f) m_cookProgress = 2f; 
-			} }   //Limit to 2 max otherwise the shader doesn't like it
-		public CookStatus cookStatus {
-			get {
+		protected float m_cookAmount = 0f;
+		public virtual float cookAmount
+		{
+			get { return m_cookAmount; }
+			set
+			{
+				m_cookAmount = value;
+			}
+		}
+		public CookStatus cookStatus
+		{
+			get
+			{
 				if (isCookable)
-					return (CookStatus)Convert.ToInt32(cookProgress);
+				{
+					//Round to the lowest integer, clamp between Uncooked and Overcooked
+					//cookamount = 0.2 => 0 => CookStatus.Uncooked
+					//cookamount = 0.9 => 0 => CookStatus.Uncooked
+					//cookamount = 1.0 => 1 => CookStatus.Cooked
+					//cookamount = 1.2 => 1 => CookStatus.Cooked
+					//cookamount = 1.9 => 1 => CookStatus.Cooked
+					//cookamount = 2.0 => 2 => CookStatus.Overcooked
+					//cookamount = 2.5 => 2 => CookStatus.Overcooked
+					//cookamount = 10.0 => 2 => CookStatus.Overcooked
+					int cookedValue = Mathf.FloorToInt(cookAmount);
+					cookedValue = Mathf.Clamp(cookedValue, (int)CookStatus.UnCooked, (int)CookStatus.OverCooked);
+					return (CookStatus)cookedValue;
+				}
 				else
 					return CookStatus.NA;
-			} }
-		protected float m_cookProgress = 0f;
-	#endregion
+			}
+		}
+		#endregion
 
 		protected Rigidbody rb;
 		protected Collider col;
@@ -54,11 +72,13 @@ namespace DirtyChefYoga
 
 		public void SetPhysicsActive(bool active)
 		{
-			if (active) {
+			if (active)
+			{
 				rb.constraints = RigidbodyConstraints.None;
 				col.isTrigger = false;
 			}
-			else {
+			else
+			{
 				rb.constraints = RigidbodyConstraints.FreezeAll;
 				col.isTrigger = true;
 			}
