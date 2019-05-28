@@ -9,15 +9,15 @@ namespace DirtyChefYoga
 		Vector3 castHalfExtents;
 		float castLength;
 		LayerMask interactablesMask;
-		PlayerInteract interacter;
+		PlayerActions actioner;
 
 		void Start() 
 		{
-			interacter = GetComponent<PlayerInteract>();
+			actioner = GetComponent<PlayerActions>();
 			//Get cast settings
-			castHalfExtents = interacter.castHalfExtents;
-			castLength = interacter.castLength;
-			interactablesMask = interacter.interactablesMask;
+			castHalfExtents = actioner.castHalfExtents;
+			castLength = actioner.castLength;
+			interactablesMask = actioner.interactablesMask;
 		}
 
 		void Update() 

@@ -4,9 +4,11 @@ namespace DirtyChefYoga
 	public class AnimController : MonoBehaviour
 	{
 
-		[SerializeField] string idleAnimTag = "Idle";
-		[SerializeField] string holdAnimTag = "Holding";
-		// [SerializeField] string pickupAnimTag = "PickingUp";
+		[Header("Animation Names")]
+		[SerializeField] string idle = "Idle";
+		[SerializeField] string holding = "Holding";
+		[SerializeField] string panic = "Panic";
+		
 		Animator anim;
 
 		void Awake()
@@ -16,11 +18,11 @@ namespace DirtyChefYoga
 
 		public void OnIdle()
 		{
-			anim.SetTrigger(idleAnimTag);
+			anim.SetTrigger(idle);
 		}
 		public void OnHold()
 		{
-			anim.SetTrigger(holdAnimTag);
+			anim.SetTrigger(holding);
 		}
 	}
 }

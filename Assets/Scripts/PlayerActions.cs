@@ -6,7 +6,7 @@ using UnityEngine.Events;
 namespace DirtyChefYoga
 {
 	//Handles player interactions
-	public class PlayerInteract : MonoBehaviour
+	public class PlayerActions : MonoBehaviour
 	{
 		[SerializeField] bool debug = true;
 		[Space]
@@ -58,7 +58,6 @@ namespace DirtyChefYoga
 						Debug.Log("Successfully passed " + currentItem + " to station");
 						ReleaseItem();
 					}
-					//Rejected. Don't do anything
 				}
 				else    //If there's no station in front
 				{
@@ -102,30 +101,8 @@ namespace DirtyChefYoga
 
 		}
 
-		//Clears current item
-		private void ReleaseItem()
-		{
-			Debug.Log("Released ingredient!");
-			OnRelease.Invoke();			
-			currentItem = null;
-		}
-
-		//Drop the item
-		private void DropItem()
-		{
-			Debug.Log("Dropped ingredient!");
-
-			//Unchild
-			currentItem.transform.SetParent(null);
-			//Make it a physics object
-			currentItem.SetPhysicsActive(true);
-			//RELEASE
-			ReleaseItem();
-		}
-
 		private void PickUpItem(Ingredient item)
 		{
-			Debug.Log("Picking up ingredient!");
 			OnPickup.Invoke();
 			//Set current item
 			currentItem = item;
@@ -136,6 +113,25 @@ namespace DirtyChefYoga
 			//Deactivate physics
 			currentItem.SetPhysicsActive(false);
 		}
+
+		//Drop the item
+		public void DropItem()
+		{
+			//Unchild
+			currentItem?.transform.SetParent(null);
+			//Make it a physics object
+			currentItem?.SetPhysicsActive(true);
+			//RELEASE
+			ReleaseItem();
+		}
+
+		//Unsets currentItem
+		private void ReleaseItem()
+		{
+			OnRelease.Invoke();			
+			currentItem = null;
+		}
+
 
 		//Detect object of type T according to set cast paramters
 		public bool DetectInteractable<T>(out T hit, Color debugColor = new Color()) where T : MonoBehaviour

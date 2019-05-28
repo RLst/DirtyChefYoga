@@ -69,6 +69,8 @@ namespace DirtyChefYoga
 		[SerializeField] string moveAxis = "Horizontal";
 		public override float move => Input.GetAxis(moveAxis);
 
+
+		[Header("Actions")]
 		[SerializeField] KeyCode useKey = KeyCode.J;
 		public override bool @using => Input.GetKey(useKey);
 		public override bool used => Input.GetKeyDown(useKey);
@@ -80,5 +82,9 @@ namespace DirtyChefYoga
 		[SerializeField] KeyCode dashKey = KeyCode.L;
 		public override bool dashing => Input.GetKey(dashKey);
 		public override bool dashed => Input.GetKeyDown(dashKey);
+
+		[SerializeField] KeyCode panicKey = KeyCode.P;
+		public override bool panicking => Input.GetKey(panicKey);
+		public override bool panicked => Input.GetKeyDown(panicKey);
 	}
 }

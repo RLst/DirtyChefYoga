@@ -29,6 +29,8 @@ namespace DirtyChefYoga
         public abstract bool pickedUp { get; }
         public abstract bool dashing { get; }
         public abstract bool dashed { get; }
+		public abstract bool panicking { get; }
+		public abstract bool panicked { get; }
 
 
         void OnGUI()
