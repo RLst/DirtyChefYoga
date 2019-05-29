@@ -13,9 +13,12 @@ namespace DirtyChefYoga
 	{
 		[SerializeField] bool debug = true;
 		[Space]
-		[SerializeField] int newOrderLayer;
-		Order currentOrder = null;
+
+		[Header("Order")]
+		[SerializeField] int newOrderLayer = 9;
+		[SerializeField] float submitDelay = 0.3f;
 		[SerializeField] DCYOrderEvent OnSubmitOrder;
+		Order currentOrder = null;
 
 
 		public override bool InsertItem(Ingredient @in)
@@ -101,7 +104,7 @@ namespace DirtyChefYoga
 		private void ReleaseOrder()
 		{
 			//Delete the object!
-			Destroy(currentOrder.gameObject, 0.2f);
+			Destroy(currentOrder.gameObject, submitDelay);
 
 			//Unset current order
 			currentOrder = null;
@@ -130,24 +133,3 @@ namespace DirtyChefYoga
 	}
 }
 
-
-// newBurgerObject.transform.SetPositionAndRotation(workSurface.position, workSurface.rotation);
-// 						newBurgerObject.layer = newOrderLayer;
-// 						var newBurger = newBurgerObject.AddComponent<Burger>();
-// ingredient.SetPhysicsActive(false);
-// 						ingredient.transform.position = newBurger.transform.position + Vector3.up* newBurger.currentThickness;
-// ingredient.transform.SetParent(newBurger.transform);
-// 						newBurger.currentThickness += (ingredient as BurgerIngredient).thickness;
-// 						newBurger.ingredients.Add(ingredient);
-
-/* Brainstorm:
-- Upon insert:
-	- if the item passed in is a bottom bun
-		- create/instantiate a empty burger object and start stacking
-	- if the item passed in is a top bun
-		- try submit
-			- if the submit is invalid then dump the food object
-	- if the item passed in are chips
-		- create/instantiate a empty frenchFries object
-	- don't except anything else
-*/
