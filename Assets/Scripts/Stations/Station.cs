@@ -17,14 +17,14 @@ namespace DirtyChefYoga
 		/// </summary>
 		/// <param name="item">The ingredient to pass in</param>
 		/// <returns>Returnes true if item was successfully inserted</returns>
-		public abstract bool Insert(Ingredient item);
+		public abstract bool InsertItem(Ingredient item);
 
 		/// <summary>
 		/// Pop out ingredient from station
 		/// </summary>
 		/// <param name="item">Ingredient that will be returned</param>
 		/// <returns>Returns true if item was successfully removed</returns>
-		public abstract bool Remove(out Ingredient item);
+		public abstract bool RemoveItem(out Ingredient item);
 
 		public virtual void SetCurrentItem(Ingredient item)
 		{

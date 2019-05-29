@@ -6,7 +6,7 @@ namespace DirtyChefYoga
     {
         [SerializeField] float destroyDelay = 2f;
 
-        public override bool Insert(Ingredient item) {
+        public override bool InsertItem(Ingredient item) {
 			//Since a bin can always take items, no need to set it as the current item
 
 			//Disown item 
@@ -24,7 +24,7 @@ namespace DirtyChefYoga
             return true;
         }
 
-		public override bool Remove(out Ingredient @out)
+		public override bool RemoveItem(out Ingredient @out)
 		{
 			//Once you chuck something in the bin it CANNOT be removed! (Inaccessible sire!)
 			@out = null;

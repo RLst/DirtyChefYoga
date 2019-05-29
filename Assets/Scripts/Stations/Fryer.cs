@@ -16,17 +16,17 @@ namespace DirtyChefYoga
 			OnCooked.AddListener(SwapPotatoForCookedFries);
 		}
 
-        public override bool Insert(Ingredient item)
+        public override bool InsertItem(Ingredient item)
         {
             //FILTER: Only pototoes can be cooked
             if (item is Potato)
             {
-                return base.Insert(item);
+                return base.InsertItem(item);
             }
 			//And can also retake cooked fries in the event the player accidentally put it back in
 			else if (item is Fries)
 			{
-				return base.Insert(item);
+				return base.InsertItem(item);
 			}
 
 			//Rejected

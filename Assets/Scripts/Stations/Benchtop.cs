@@ -4,7 +4,7 @@ namespace DirtyChefYoga
 	[SelectionBase]
     public class Benchtop : Station
     {
-        public override bool Insert(Ingredient item)
+        public override bool InsertItem(Ingredient item)
         {
             //Can't place on top if there's already another item
             if (currentItem) return false;
@@ -17,7 +17,7 @@ namespace DirtyChefYoga
             return true;
         }
 
-        public override bool Remove(out Ingredient @out)
+        public override bool RemoveItem(out Ingredient @out)
         {
             //If there's no ingredient, reject call
             if (!currentItem)

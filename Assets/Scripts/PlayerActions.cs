@@ -6,7 +6,7 @@ using UnityEngine.Events;
 namespace DirtyChefYoga
 {
 	//Handles player interactions
-	public class PlayerActions : MonoBehaviour
+	public partial class PlayerActions : MonoBehaviour
 	{
 		[SerializeField] bool debug = true;
 		[Space]
@@ -18,7 +18,7 @@ namespace DirtyChefYoga
 		public LayerMask interactablesMask = 9;
 
 		public bool isHoldingItem
-		{ get { return currentItem != null; } }
+			{ get { return currentItem != null; } }
 		Ingredient currentItem;
 
 		private PlayerInput input;
@@ -33,6 +33,7 @@ namespace DirtyChefYoga
 		void Update()
 		{
 			HandleInteractions();
+			HandleHighlights();
 		}
 
 		void LateUpdate()
@@ -53,7 +54,7 @@ namespace DirtyChefYoga
 				//If there's a station in front of you then interact with it using the ingredient
 				if (DetectInteractable<Station>(out Station station, Color.yellow))
 				{
-					if (station.Insert(currentItem))    //Try passing into the station
+					if (station.InsertItem(currentItem))    //Try passing into the station
 					{
 						Debug.Log("Successfully passed " + currentItem + " to station");
 						ReleaseItem();
@@ -73,11 +74,10 @@ namespace DirtyChefYoga
 				if (DetectInteractable<Station>(out Station station, Color.yellow))
 				{
 					//Try removing ingredient
-					if (station.Remove(out Ingredient ingredient))   
+					if (station.RemoveItem(out Ingredient ingredient))   
 					{
 						Debug.Log("Removed " + ingredient + " from station");
 						PickUpItem(ingredient);
-						// currentItem = removedItem;
 					}
 					//NOTE: For this to work properly, benches would have to be able to take orders as well
 					//Might have to combine all ingredients into a Food class
@@ -148,7 +148,7 @@ namespace DirtyChefYoga
 					//If any of them are of type T
 					if (hit is T)
 					{
-						DrawDebugLineArray(0.25f, debugColor);
+						DrawDebugLineArray(0.3f, debugColor);
 						//Return true and out T
 						return true;
 					}
@@ -182,6 +182,8 @@ namespace DirtyChefYoga
 			{
 				GUILayout.Label("Holding a " + currentItem.name);
 			}
+			
+			if (currentHighlightObject) GUILayout.Label("Current Highlighted Object + " + currentHighlightObject);
 		}
 
 		void OnDrawGizmos()
@@ -211,6 +213,8 @@ namespace DirtyChefYoga
 			{
 				Debug.Log("Detecting station!: " + station);
 			}
+
+
 
 		}
 	}

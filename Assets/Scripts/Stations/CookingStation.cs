@@ -28,7 +28,7 @@ namespace DirtyChefYoga
             HandleCooking();
         }
 
-        public override bool Insert(Ingredient item)
+        public override bool InsertItem(Ingredient item)
         {
             //Already cooking
             if (isCooking) {
@@ -57,7 +57,7 @@ namespace DirtyChefYoga
 			isOvercooked = false;
 		}
 
-		public override bool Remove(out Ingredient @out)
+		public override bool RemoveItem(out Ingredient @out)
 		{
 			//If there is something cooking, then release it and stop cooking
 			if (isCooking)

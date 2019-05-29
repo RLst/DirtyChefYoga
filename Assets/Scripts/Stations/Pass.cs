@@ -18,7 +18,7 @@ namespace DirtyChefYoga
 		[SerializeField] DCYOrderEvent OnSubmitOrder;
 
 
-		public override bool Insert(Ingredient @in)
+		public override bool InsertItem(Ingredient @in)
 		{
 			//If there's currently no order on the pass
 			if (!currentOrder)
@@ -80,7 +80,7 @@ namespace DirtyChefYoga
 			}
 		}
 
-		public override bool Remove(out Ingredient @out)
+		public override bool RemoveItem(out Ingredient @out)
 		{
 			Debug.LogWarning("Cannot remove anything from pass!");
 

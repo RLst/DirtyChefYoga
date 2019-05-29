@@ -4,12 +4,12 @@ namespace DirtyChefYoga
 	[SelectionBase]
     public class Grill : CookingStation
     {
-        public override bool Insert(Ingredient item)
+        public override bool InsertItem(Ingredient item)
         {
 			//FILTER: Only accept patties
             if (item is Patty)
             {
-                return base.Insert(item);
+                return base.InsertItem(item);
             }
 
 			//Rejected
