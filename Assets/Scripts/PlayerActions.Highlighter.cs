@@ -4,10 +4,7 @@ namespace DirtyChefYoga
 	//Continually find and highlight interactable items in front of player
 	public partial class PlayerActions : MonoBehaviour
 	{
-		[Header("Stations")]
-		[SerializeField] float emisionOn = 1f, emissionOff = 0f;
-
-		[Header("Ingredients")]
+		[Header("Debug Look Highlighting")]
 		[SerializeField] Color emissiveColor;
 		Color noEmissiveColor = Color.black;
 
@@ -15,6 +12,8 @@ namespace DirtyChefYoga
 
 		void HandleHighlights()
 		{
+			if (!debug) return;
+
 			//For debugging only. Doesn't work well. Buggy. Who cares
 			if (isHoldingItem)
 			{
