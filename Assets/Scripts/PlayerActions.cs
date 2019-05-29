@@ -2,6 +2,8 @@
 using UnityEngine;
 using System;
 using UnityEngine.Events;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DirtyChefYoga
 {
@@ -18,7 +20,7 @@ namespace DirtyChefYoga
 		public LayerMask interactablesMask = 9;
 
 		public bool isHoldingItem
-			{ get { return currentItem != null; } }
+		{ get { return currentItem != null; } }
 		Ingredient currentItem;
 
 		private PlayerInput input;
@@ -33,12 +35,12 @@ namespace DirtyChefYoga
 		void Update()
 		{
 			HandleInteractions();
-			HandleHighlights();
+			if (debug) HandleHighlights();
 		}
 
 		void LateUpdate()
 		{
-			db();
+			if (debug) db();
 		}
 
 
@@ -60,10 +62,9 @@ namespace DirtyChefYoga
 						ReleaseItem();
 					}
 				}
-				else    //If there's no station in front
+				else
 				{
 					Debug.Log("Station not found. Dropping " + currentItem);
-					//The drop the item
 					DropItem();
 				}
 			}
@@ -74,10 +75,10 @@ namespace DirtyChefYoga
 				if (DetectInteractable<Station>(out Station station, Color.yellow))
 				{
 					//Try removing ingredient
-					if (station.RemoveItem(out Ingredient ingredient))   
+					if (station.RemoveItem(out Ingredient item))
 					{
-						Debug.Log("Removed " + ingredient + " from station");
-						PickUpItem(ingredient);
+						Debug.Log("Removed " + item + " from station");
+						PickUpItem(item);
 					}
 					//NOTE: For this to work properly, benches would have to be able to take orders as well
 					//Might have to combine all ingredients into a Food class
@@ -98,7 +99,6 @@ namespace DirtyChefYoga
 					}
 				}
 			}
-
 		}
 
 		private void PickUpItem(Ingredient item)
@@ -128,7 +128,7 @@ namespace DirtyChefYoga
 		//Unsets currentItem
 		private void ReleaseItem()
 		{
-			OnRelease.Invoke();			
+			OnRelease.Invoke();
 			currentItem = null;
 		}
 
@@ -136,27 +136,100 @@ namespace DirtyChefYoga
 		//Detect object of type T according to set cast paramters
 		public bool DetectInteractable<T>(out T hit, Color debugColor = new Color()) where T : MonoBehaviour
 		{
-			var hits = Physics.OverlapBox(transform.position + transform.forward * castLength * 0.5f, castHalfExtents, transform.rotation, interactablesMask);
+			Collider[] hits = Physics.OverlapBox(transform.position + transform.forward * castLength * 0.5f, castHalfExtents, transform.rotation, interactablesMask);
 
 			//If something hit
 			if (hits.Length > 0)
 			{
-				//Loop through all hits
-				foreach (var h in hits)
-				{
-					hit = h.GetComponent<T>();
-					//If any of them are of type T
-					if (hit is T)
-					{
-						DrawDebugLineArray(0.3f, debugColor);
-						//Return true and out T
-						return true;
-					}
-				}
+				var lHits = new List<Collider>(hits);
+				Debug.Log("Initial");
+				printListOfHits(lHits);
+
+				//Filter out only objects of type T
+				lHits.RemoveAll(col => col.GetComponent<T>());
+				Debug.Log("Filtered");
+				printListOfHits(lHits);
+
+				//Sort from lowest to greatest alignment. Last element will be most aligned
+				lHits.Sort((x, y) =>
+				   Vector3.Dot(Vector3.Normalize(x.transform.position - transform.position), transform.forward).        //Does it need to be normalized?
+				   CompareTo(Vector3.Dot(Vector3.Normalize(y.transform.position - transform.position), transform.forward)));
+				Debug.Log("Sorted");
+				printListOfHits(lHits);
+
+				//Return most aligned element (last)
+				hit = lHits[lHits.Count-1].GetComponent<T>();
+				Debug.Log("MOST ALIGNED HIT: " + lHits[lHits.Count - 1]);
+
+				//SUCCESS!
+				return true;
+
+				/////////////////////////////
+				
+				// List<Collider> listTHits = new List<Collider>();
+				// //Get all hits of type T
+				// foreach (var h in hits)
+				// {
+				// 	if (h is T)
+				// 	{
+				// 		listTHits.Add(h);
+				// 	}
+				// }
+
+				// var arrCorrectHits = listTHits.ToArray();
+				// Array.Sort(arrCorrectHits, (x, y) => x.transform.position));
+
+				// float highestDot = -1;
+				// int mostAlignedElement;
+				// var facing = transform.forward;
+
+				// for (int i = 0; i < listTHits.Count; i++)
+				// {
+				// 	var dot = Vector3.Dot(listTHits[i].transform.position - transform.position, facing);
+				// 	Debug.Log("Dot value: " + dot);
+
+				// 	//Is this the highest dot value so far?
+				// 	if (dot > highestDot)
+				// 	{
+				// 		highestDot = dot;   //Set new highest dot
+				// 		mostAlignedElement = i;
+				// 	}
+				// }
+
+				// Debug.Log("Highest Dot: " + highestDot);
+				// Debug.Log("Most Dot: " + highestDot);
+
+				// foreach (var h in listTHits)
+				// {
+				// 	var dot = Vector3.Dot(transform.position - h.transform.position, facing);
+				// }	
+
+				//////////////////////////
+				
+				// foreach (var h in hits)
+				// {
+				// 	hit = h.GetComponent<T>();
+
+				// 	//If any of them are of type T
+				// 	if (hit is T)
+				// 	{
+				// 		DrawDebugLineArray(0.3f, debugColor);
+				// 		//Return true and out T
+				// 		return true;
+				// 	}
+				// }
 			}
 			//Nothing found
 			hit = null;
 			return false;
+
+			void printListOfHits(List<Collider> listOfHits)
+			{
+				foreach (var h in listOfHits)
+				{
+					Debug.Log(">>> " + h);
+				}
+			}
 		}
 
 		void DrawDebugLineArray(float arraySpacing, Color color)
@@ -182,7 +255,7 @@ namespace DirtyChefYoga
 			{
 				GUILayout.Label("Holding a " + currentItem.name);
 			}
-			
+
 			if (currentHighlightObject) GUILayout.Label("Current Highlighted Object + " + currentHighlightObject);
 		}
 
@@ -203,8 +276,6 @@ namespace DirtyChefYoga
 
 		private void db()
 		{
-			if (!debug) return;
-
 			if (DetectInteractable<Ingredient>(out Ingredient ingredient))
 			{
 				Debug.Log("Detecting ingredient!: " + ingredient);
@@ -213,9 +284,15 @@ namespace DirtyChefYoga
 			{
 				Debug.Log("Detecting station!: " + station);
 			}
-
-
-
 		}
 	}
 }
+
+// class MostCentreOfView : IComparer<Collider>
+// {
+// 	public int Compare(Collider x, Collider y)
+// 	{
+// 		var dotX = x.transform.position - 
+// 		throw new NotImplementedException();
+// 	}
+// }

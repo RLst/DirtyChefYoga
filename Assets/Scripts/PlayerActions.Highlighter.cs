@@ -12,8 +12,6 @@ namespace DirtyChefYoga
 
 		void HandleHighlights()
 		{
-			if (!debug) return;
-
 			//For debugging only. Doesn't work well. Buggy. Who cares
 			if (isHoldingItem)
 			{
