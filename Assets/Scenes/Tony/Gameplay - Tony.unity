@@ -20522,9 +20522,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_burgerChance: 70
-  m_spawnTime: 10
-  m_ticketExpireTimer: 60
-  m_maxNumberOfTickets: 5
+  m_spawnTime: 60
+  m_ticketExpireTimer: 120
+  m_maxNumberOfTickets: 3
   m_foodScoreAmount: 10
   m_CurrentScore: 0
   m_scoreCanvas: {fileID: 1528767136}

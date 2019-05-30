@@ -143,8 +143,8 @@ namespace DirtyChefYoga
 				Debug.Log("Initial");
 				printListOfHits(lHits);
 
-				//Filter out only objects of type T
-				lHits.RemoveAll(col => col.GetComponent<T>());
+				//Remove objects that aren't of target type T
+				lHits.RemoveAll(col => !col.GetComponent<T>());
 				Debug.Log("Filtered");
 				printListOfHits(lHits);
 
@@ -164,68 +164,15 @@ namespace DirtyChefYoga
 					//SUCCESS!
 					return true;
 				}
-
-				/////////////////////////////
-
-				// List<Collider> listTHits = new List<Collider>();
-				// //Get all hits of type T
-				// foreach (var h in hits)
-				// {
-				// 	if (h is T)
-				// 	{
-				// 		listTHits.Add(h);
-				// 	}
-				// }
-
-				// var arrCorrectHits = listTHits.ToArray();
-				// Array.Sort(arrCorrectHits, (x, y) => x.transform.position));
-
-				// float highestDot = -1;
-				// int mostAlignedElement;
-				// var facing = transform.forward;
-
-				// for (int i = 0; i < listTHits.Count; i++)
-				// {
-				// 	var dot = Vector3.Dot(listTHits[i].transform.position - transform.position, facing);
-				// 	Debug.Log("Dot value: " + dot);
-
-				// 	//Is this the highest dot value so far?
-				// 	if (dot > highestDot)
-				// 	{
-				// 		highestDot = dot;   //Set new highest dot
-				// 		mostAlignedElement = i;
-				// 	}
-				// }
-
-				// Debug.Log("Highest Dot: " + highestDot);
-				// Debug.Log("Most Dot: " + highestDot);
-
-				// foreach (var h in listTHits)
-				// {
-				// 	var dot = Vector3.Dot(transform.position - h.transform.position, facing);
-				// }	
-
-				//////////////////////////
-
-				// foreach (var h in hits)
-				// {
-				// 	hit = h.GetComponent<T>();
-
-				// 	//If any of them are of type T
-				// 	if (hit is T)
-				// 	{
-				// 		DrawDebugLineArray(0.3f, debugColor);
-				// 		//Return true and out T
-				// 		return true;
-				// 	}
-				// }
 			}
 			//Nothing found
+			Debug.Log("Nothing Found");
 			hit = null;
 			return false;
 
 			void printListOfHits(List<Collider> listOfHits)
 			{
+				Debug.Log("Element count: " + listOfHits.Count);
 				foreach (var h in listOfHits)
 				{
 					Debug.Log(">>> " + h);
