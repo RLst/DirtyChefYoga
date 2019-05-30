@@ -1,9 +1,9 @@
-﻿using UnityEngine.Assertions;
-using UnityEngine;
-using System;
-using UnityEngine.Events;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
+using UnityEngine.Assertions;
+using UnityEngine.Events;
 
 namespace DirtyChefYoga
 {
@@ -19,8 +19,7 @@ namespace DirtyChefYoga
 		public float castLength = 2.4f;
 		public LayerMask interactablesMask = 9;
 
-		public bool isHoldingItem
-		{ get { return currentItem != null; } }
+		public bool isHoldingItem { get { return currentItem != null; } }
 		Ingredient currentItem;
 
 		private PlayerInput input;
@@ -43,7 +42,6 @@ namespace DirtyChefYoga
 			if (debug) db();
 		}
 
-
 		private void HandleInteractions()
 		{
 			if (!input.pickedUp) return;
@@ -56,7 +54,7 @@ namespace DirtyChefYoga
 				//If there's a station in front of you then interact with it using the ingredient
 				if (DetectInteractable<Station>(out Station station, Color.yellow))
 				{
-					if (station.InsertItem(currentItem))    //Try passing into the station
+					if (station.InsertItem(currentItem)) //Try passing into the station
 					{
 						Debug.Log("Successfully passed " + currentItem + " to station");
 						ReleaseItem();
@@ -75,6 +73,7 @@ namespace DirtyChefYoga
 				if (DetectInteractable<Station>(out Station station, Color.yellow))
 				{
 					//Try removing ingredient
+					if (!station) Debug.Log("Station is null");
 					if (station.RemoveItem(out Ingredient item))
 					{
 						Debug.Log("Removed " + item + " from station");
@@ -132,7 +131,6 @@ namespace DirtyChefYoga
 			currentItem = null;
 		}
 
-
 		//Detect object of type T according to set cast paramters
 		public bool DetectInteractable<T>(out T hit, Color debugColor = new Color()) where T : MonoBehaviour
 		{
@@ -150,22 +148,25 @@ namespace DirtyChefYoga
 				Debug.Log("Filtered");
 				printListOfHits(lHits);
 
-				//Sort from lowest to greatest alignment. Last element will be most aligned
-				lHits.Sort((x, y) =>
-				   Vector3.Dot(Vector3.Normalize(x.transform.position - transform.position), transform.forward).        //Does it need to be normalized?
-				   CompareTo(Vector3.Dot(Vector3.Normalize(y.transform.position - transform.position), transform.forward)));
-				Debug.Log("Sorted");
-				printListOfHits(lHits);
+				if (lHits.Count > 0)
+				{
+					//Sort from lowest to greatest alignment. Last element will be most aligned
+					lHits.Sort((x, y) =>
+						Vector3.Dot(Vector3.Normalize(x.transform.position - transform.position), transform.forward). //Does it need to be normalized?
+						CompareTo(Vector3.Dot(Vector3.Normalize(y.transform.position - transform.position), transform.forward)));
+					Debug.Log("Sorted");
+					printListOfHits(lHits);
 
-				//Return most aligned element (last)
-				hit = lHits[lHits.Count-1].GetComponent<T>();
-				Debug.Log("MOST ALIGNED HIT: " + lHits[lHits.Count - 1]);
+					//Return most aligned element (last)
+					hit = lHits[lHits.Count - 1].GetComponent<T>();
+					Debug.Log("MOST ALIGNED HIT: " + lHits[lHits.Count - 1]);
 
-				//SUCCESS!
-				return true;
+					//SUCCESS!
+					return true;
+				}
 
 				/////////////////////////////
-				
+
 				// List<Collider> listTHits = new List<Collider>();
 				// //Get all hits of type T
 				// foreach (var h in hits)
@@ -205,7 +206,7 @@ namespace DirtyChefYoga
 				// }	
 
 				//////////////////////////
-				
+
 				// foreach (var h in hits)
 				// {
 				// 	hit = h.GetComponent<T>();
