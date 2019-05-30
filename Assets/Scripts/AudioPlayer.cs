@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace DirtyChefYoga
 {
-    [RequireComponent(typeof(AudioSettings))]
 	[RequireComponent(typeof(AudioSource))]
     public class AudioPlayer : MonoBehaviour
     {
@@ -45,6 +44,7 @@ namespace DirtyChefYoga
 				if (s.name == soundName)
 				{
 					audioSource.loop = true;
+					audioSource.clip = s;
 					audioSource.Play();
 					return;
 				}
