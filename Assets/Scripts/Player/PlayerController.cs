@@ -28,9 +28,8 @@ namespace DirtyChefYoga
 
 
 		[Header("Gravity")]
-		private Vector3 gravityForce;
-
 		[SerializeField] float gravity = 9.81f;
+		private Vector3 gravityForce;
 
 
         private CharacterController controller;

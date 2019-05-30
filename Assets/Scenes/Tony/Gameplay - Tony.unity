@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -17345,7 +17345,7 @@ Transform:
   - {fileID: 569038122}
   - {fileID: 594643205}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1654138953
 MonoBehaviour:
@@ -21511,7 +21511,6 @@ MonoBehaviour:
   m_spawnTime: 20
   m_ticketExpireTimer: 120
   m_maxNumberOfTickets: 5
-  m_foodScoreAmount: 0
   m_CurrentScore: 0
   m_scoreCanvas: {fileID: 1528767136}
   m_ticketPanel: {fileID: 24570594}
@@ -22237,7 +22236,7 @@ PrefabInstance:
     - target: {fileID: 3962034555999822895, guid: 4a57ec060a18b654fba01af7c2e43594,
         type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 3962034555999822895, guid: 4a57ec060a18b654fba01af7c2e43594,
         type: 3}
