@@ -9,7 +9,7 @@ namespace DirtyChefYoga
 {
     public class TicketSystem : MonoBehaviour
     {
-        [Range(0,100)]
+        [Range(0, 100)]
         public float m_burgerChance;
 
         public float m_spawnTime = 10.0f;
@@ -27,7 +27,7 @@ namespace DirtyChefYoga
 
 
         public GameObject m_ticketPanel;
-        public List<FoodTicket> m_foodItems;
+        public List<FoodTicket> tickets;
 
         public GameObject m_burgerTicketPrefab;
         public GameObject m_friesTicketPrefab;
@@ -41,7 +41,7 @@ namespace DirtyChefYoga
 
         public GameObject m_friesPrefab;
 
-		[SerializeField] UnityEvent OnIncorrectOrder, OnCorrectOrder;
+        [SerializeField] UnityEvent OnIncorrectOrder, OnCorrectOrder;
 
         private void Awake()
         {
@@ -63,12 +63,12 @@ namespace DirtyChefYoga
             }
 
             FoodTicket temp = null;
-            foreach(FoodTicket f in m_foodItems)
+            foreach (FoodTicket f in tickets)
             {
                 f.m_timer += Time.deltaTime;
-                f.gameObject.transform.GetChild(0).GetChild(0).GetComponent<Image>().fillAmount =  1 - (f.m_timer / f.m_expireTime);
+                f.gameObject.transform.GetChild(0).GetChild(0).GetComponent<Image>().fillAmount = 1 - (f.m_timer / f.m_expireTime);
                 // Debug.Log(f.m_timer / f.m_expireTime);
-                if(f.m_timer >= f.m_expireTime)
+                if (f.m_timer >= f.m_expireTime)
                 {
                     temp = f;
                 }
@@ -81,7 +81,7 @@ namespace DirtyChefYoga
 
         public void SpawnTicket()
         {
-            if(m_foodItems.Count >= m_maxNumberOfTickets)
+            if (tickets.Count >= m_maxNumberOfTickets)
             {
                 return;
             }
@@ -92,21 +92,21 @@ namespace DirtyChefYoga
             {
                 newTicket = Instantiate(m_burgerTicketPrefab, m_ticketPanel.transform);      //adds a new ticket
 
-                m_foodItems.Add(newTicket.AddComponent<BurgerTicket>());        //adds the burger component to the ticket 
-                m_foodItems[m_foodItems.Count-1].m_expireTime = m_ticketExpireTimer;
-                
+                tickets.Add(newTicket.AddComponent<BurgerTicket>());        //adds the burger component to the ticket 
+                tickets[tickets.Count - 1].m_expireTime = m_ticketExpireTimer;
+
                 //calculate ticket place in canvas
-                newTicket.transform.position = new Vector3((newTicket.transform.localScale.x * newTicket.GetComponent<RectTransform>().rect.width + 3) * m_foodItems.Count, newTicket.transform.position.y, newTicket.transform.position.z);
+                newTicket.transform.position = new Vector3((newTicket.transform.localScale.x * newTicket.GetComponent<RectTransform>().rect.width + 3) * tickets.Count, newTicket.transform.position.y, newTicket.transform.position.z);
 
-                m_foodItems[m_foodItems.Count - 1].MakeFood();      //sets up the burger
+                tickets[tickets.Count - 1].MakeFood();      //sets up the burger
 
-                FoodTicket food = m_foodItems[m_foodItems.Count - 1];
+                FoodTicket food = tickets[tickets.Count - 1];
 
                 //loops through all children except first (first is timer) to add burger component image to ticket in canvas
-                for (int i = ((BurgerTicket)food).m_burgerPieces.Length - 1; i >= 0; i--)
+                for (int i = ((BurgerTicket)food).fillings.Length - 1; i >= 0; i--)
                 {
 
-                    switch (((BurgerTicket)food).m_burgerPieces[i])     //adds a sprite of the burger to the slip
+                    switch (((BurgerTicket)food).fillings[i])     //adds a sprite of the burger to the slip
                     {
                         case BurgerComponent.BOTTOMBUN:
                             Instantiate(m_bottomBunPrefab, food.transform.GetChild(i + 1));
@@ -133,15 +133,15 @@ namespace DirtyChefYoga
             {
                 newTicket = Instantiate(m_friesTicketPrefab, m_ticketPanel.transform);       //adds new ticket
 
-                m_foodItems.Add(newTicket.AddComponent<FryTicket>());       //adds fry component to ticket
-                m_foodItems[m_foodItems.Count - 1].m_expireTime = m_ticketExpireTimer;
+                tickets.Add(newTicket.AddComponent<FryTicket>());       //adds fry component to ticket
+                tickets[tickets.Count - 1].m_expireTime = m_ticketExpireTimer;
 
                 //calculate ticket place
-                newTicket.transform.position = new Vector3((newTicket.transform.localScale.x * newTicket.GetComponent<RectTransform>().rect.width + 3) * m_foodItems.Count, newTicket.transform.position.y, newTicket.transform.position.z);
+                newTicket.transform.position = new Vector3((newTicket.transform.localScale.x * newTicket.GetComponent<RectTransform>().rect.width + 3) * tickets.Count, newTicket.transform.position.y, newTicket.transform.position.z);
 
-                m_foodItems[m_foodItems.Count - 1].MakeFood();      //sets up the fries (im pretty sure this function is actually just empty for now, might get improved for use of sauces)
+                tickets[tickets.Count - 1].MakeFood();      //sets up the fries (im pretty sure this function is actually just empty for now, might get improved for use of sauces)
 
-                FoodTicket food = m_foodItems[m_foodItems.Count - 1];
+                FoodTicket food = tickets[tickets.Count - 1];
 
                 Instantiate(m_friesPrefab, food.transform.GetChild(1));
 
@@ -150,8 +150,8 @@ namespace DirtyChefYoga
 
         public void RemoveTicket(int ticket = 0)
         {
-            GameObject temp = m_foodItems[ticket].gameObject;
-            m_foodItems.RemoveAt(ticket);
+            GameObject temp = tickets[ticket].gameObject;
+            tickets.RemoveAt(ticket);
             Destroy(temp);
 
             //update positions
@@ -160,7 +160,7 @@ namespace DirtyChefYoga
 
         public void RemoveTicket(FoodTicket foodTicket)
         {
-            m_foodItems.Remove(foodTicket);
+            tickets.Remove(foodTicket);
             Destroy(foodTicket.gameObject);
 
             //update positions
@@ -169,100 +169,137 @@ namespace DirtyChefYoga
 
         public void UpdatePositions()
         {
-            for (int i = 0; i < m_foodItems.Count; i++)
+            for (int i = 0; i < tickets.Count; i++)
             {
-                m_foodItems[i].transform.position = new Vector3((m_foodItems[i].transform.localScale.x * m_foodItems[i].GetComponent<RectTransform>().rect.width + 3) * (i + 1), m_foodItems[i].transform.position.y, m_foodItems[i].transform.position.z);
+                tickets[i].transform.position = new Vector3((tickets[i].transform.localScale.x * tickets[i].GetComponent<RectTransform>().rect.width + 3) * (i + 1), tickets[i].transform.position.y, tickets[i].transform.position.z);
             }
         }
 
-        public void CheckTicket(Order itemToCheck)
+        public void CheckTicket(Order order)
         {
+            /* Pseudocode
+            Incorrect order if there aren't any current tickets
+
+            for each ticket
+                if it's a fryTicket
+                    Check order are french fries && has only one ingredient && that one ingredient is a fries item
+                        CorrectOrderFound(order)
+                
+                else if it's a burger ticket
+                    check that the burger order
+                    for each burger
+
+
+            CorrectOrderFound
+
+
+            if ticket found
+            
+             */
+
             //check if fries or burger 
             //if fries check if cooked
             //if burger check the ingredients
             //also check to make sure the arent any more pieces to the burger ticket
 
-            if(m_foodItems.Count == 0)      //error check for no tickets available currently
+            if (tickets.Count == 0)      //error check for no tickets available currently
             {
-				OnIncorrectOrder.Invoke();
-                // m_incorrectOrderSound.GetComponent<AudioSource>().Play();
+                OnIncorrectOrder.Invoke();
                 return;
             }
 
-            if(m_foodItems[0].GetType() == typeof(FryTicket))
+            for (int t = 0; t < tickets.Count; t++)
             {
-                if(!(itemToCheck.ingredients.Count == 1 && itemToCheck.ingredients[0].GetType() == typeof(Fries)))
+                //Fries
+                if (tickets[t] is FryTicket)
                 {
-					OnIncorrectOrder.Invoke();
-                    // m_incorrectOrderSound.GetComponent<AudioSource>().Play();
-                    return;
-                }
-            }
-            else
-            {
-                if(itemToCheck.ingredients.Count != ((BurgerTicket)m_foodItems[0]).m_burgerPieces.Length)       //if there are more or less burger ingredients than in the ticket it is wrong
-                {
-                    OnIncorrectOrder.Invoke();
-                    return;
-                }
-                for (int i = 0; i < itemToCheck.ingredients.Count; i++)
-                {
-                    //TODO: check to see if there are more ingredients than the ticket supports then return to stop any errors
-                    //check to see if the burger and ticket ingredient isnt the same
-                    if (itemToCheck.ingredients[i] is BottomBun)
+                    if (!(order.ingredients.Count == 1 && order.ingredients[0] is Fries))
                     {
-                        if (!(((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.BOTTOMBUN))
-                        {
-                            OnIncorrectOrder.Invoke();
-                            return;
-                        }
-                    }
-                    else if (itemToCheck.ingredients[i] is Patty && itemToCheck.ingredients[i].cookStatus == CookStatus.Cooked)	//Make sure patty is cooked properly
-                    {
-                        if (!(((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.PATTY))
-                        {
-                            OnIncorrectOrder.Invoke();
-                            return;
-                        }
-                    }
-                    else if (itemToCheck.ingredients[i] is Cheese)
-                    {
-                        if (!(((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.CHEESE))
-                        {
-                            OnIncorrectOrder.Invoke();
-                            return;
-                        }
-                    }
-                    else if (itemToCheck.ingredients[i] is Tomatoes)
-                    {
-                        if (!(((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.TOMATO))
-                        {
-                            OnIncorrectOrder.Invoke();
-                            return;
-                        }
-                    }
-                    else if (itemToCheck.ingredients[i] is Lettuce)
-                    {
-                        if (!(((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.LETTUCE))
-                        {
-                            OnIncorrectOrder.Invoke();
-                            return;
-                        }
-                    }
-                    else if (itemToCheck.ingredients[i] is TopBun)
-                    {
-                        if (!(((BurgerTicket)m_foodItems[0]).m_burgerPieces[i] == BurgerComponent.TOPBUN))
-                        {
-                            OnIncorrectOrder.Invoke();
-                            return;
-                        }
+                        if (t == tickets.Count-1) OnIncorrectOrder.Invoke();
+                        return;
                     }
                 }
+                //Burgers
+                else if (tickets[t] is BurgerTicket)
+                {
+                    //Make sure the burger has the right amount of layers
+                    if (order.ingredients.Count != ((BurgerTicket)tickets[0]).fillings.Length)       //if there are more or less burger ingredients than in the ticket it is wrong
+                    {
+                        Debug.Log("Wrong amount of fillings");
+                        OnIncorrectOrder.Invoke();
+                        return;
+                    }
+
+                    //Check each ingredient
+                    for (int i = 0; i < order.ingredients.Count; i++)
+                    {
+                        //TODO: check to see if there are more ingredients than the ticket supports then return to stop any errors
+                        //check to see if the burger and ticket ingredient isnt the same
+                        if (order.ingredients[i] is BottomBun)
+                        {
+                            if (!(((BurgerTicket)tickets[t]).fillings[i] == BurgerComponent.BOTTOMBUN))
+                            {
+                                // OnIncorrectOrder.Invoke();
+                                break;
+                            }
+                        }
+                        else if (order.ingredients[i] is Patty && order.ingredients[i].cookStatus == CookStatus.Cooked) //Make sure patty is cooked properly
+                        {
+                            if (!(((BurgerTicket)tickets[t]).fillings[i] == BurgerComponent.PATTY))
+                            {
+                                // OnIncorrectOrder.Invoke();
+                                break;
+                            }
+                        }
+                        else if (order.ingredients[i] is Cheese)
+                        {
+                            if (!(((BurgerTicket)tickets[t]).fillings[i] == BurgerComponent.CHEESE))
+                            {
+                                // OnIncorrectOrder.Invoke();
+                                break;
+                            }
+                        }
+                        else if (order.ingredients[i] is Tomatoes)
+                        {
+                            if (!(((BurgerTicket)tickets[t]).fillings[i] == BurgerComponent.TOMATO))
+                            {
+                                // OnIncorrectOrder.Invoke();
+                                break;
+                            }
+                        }
+                        else if (order.ingredients[i] is Lettuce)
+                        {
+                            if (!(((BurgerTicket)tickets[t]).fillings[i] == BurgerComponent.LETTUCE))
+                            {
+                                // OnIncorrectOrder.Invoke();
+                                break;
+                            }
+                        }
+                        else if (order.ingredients[i] is TopBun)
+                        {
+                            if (!(((BurgerTicket)tickets[t]).fillings[i] == BurgerComponent.TOPBUN))
+                            {
+                                // OnIncorrectOrder.Invoke();
+                                break;
+                            }
+                        }
+                    }
+                }   //End of Ticket checking logic
+
+                //If you mae it here means correct order?
+                onCorrectOrder(t);
+                return;
             }
 
-            m_CurrentScore += itemToCheck.totalScoreValue;
-			OnCorrectOrder.Invoke();
+            void onCorrectOrder(int t)
+            {
+                //CORRECT ORDER! Everything checks out
+                AddScore(order.totalScoreValue);
+                RemoveTicket(tickets[t]);
+                OnCorrectOrder.Invoke();
+            }
         }
+
 
         public void AddScore(float increment)
         {

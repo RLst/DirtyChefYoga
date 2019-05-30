@@ -6,18 +6,18 @@ namespace DirtyChefYoga
 {
     public class BurgerTicket : FoodTicket
     {
-        public BurgerComponent[] m_burgerPieces;
+        public BurgerComponent[] fillings;
 
         public override void MakeFood(int fillingAmount = 3)
         {
-            m_burgerPieces = new BurgerComponent[fillingAmount + 2];
+            fillings = new BurgerComponent[fillingAmount + 2];
 
-            m_burgerPieces[0] = BurgerComponent.BOTTOMBUN;
+            fillings[0] = BurgerComponent.BOTTOMBUN;
             for (int i = fillingAmount; i > 0; i--)
             {
-                m_burgerPieces[i] = (BurgerComponent)Random.Range(1, 5);
+                fillings[i] = (BurgerComponent)Random.Range(1, (int)BurgerComponent.COUNT-1);
             }
-            m_burgerPieces[fillingAmount + 1] = BurgerComponent.TOPBUN;
+            fillings[fillingAmount + 1] = BurgerComponent.TOPBUN;
         }
     }
 
@@ -28,6 +28,7 @@ namespace DirtyChefYoga
         LETTUCE,
         CHEESE,
         PATTY,
-        BOTTOMBUN
+        BOTTOMBUN,
+        COUNT
     }
 }
