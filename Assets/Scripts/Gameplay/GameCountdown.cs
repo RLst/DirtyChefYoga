@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace DirtyChefYoga
 {
-    public class Timer : MonoBehaviour
+    public class GameCountdown : MonoBehaviour
     {
         public float m_startTime;
         float m_timer;
