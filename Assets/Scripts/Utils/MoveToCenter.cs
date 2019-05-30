@@ -5,6 +5,7 @@ namespace DirtyChefYoga
 {
 	public class MoveToCenter : MonoBehaviour
 	{
+		[Header("Must Add All Players To This List")]
 		[SerializeField] Transform[] objects;
 		// [SerializeField] LayerMask layer;
 		

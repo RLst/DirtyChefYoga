@@ -19,7 +19,6 @@ namespace DirtyChefYoga
 
         public int m_maxNumberOfTickets = 5;
 
-        public float m_foodScoreAmount;
         public float m_CurrentScore;
 
         public GameObject m_scoreCanvas;

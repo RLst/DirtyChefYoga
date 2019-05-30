@@ -30,7 +30,7 @@ namespace DirtyChefYoga
             }
             else
             {
-                string timeVisual = Mathf.FloorToInt(m_timer / 60).ToString();
+                string timeVisual = Mathf.FloorToInt(m_timer / 60f).ToString();
                 timeVisual += ":" + ((int)m_timer % 60).ToString("00");
 
                 m_canvasTimer.GetComponent<Text>().text = timeVisual;//m_timer.ToString();
