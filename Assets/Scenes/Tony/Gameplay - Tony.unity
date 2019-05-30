@@ -21508,8 +21508,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_burgerChance: 70
-  m_spawnTime: 20
-  m_ticketExpireTimer: 120
+  m_spawnTime: 15
+  m_ticketExpireTimer: 90
   m_maxNumberOfTickets: 5
   m_CurrentScore: 0
   m_scoreCanvas: {fileID: 1528767136}
@@ -22171,6 +22171,26 @@ PrefabInstance:
         type: 3}
       propertyPath: leftAxisYName
       value: Vertical2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3835126635848404288, guid: 74630a42a40c44a4b807ff6523c99f19,
+        type: 3}
+      propertyPath: useKey
+      value: 260
+      objectReference: {fileID: 0}
+    - target: {fileID: 3835126635848404288, guid: 74630a42a40c44a4b807ff6523c99f19,
+        type: 3}
+      propertyPath: pickUpKey
+      value: 261
+      objectReference: {fileID: 0}
+    - target: {fileID: 3835126635848404288, guid: 74630a42a40c44a4b807ff6523c99f19,
+        type: 3}
+      propertyPath: dashKey
+      value: 262
+      objectReference: {fileID: 0}
+    - target: {fileID: 3835126635848404288, guid: 74630a42a40c44a4b807ff6523c99f19,
+        type: 3}
+      propertyPath: panicKey
+      value: 270
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74630a42a40c44a4b807ff6523c99f19, type: 3}
