@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 4499622249645180615, guid: df3df5b56c03afa46ab9f2ce8d70c68a,
         type: 3}
       propertyPath: m_Name
-      value: YogaMain Variant
+      value: YogaMinor
       objectReference: {fileID: 0}
     - target: {fileID: 4499622249645180615, guid: df3df5b56c03afa46ab9f2ce8d70c68a,
         type: 3}
@@ -76,6 +76,36 @@ PrefabInstance:
         type: 3}
       propertyPath: controller
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499622249645180619, guid: df3df5b56c03afa46ab9f2ce8d70c68a,
+        type: 3}
+      propertyPath: leftAxisXName
+      value: HorizontalRight
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499622249645180619, guid: df3df5b56c03afa46ab9f2ce8d70c68a,
+        type: 3}
+      propertyPath: leftAxisYName
+      value: VerticalRight
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499622249645180619, guid: df3df5b56c03afa46ab9f2ce8d70c68a,
+        type: 3}
+      propertyPath: pickUpKey
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499622249645180619, guid: df3df5b56c03afa46ab9f2ce8d70c68a,
+        type: 3}
+      propertyPath: dashKey
+      value: 92
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499622249645180619, guid: df3df5b56c03afa46ab9f2ce8d70c68a,
+        type: 3}
+      propertyPath: panicKey
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4499622249645180619, guid: df3df5b56c03afa46ab9f2ce8d70c68a,
+        type: 3}
+      propertyPath: useKey
+      value: 93
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5105038115656299014, guid: df3df5b56c03afa46ab9f2ce8d70c68a, type: 3}

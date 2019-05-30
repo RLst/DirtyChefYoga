@@ -14,13 +14,13 @@ namespace DirtyChefYoga
 				//Raw if needed
 				if (useRaw)
 				{
-					result.x = Input.GetAxisRaw("Horizontal");
-					result.y = Input.GetAxisRaw("Vertical");
+					result.x = Input.GetAxisRaw(leftAxisXName);
+					result.y = Input.GetAxisRaw(leftAxisYName);
 				}
 				else
 				{
-					result.x = Input.GetAxis("Horizontal");
-					result.y = Input.GetAxis("Vertical");
+					result.x = Input.GetAxis(leftAxisXName);
+					result.y = Input.GetAxis(leftAxisYName);
 				}
 
 				//Inverse if needed
@@ -45,13 +45,13 @@ namespace DirtyChefYoga
 				//Raw if needed
 				if (useRaw)
 				{
-					result.x = Input.GetAxisRaw("Horizontal");
-					result.y = Input.GetAxisRaw("Vertical");
+					result.x = Input.GetAxisRaw(rightAxisXName);
+					result.y = Input.GetAxisRaw(rightAxisYName);
 				}
 				else
 				{
-					result.x = Input.GetAxis("Horizontal");
-					result.y = Input.GetAxis("Vertical");
+					result.x = Input.GetAxis(rightAxisXName);
+					result.y = Input.GetAxis(rightAxisYName);
 				}
 
 				//Inverse if needed

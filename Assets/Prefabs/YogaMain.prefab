@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4499622249645180620}
   - component: {fileID: 4499622249645180617}
-  - component: {fileID: 4008110452933956991}
   - component: {fileID: 4499622249645180619}
+  - component: {fileID: 4008110452933956991}
   - component: {fileID: 4499622249645180616}
   - component: {fileID: 4499622249645180618}
   - component: {fileID: 6154595416965789956}
@@ -58,7 +58,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.6, z: 0}
---- !u!114 &4008110452933956991
+--- !u!114 &4499622249645180619
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66,6 +66,31 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4499622249645180615}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d193a412110c2c489dc91dff4ac1261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug: 0
+  useRaw: 0
+  invertXaxis: 0
+  invertYaxis: 0
+  leftAxisXName: Horizontal
+  leftAxisYName: Vertical
+  rightAxisXName: Horizontal
+  rightAxisYName: Vertical
+  moveAxis: Horizontal
+  useKey: 114
+  pickUpKey: 102
+  dashKey: 103
+  panicKey: 116
+--- !u!114 &4008110452933956991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4499622249645180615}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 950331c870beb904dbc83957c992f2ea, type: 3}
   m_Name: 
@@ -85,31 +110,6 @@ MonoBehaviour:
   pickupButton: 0
   dashButton: 1
   panicButton: 3
---- !u!114 &4499622249645180619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4499622249645180615}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d193a412110c2c489dc91dff4ac1261, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug: 0
-  useRaw: 0
-  invertXaxis: 0
-  invertYaxis: 0
-  leftAxisXName: HorizontalLeft
-  leftAxisYName: VerticalLeft
-  rightAxisXName: Horizontal
-  rightAxisYName: Vertical
-  moveAxis: Horizontal
-  useKey: 114
-  pickUpKey: 102
-  dashKey: 103
-  panicKey: 116
 --- !u!114 &4499622249645180616
 MonoBehaviour:
   m_ObjectHideFlags: 0
