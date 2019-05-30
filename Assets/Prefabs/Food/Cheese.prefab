@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69fd1ec8939743b4cb34da0dc2574487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_scoreValue: 2
   m_isCookable: 0
 --- !u!1001 &2005927695397777666
 PrefabInstance:

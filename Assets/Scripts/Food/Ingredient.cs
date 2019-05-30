@@ -74,11 +74,13 @@ namespace DirtyChefYoga
 		{
 			if (active)
 			{
+				rb.isKinematic = false;
 				rb.constraints = RigidbodyConstraints.None;
 				col.isTrigger = false;
 			}
 			else
 			{
+				rb.isKinematic = true;
 				rb.constraints = RigidbodyConstraints.FreezeAll;
 				col.isTrigger = true;
 			}

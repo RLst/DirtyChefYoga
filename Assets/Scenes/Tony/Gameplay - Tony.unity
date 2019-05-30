@@ -9995,21 +9995,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6242798088970936559, guid: 13000ab76ad916d4cbe4c91d1e532603,
+    - target: {fileID: 598140573763243348, guid: 13000ab76ad916d4cbe4c91d1e532603,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6242798088970936559, guid: 13000ab76ad916d4cbe4c91d1e532603,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 6242798088970936559, guid: 13000ab76ad916d4cbe4c91d1e532603,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.45
-      objectReference: {fileID: 0}
+      propertyPath: OnInserted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1937593471}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13000ab76ad916d4cbe4c91d1e532603, type: 3}
 --- !u!1001 &918191764
@@ -13654,6 +13644,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 598140573763243348, guid: 13000ab76ad916d4cbe4c91d1e532603,
+        type: 3}
+      propertyPath: OnInserted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1937593471}
+    - target: {fileID: 598140573763243348, guid: 13000ab76ad916d4cbe4c91d1e532603,
+        type: 3}
+      propertyPath: OnInserted.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddScore
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13000ab76ad916d4cbe4c91d1e532603, type: 3}

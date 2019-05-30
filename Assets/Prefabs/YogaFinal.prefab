@@ -142,7 +142,7 @@ MonoBehaviour:
   debug: 0
   handAnchor: {fileID: 6571148390563952047}
   castHalfExtents: {x: 0.5, y: 2.5, z: 1}
-  castLength: 1.9
+  castLength: 1.8
   interactablesMask:
     serializedVersion: 2
     m_Bits: 512

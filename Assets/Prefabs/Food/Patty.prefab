@@ -152,4 +152,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c72171edb9d6e14f80c6cd4b3b97009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_scoreValue: 4
   m_isCookable: 1

@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a05bb6cc9fe26224ca21a91359d1678d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_scoreValue: 1
   m_isCookable: 1
 --- !u!65 &8752670620357723250
 BoxCollider:
@@ -89,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a05bb6cc9fe26224ca21a91359d1678d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_scoreValue: 2
   m_isCookable: 0
 --- !u!1001 &2761297734196309264
 PrefabInstance:

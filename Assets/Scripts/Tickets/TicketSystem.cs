@@ -260,8 +260,13 @@ namespace DirtyChefYoga
                 }
             }
 
-            m_CurrentScore += m_foodScoreAmount;
+            m_CurrentScore += itemToCheck.totalScoreValue;
 			OnCorrectOrder.Invoke();
+        }
+
+        public void AddScore(float increment)
+        {
+            m_CurrentScore += increment;
         }
     }
 }
