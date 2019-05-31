@@ -45,8 +45,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6879677, y: 0.0325, z: 0.74727046}
-  m_Center: {x: 0, y: 0.025, z: -0.022861004}
+  m_Size: {x: 0.6879677, y: 0.056736678, z: 0.74727046}
+  m_Center: {x: 0, y: 0.037118338, z: -0.022861004}
 --- !u!54 &1808644991366398960
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa994192cea32a49a61661e3a3b1891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_scoreValue: 1
   m_isCookable: 0
 --- !u!1001 &8245928662674658094
 PrefabInstance:
@@ -83,14 +84,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4182719570404786949}
     m_Modifications:
-    - target: {fileID: 100000, guid: ff3ff21e45e773c41bf95b0ea1b6fe0e, type: 3}
-      propertyPath: m_Name
-      value: M_Food_Lettuce_001
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: ff3ff21e45e773c41bf95b0ea1b6fe0e, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ff3ff21e45e773c41bf95b0ea1b6fe0e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -134,6 +127,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: ff3ff21e45e773c41bf95b0ea1b6fe0e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ff3ff21e45e773c41bf95b0ea1b6fe0e, type: 3}
+      propertyPath: m_Name
+      value: M_Food_Lettuce_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ff3ff21e45e773c41bf95b0ea1b6fe0e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: ff3ff21e45e773c41bf95b0ea1b6fe0e, type: 3}
       propertyPath: m_Materials.Array.data[0]
