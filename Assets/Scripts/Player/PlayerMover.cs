@@ -8,7 +8,7 @@ namespace DirtyChefYoga
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(PlayerInput))]
     // [RequireComponent(typeof(PlayerInteract))]
-    public class PlayerController : MonoBehaviour
+    public class PlayerMover : MonoBehaviour
     {
         [SerializeField] bool debug = true;
         [Space]

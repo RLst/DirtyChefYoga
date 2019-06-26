@@ -11595,7 +11595,7 @@ PrefabInstance:
     - target: {fileID: 4008110452933956991, guid: df3df5b56c03afa46ab9f2ce8d70c68a,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4499622249645180619, guid: df3df5b56c03afa46ab9f2ce8d70c68a,
         type: 3}
@@ -11617,8 +11617,7 @@ PrefabInstance:
       propertyPath: leftAxisYName
       value: Vertical1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4499622249645180619, guid: df3df5b56c03afa46ab9f2ce8d70c68a, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df3df5b56c03afa46ab9f2ce8d70c68a, type: 3}
 --- !u!4 &1071177791 stripped
 Transform:
