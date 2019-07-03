@@ -22070,7 +22070,13 @@ PrefabInstance:
       propertyPath: panicKey
       value: 270
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4384094787058343668, guid: 74630a42a40c44a4b807ff6523c99f19,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3835126635848404288, guid: 74630a42a40c44a4b807ff6523c99f19, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 74630a42a40c44a4b807ff6523c99f19, type: 3}
 --- !u!4 &1716041511317382910 stripped
 Transform:

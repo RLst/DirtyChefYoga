@@ -14,7 +14,7 @@ namespace DirtyChefYoga
         public GameObject m_canvasTimer;
         public TicketSystem m_ticketSystem;
 
-        private void Start()
+        private void Awake()
         {
             m_timer = m_startTime;
             m_ticketSystem = GetComponent<TicketSystem>();
@@ -39,7 +39,7 @@ namespace DirtyChefYoga
 
         public void EndGame()
         {
-            PlayerPrefs.SetFloat("FinalScore", m_ticketSystem.m_CurrentScore); //TODO, implement high score system
+            PlayerPrefs.SetFloat("gameScore", m_ticketSystem.m_CurrentScore);       //Game over score
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
